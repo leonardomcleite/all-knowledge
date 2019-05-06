@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+
+$background : (
+  status-bar:               mat-color($mat-grey, 300),
+  app-bar:                  mat-color($mat-grey, 100),
+  background:               mat-color($mat-grey, 100),
+  hover:                    rgba(black, 0.04),
+  card:                   white,
+  dialog:                 white,
+  disabled-button:          rgba(black, 0.12),
+  raised-button:          white,
+  focused-button:           $dark-focused,
+  selected-button:          mat-color($mat-grey, 300),
+  selected-disabled-button: mat-color($mat-grey, 400),
+  disabled-button-toggle:   mat-color($mat-grey, 200),
+  unselected-chip:          mat-color($mat-grey, 300),
+  disabled-list-option:     mat-color($mat-grey, 200),
+);
+
+$foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+@function custom-theme($primary, $accent, $warn, $basic) {
+  @return (
+    basic: $basic,
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $background,
+    background: $foreground,
+  );
+}
+
+$primary: mat-palette($mat-cyan);
+$accent: mat-palette($mat-red);
+$warn: mat-palette($mat-yellow, 800);
+$basic: mat-palette($mat-deep-orange);
+
+$theme: custom-theme($primary, $accent, $warn, $basic);
+
+$ak-padding: 15px;
+
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+  color: rgba(black, 0.87);
+  background-color: #fff;
+}
+
+.mat-drawer-side {
+  border-right: 0px;
+}
+
+mat-toolbar.mat-toolbar-row, mat-toolbar.mat-toolbar-single-row {
+  height: 45px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: mat-color($accent, 500);
+  border-radius: 10px;
+}
+
+body {
+  background: mat-color($mat-grey, 100);
+}

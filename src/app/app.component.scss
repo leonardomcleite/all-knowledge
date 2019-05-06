@@ -1,0 +1,31 @@
+@import '../styles/theming.scss';
+
+.ak-container {
+  position: absolute;
+  top: 45px;
+  bottom: 45px;
+  left: 0;
+  right: 0;
+}
+
+.ak-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+
+.ak-header {
+  top: 0;
+}
+
+.ak-footer {
+  bottom: 0;
+}
+
+.ak-header, .ak-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}

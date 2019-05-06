@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/theming.scss';
+@import '~material-design-icons/iconfont/material-icons.css';
+
+@include mat-core();
+@include angular-material-theme($theme);
+
+* {
+    font-family: 'Raleway', sans-serif;
+    outline: none !important;
+}

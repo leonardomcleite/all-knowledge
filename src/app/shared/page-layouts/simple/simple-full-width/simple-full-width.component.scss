@@ -1,0 +1,19 @@
+@import '../../../../../styles/theming.scss';
+
+.simple-full-width-header {
+    background-color: mat-color($primary, 500);
+    color: mat-color($primary, 50);
+    height: 120px;
+    line-height: 120px;
+    padding: $ak-padding;
+    
+}
+
+ak-simple-full-width-header div.simple-full-width-header span {
+    font-size: 20px;
+}
+
+.simple-full-width-content {
+    color: mat-color($primary, 500);
+    padding: $ak-padding;
+}
