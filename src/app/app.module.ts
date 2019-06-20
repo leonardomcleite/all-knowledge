@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SimpleFullWidthModule } from './shared/page-layouts/simple/simple-full-width/simple-full-width.module';
+import { MenusComponent } from './components/menus/menus.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { SimpleFullWidthModule } from './shared/page-layouts/simple/simple-full-
   declarations: [
     AppComponent,
     HomepageComponent,
+    MenusComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

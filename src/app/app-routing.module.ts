@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomepageComponent
+  },
+  {
+    path: 'ak-example-simple-tabbed',
+    loadChildren: './pages/example-simple-tabbed/example-simple-tabbed.module#ExampleSimpleTabbedModule'
   }
 ];
 

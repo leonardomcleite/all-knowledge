@@ -1,11 +1,18 @@
 @import '../styles/theming.scss';
 
 .ak-container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 45px;
-  bottom: 45px;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
+}
+
+.ak-content {
+  top: 45px;
+  margin-bottom: 90px;
 }
 
 .ak-sidenav {
@@ -13,6 +20,8 @@
   align-items: center;
   justify-content: center;
   width: 200px;
+  background-color: mat-color($accent, 800);
+  color: mat-color($accent, 50);
 }
 
 .ak-header {
@@ -25,7 +34,14 @@
 
 .ak-header, .ak-footer {
   position: fixed;
-  left: 0;
+  left: 200px;
   right: 0;
   z-index: 2;
+  transition: left cubic-bezier(0, 0, 0.2, 1) 0.35s;
+}
+
+.ak-is-mobile {
+  &.ak-header, &.ak-footer {
+    left: 0;
+  }
 }

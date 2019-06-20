@@ -1,22 +1,23 @@
 <ng-container>
-  <mat-toolbar class="ak-header mat-elevation-z3" color="primary">
+  <mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
       <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
   </mat-toolbar>
 
   <mat-sidenav-container class="ak-container">
-    <mat-sidenav  #sidenav opened
-      color="primary"
+    <mat-sidenav  #sidenav
+      [(opened)]="sideOpened"
+      (openedStart)="sideOpened = true"
+      (closedStart)="sideOpened = false"
       class="ak-sidenav"    
-      mode="side"
-      [fixedInViewport]="false">
+      fixedTopGap="45"
+      [mode]="mobileQuery.matches ? 'over' : 'side'">
+      <ak-menus></ak-menus>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-      <div class="ak-content">
-        <router-outlet></router-outlet>
-      </div>
+    <mat-sidenav-content class="ak-content">
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <mat-toolbar class="ak-footer mat-elevation-z3" color="primary">Footer</mat-toolbar>
+  <mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">Footer</mat-toolbar>
 </ng-container>
