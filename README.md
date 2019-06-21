@@ -1,8 +1,8 @@
 #### Docker 
 Build:
 ```sh
-yarn install
-yarn buildprod
+npm install
+npm run buildprod
 docker build -t consorcio-front docs/docker/
 ```
 
