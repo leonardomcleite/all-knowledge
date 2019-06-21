@@ -4,11 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "buildprod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --base-href /ang7-all-knowledge/ --aot"
+    "buildprod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --base-href /ang7-all-knowledge/ --aot",
+    "build": "ng build --prod",
+    "docker": "ng build && sh docs/docker/docker-build.sh",
+    "dockerlocal": "ng build --prod && bash docs/docker/docker-build.sh latest",
+    "dockerprod": "sh docs/docker/docker-build.sh",
+    "dockersave": "sh docs/docker/docker-save.sh",
+    "dockersavelocal": "sh docs/docker/docker-save.sh latest",
+    "prod": "ng serve --configuration=production"
   },
   "private": true,
   "dependencies": {
