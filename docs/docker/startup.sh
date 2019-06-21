@@ -14,18 +14,6 @@ function configure() {
   sed -i 's@$APP_FRONT_REDIRECTURL@'"${APP_FRONT_REDIRECTURL}"'@g' ${APP_DIRECTORY}/main.*.js
   echo "Front-end Redirect URL: ${APP_FRONT_REDIRECTURL}"
 
-  sed -i 's@$ENABLED_SECURITY@'"${ENABLED_SECURITY}"'@g' ${APP_DIRECTORY}/main.*.js
-  echo "Security Enabled: ${ENABLED_SECURITY}"
-
-  sed -i 's@$BASE_OAUTH2_URL@'"${BASE_OAUTH2_URL}"'@g' ${APP_DIRECTORY}/main.*.js
-  echo "Base OAuth2 URL: ${BASE_OAUTH2_URL}"
-
-  sed -i 's@$REPORT_API_BASEURL@'"${REPORT_API_BASEURL}"'@g' ${APP_DIRECTORY}/main.*.js
-  echo "Report API Base URL: ${REPORT_API_BASEURL}"
-
-  sed -i 's@$CLIENT_ID@'"${CLIENT_ID}"'@g' ${APP_DIRECTORY}/main.*.js
-  echo "Report API Base URL: ${CLIENT_ID}"
-
   echo "Application configured"
 }
 
