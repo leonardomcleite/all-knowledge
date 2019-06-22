@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ang7-all-knowledge": {
+    "all-knowledge": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ang7-all-knowledge:build"
+            "browserTarget": "all-knowledge:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ang7-all-knowledge:build:production"
+              "browserTarget": "all-knowledge:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ang7-all-knowledge:build"
+            "browserTarget": "all-knowledge:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "ang7-all-knowledge-e2e": {
+    "all-knowledge-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ang7-all-knowledge:serve"
+            "devServerTarget": "all-knowledge:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ang7-all-knowledge:serve:production"
+              "devServerTarget": "all-knowledge:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "ang7-all-knowledge"
+  "defaultProject": "all-knowledge"
 }

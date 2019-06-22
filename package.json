@@ -1,5 +1,5 @@
 {
-  "name": "ang7-all-knowledge",
+  "name": "all-knowledge",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "buildprod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --base-href /ang7-all-knowledge/ --aot",
+    "buildprod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod --base-href /all-knowledge/ --aot",
     "build": "ng build --prod",
     "docker": "ng build && sh docs/docker/docker-build.sh",
     "dockerlocal": "ng build --prod && bash docs/docker/docker-build.sh latest",
