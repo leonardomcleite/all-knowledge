@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'ak-example-simple-tabbed',
-    loadChildren: './pages/example-simple-tabbed/example-simple-tabbed.module#ExampleSimpleTabbedModule'
+    loadChildren: () => import('./pages/example-simple-tabbed/example-simple-tabbed.module').then(m => m.ExampleSimpleTabbedModule)
   }
 ];
 
