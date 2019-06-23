@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import * as ptBR from '../../../../assets/i18n/pt-BR.json';
+import { environment } from '@all-knowledge/env/environment.js';
 
 @Injectable()
 export class InternationalizationService {

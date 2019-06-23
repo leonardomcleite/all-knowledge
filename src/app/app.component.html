@@ -15,10 +15,13 @@
       <ak-menu></ak-menu>
     </mat-sidenav>
 
-    <mat-sidenav-content class="ak-content">
+    <mat-sidenav-content class="ak-content" [class.sidenav-open]="sideOpened">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">Footer</mat-toolbar>
+  <mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">
+    <span class="autor-title">{{'label.autor' | translate}}: </span>
+    <span class="autor">{{'autor.nome' | translate}}</span>
+  </mat-toolbar>
 </ng-container>

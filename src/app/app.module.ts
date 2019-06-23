@@ -1,7 +1,9 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,13 +13,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { SimpleFullWidthModule } from './shared/page-layouts/simple/simple-full-width/simple-full-width.module';
-import { NavHeaderComponent } from './components/nav-header/nav-header.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatDividerModule } from '@angular/material';
+import { MenuModule } from './shared/components/menu/menu.module';
+import { NavHeaderComponent } from './shared/components/nav-header/nav-header.component';
 
 @NgModule({
   imports: [
@@ -37,7 +35,7 @@ import { MatDividerModule } from '@angular/material';
       }
     }),
 
-    SimpleFullWidthModule,
+    MenuModule,
 
     MatIconModule,
     MatButtonModule,
@@ -48,8 +46,6 @@ import { MatDividerModule } from '@angular/material';
   ],
   declarations: [
     AppComponent,
-    HomepageComponent,
-    MenuComponent,
     NavHeaderComponent,
   ],
   providers: [

@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomepageComponent } from './pages/homepage/homepage.component';
+
 const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent
+    loadChildren: () => import('./core/components/homepage/homepage.module').then(m => m.HomepageModule)
   },
   {
     path: 'example-simple-full-width',
-    loadChildren: () => import('./pages/example-simple-full-width/example-simple-full-width.module').then(m => m.ExampleSimpleFullWidthModule)
+    loadChildren: () => import('./example-layouts/example-simple-full-width/example-simple-full-width.module').then(m => m.ExampleSimpleFullWidthModule)
   },
   {
     path: 'example-simple-tabbed',
-    loadChildren: () => import('./pages/example-simple-tabbed/example-simple-tabbed.module').then(m => m.ExampleSimpleTabbedModule)
+    loadChildren: () => import('./example-layouts/example-simple-tabbed/example-simple-tabbed.module').then(m => m.ExampleSimpleTabbedModule)
   },
   {
     path: 'sobre',
-    loadChildren: () => import('./pages/sobre/sobre.module').then(m => m.SobreModule)
+    loadChildren: () => import('./sobre/sobre.module').then(m => m.SobreModule)
   }
 ];
 

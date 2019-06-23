@@ -13,7 +13,10 @@
 .ak-content {
   top: 45px;
   margin-bottom: 90px;
-  width: calc(100% - 250px);
+  width: 100%;
+  &.sidenav-open {
+    width: calc(100% - 250px);
+  }
 }
 
 .ak-sidenav {
@@ -49,4 +52,12 @@
 
 .hidden {
   display: none;
+}
+
+.autor-title {
+  padding-right: 10px
+}
+
+.autor {
+  font-size: 18px;
 }

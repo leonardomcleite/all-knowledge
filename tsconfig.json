@@ -3,7 +3,6 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "baseUrl": "./",
     "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -21,6 +20,7 @@
       "es2018",
       "dom"
     ],
+    "baseUrl": "src",
     "paths": {
       "@all-knowledge/*": [
         "app/*"

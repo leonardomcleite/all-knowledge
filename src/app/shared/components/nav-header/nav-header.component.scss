@@ -1,0 +1,26 @@
+@import 'styles/theming.scss';
+
+.navbar {
+    background-color: mat-color($ak-grey, 900);
+    display: flex;
+    margin-bottom: 10px;
+    height: 145px;
+}
+
+.logo {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.logo-icon {
+    padding: 10px 10px 10px 45px;
+    width: calc(100% - 20px);
+    filter: invert(1);
+    cursor: pointer;
+}
+
+button.menu {
+    padding-top: 3px;
+}
