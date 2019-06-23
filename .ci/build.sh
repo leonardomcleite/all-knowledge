@@ -29,10 +29,10 @@ function deploy() {
     npm run buildprod
 
     echo "... Realizando o build no docker: docker build -t all-knowledge docs/docker/ "
-    docker build -t all-knowledge docs/docker/  
+    docker build -t all-knowledge ../docs/docker/
 
-    echo "... subindo container build no docker: docker run -d --name ang7-all-knowledge -it -p 8080/tcp --privileged=true --env-file=docs/docker-conf/APP.env ang7-all-knowledge"
-    docker run -d --name ang7-all-knowledge -it -p 8080/tcp --privileged=true --env-file=docs/docker-conf/APP.env ang7-all-knowledge
+    echo "... subindo container build no docker: docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge"
+    docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=../docs/docker-conf/APP.env all-knowledge
 
     echo "SUCCESS BUILD"
 }
