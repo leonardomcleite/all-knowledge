@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, QueryList, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatTab, MatTabGroup } from '@angular/material';
+import { SimpleTabbedItemComponent } from './simple-tabbed-item/simple-tabbed-item.component';
 
 @Component({
   selector: 'ak-simple-tabbed-content',
@@ -6,11 +8,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./simple-tabbed-content.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SimpleTabbedContentComponent implements OnInit {
+export class SimpleTabbedContentComponent implements AfterViewInit {
 
-  constructor() { }
+  @ViewChild(MatTabGroup, {static: true}) matTabGroup: MatTabGroup;
+  @ContentChildren(MatTab) tabsFromNgContent: QueryList<MatTab>;
+  @ContentChildren(SimpleTabbedItemComponent) tabbedItems: QueryList<MatTab>;
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    let tabItems = [];
+    this.tabbedItems.toArray().forEach((item: any) => {
+      tabItems = [...tabItems, ...item.inclusiveTabs.toArray()];
+     });
+    this.matTabGroup._tabs.reset([...this.tabsFromNgContent.toArray(), ...tabItems]);
   }
 
 }

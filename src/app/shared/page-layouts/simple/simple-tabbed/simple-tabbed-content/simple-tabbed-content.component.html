@@ -1,3 +1,7 @@
-<div class="simple-tabbed-content">
-  <ng-content></ng-content>
+<div class="simple-tabbed-content mat-elevation-z2">
+  <div class="tabbed-group">
+    <mat-tab-group>
+      <ng-content select="[ak-simple-tabbed-item]"></ng-content>
+    </mat-tab-group>
+  </div>
 </div>

@@ -1,0 +1,24 @@
+<div class="nav-container">
+  <div class="nav-container" *ngFor="let menu of menus">
+    <div class="nav-menu-link primary">
+      <span
+        class="nav-link-title bold"
+        [routerLink]="menu.route"
+        [routerLinkActiveOptions]="{exact: false}"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [class.no-route]="menu.route == null"
+        [class.active]="rla.isActive && menu.route != null">{{menu.nameMenu | translate}}</span>
+      <div 
+        *ngFor="let submenu of menu.submenus"
+        class="nav-submenu-link primary">
+        <span class="nav-link-title submenu"
+          [routerLink]="[submenu.route]"
+          [routerLinkActiveOptions]="{exact: false}"
+          routerLinkActive
+          #rla2="routerLinkActive"
+          [class.active]="rla2.isActive && submenu.route != null">{{submenu.nameMenu | translate}}</span>
+      </div>
+    </div>
+  </div>
+</div>

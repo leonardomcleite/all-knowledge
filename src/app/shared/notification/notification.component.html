@@ -1,0 +1,21 @@
+<div [class]="'snackbar ' + options?.type" >
+  <div [class]="'icon ' + options?.type" [class.mg-normal]="!options?.showAction">
+    <i *ngIf="options?.type === 'error'" class="icon-alert-c icon-notification"></i>
+    <i *ngIf="options?.type === 'information'" class="icon-chat icon-notification"></i>
+    <i *ngIf="options?.type === 'warning'" class="icon-alert-c icon-notification"></i>
+    <i *ngIf="options?.type === 'success'" class="icon-ok-c icon-notification"></i>
+  </div>
+  <div class="content">
+    <span class="dialog__content">{{options?.title}}</span>
+    <span class="dialog-text">{{options?.message | translate}}</span>
+  </div>
+  <button mat-icon-button (click)="closeSnackBarMensagem()">
+    <i class="icon-close notification"></i>
+  </button>
+</div>
+<div class="actions" *ngIf="options?.showAction">
+  <button class="btnAction" style="margin: auto 0;" mat-raised-button color="primary" (click)="closeSnackBarMensagem()">
+    <span class="btn-label">{{ options?.actionLabel | translate }}</span>
+    <mat-icon class="icon-action">close</mat-icon>
+  </button>
+</div>

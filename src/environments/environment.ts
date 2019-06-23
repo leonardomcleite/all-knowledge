@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  timeout: 3000,
+  defaultLanguage: 'pt-Br',
+  baseUrl: ''
 };

@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "baseUrl": "./",
     "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
@@ -18,6 +20,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@all-knowledge/*": [
+        "app/*"
+      ],
+      "@all-knowledge/env/*": [
+        "environments/*"
+      ]
+    },
   }
 }

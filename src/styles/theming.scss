@@ -36,7 +36,7 @@ $foreground: (
 );
 
 $ak-grey: (
-  50: #fafafa,
+  50: #f5f5f5,
   100: #f5f5f5,
   200: #eeeeee,
   300: #e0e0e0,
@@ -123,4 +123,23 @@ body {
 .ak-button-row button,
 .ak-button-row a {
   margin-right: 8px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.mat-tab-header {
+  border-bottom: 1px solid mat-color($accent, 300);
+}
+
+
+.accent {
+  background-color: mat-color($primary, 500);
+  color: white;
+}
+
+.warn {
+  background-color: mat-color($warn, 500);
+  color: black;
 }
