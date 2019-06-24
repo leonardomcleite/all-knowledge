@@ -1,5 +1,5 @@
 #!/bin/bash
-PATH=~/projetos/ang7-all-knowledge/
+PATH=~/projetos/all-knowledge/
 
 function reset() {
     echo "Removendo imagens anteriores..."
