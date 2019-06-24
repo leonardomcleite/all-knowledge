@@ -70,6 +70,7 @@
 - Criar chave SSH
 ```sh
 	ssh-keygen -f ~/.ssh/"[ID do projeto]" -t rsa -C "[USUARIO]"
+	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/"[ID do projeto]"
 	OBS: O terminal irá perdir uma senha e a confirmação
 ```

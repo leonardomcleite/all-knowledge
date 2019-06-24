@@ -1,27 +1,25 @@
-<ng-container>
-  <mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
-    <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened"><mat-icon>menu</mat-icon></button>
-  </mat-toolbar>
-  
-  <mat-sidenav-container class="ak-container">
-    <mat-sidenav  #sidenav
-      [(opened)]="sideOpened"
-      (openedStart)="sideOpened = true"
-      (closedStart)="sideOpened = false"
-      class="ak-sidenav"    
-      fixedTopGap="45"
-      [mode]="mobileQuery.matches ? 'over' : 'side'">
-      <ak-nav-header [sidenav]="sidenav" (clickIcon)="closeSidenav(sidenav)"></ak-nav-header>
-      <ak-menu (clickMenu)="closeSidenav(sidenav)"></ak-menu>
-    </mat-sidenav>
-  
-    <mat-sidenav-content class="ak-content" [class.sidenav-open]="sideOpened">
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
-  <mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">
-    <span class="autor-title">{{'label.autor' | translate}}: </span>
-    <span class="autor">{{'autor.nome' | translate}}</span>
-  </mat-toolbar>
-</ng-container>
+<mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
+  <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened"><mat-icon>menu</mat-icon></button>
+</mat-toolbar>
+
+<mat-sidenav-container class="ak-container">
+  <mat-sidenav  #sidenav
+    [(opened)]="sideOpened"
+    (openedStart)="sideOpened = true"
+    (closedStart)="sideOpened = false"
+    class="ak-sidenav"    
+    fixedTopGap="45"
+    [mode]="mobileQuery.matches ? 'over' : 'side'">
+    <ak-nav-header [sidenav]="sidenav" (clickIcon)="closeSidenav(sidenav)"></ak-nav-header>
+    <ak-menu (clickMenu)="closeSidenav(sidenav)"></ak-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="ak-content" [class.sidenav-open]="sideOpened">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">
+  <span class="autor-title">{{'label.autor' | translate}}: </span>
+  <span class="autor">{{'autor.nome' | translate}}</span>
+</mat-toolbar>
