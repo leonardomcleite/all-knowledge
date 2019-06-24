@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderComponent } from './shared/components/nav-header/nav-header.component';
+import { HomepageModule } from './core/components/homepage/homepage.module';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { NavHeaderComponent } from './shared/components/nav-header/nav-header.co
     }),
 
     MenuModule,
+    HomepageModule,
 
     MatIconModule,
     MatButtonModule,
