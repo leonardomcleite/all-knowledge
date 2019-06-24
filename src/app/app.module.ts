@@ -13,10 +13,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomepageModule } from './core/components/homepage/homepage.module';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
 import { MenuModule } from './shared/components/menu/menu.module';
-import { NavHeaderComponent } from './shared/components/nav-header/nav-header.component';
-import { HomepageComponent } from './core/components/homepage/homepage.component';
+import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
 
 @NgModule({
   imports: [
@@ -36,19 +36,19 @@ import { HomepageComponent } from './core/components/homepage/homepage.component
       }
     }),
 
+    HomepageModule,
     MenuModule,
+    NavHeaderModule,
 
+    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatToolbarModule,
     MatExpansionModule,
     MatDividerModule
   ],
   declarations: [
     AppComponent,
-    HomepageComponent,
-    NavHeaderComponent,
   ],
   providers: [
     InternationalizationService
