@@ -1,11 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBarRef } from '@angular/material';
 
 @Component({
   selector: 'ak-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class NotificationComponent {
 

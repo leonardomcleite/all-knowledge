@@ -1,8 +1,10 @@
 <div class="navbar">
-  <div class="logo"><img class="logo-icon" src="assets/images/all-knowledge.png" routerLink="" ></div>
+  <div class="logo">
+    <img class="logo-icon" src="assets/images/all-knowledge.png" routerLink="" (click)="onClickIcon()">
+  </div>
   <div class="buttons">
     <button mat-icon-button class="menu" (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon>arrow_back</mat-icon>
     </button>
   </div>
 </div>

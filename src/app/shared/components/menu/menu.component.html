@@ -1,6 +1,6 @@
 <div class="nav-container">
   <div class="nav-container" *ngFor="let menu of menus">
-    <div class="nav-menu-link primary">
+    <div class="nav-menu-link">
       <span
         class="nav-link-title bold"
         [routerLink]="menu.route"
@@ -8,16 +8,25 @@
         routerLinkActive
         #rla="routerLinkActive"
         [class.no-route]="menu.route == null"
-        [class.active]="rla.isActive && menu.route != null">{{menu.nameMenu | translate}}</span>
+        [class.active]="rla.isActive && menu.route != null"
+        (click)="onClickMenu(menu.route != null)">
+        <mat-icon class="menu-icon">{{menu?.icon}}</mat-icon>
+        {{menu.nameMenu | translate}}
+        <mat-chip-list *ngIf="menu.nameMenu.indexOf('layout') > -1">
+          <mat-chip class="warn">{{menu?.submenus?.length}}</mat-chip>
+        </mat-chip-list>
+      </span>
       <div 
         *ngFor="let submenu of menu.submenus"
-        class="nav-submenu-link primary">
+        class="nav-submenu-link">
         <span class="nav-link-title submenu"
           [routerLink]="[submenu.route]"
           [routerLinkActiveOptions]="{exact: false}"
           routerLinkActive
           #rla2="routerLinkActive"
-          [class.active]="rla2.isActive && submenu.route != null">{{submenu.nameMenu | translate}}</span>
+          [class.active]="rla2.isActive && submenu.route != null"
+          (click)="onClickMenu(submenu.route != null)">{{submenu.nameMenu | translate}}
+        </span>
       </div>
     </div>
   </div>

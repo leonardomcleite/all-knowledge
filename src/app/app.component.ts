@@ -12,22 +12,53 @@ export class AppComponent implements OnDestroy {
   sideOpened = true;
 
   mobileQuery: MediaQueryList;
+  desktopQuery: MediaQueryList;
+  private desktopQueryListener: () => void;
+  private mobileQueryListener: () => void;
 
-  private _mobileQueryListener: () => void;
+  closedByMobile: boolean;
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef,
-    private media: MediaMatcher,
+    public changeDetectorRef: ChangeDetectorRef,
+    public media: MediaMatcher,
     private internationalizationService: InternationalizationService,
   ) {
     this.internationalizationService.init();
+
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    if (this.mobileQuery.matches) {
+      this.closedByMobile = true;
+    }
+    this.mobileQueryListener = () => {
+      if (this.mobileQuery.matches) {
+        this.closedByMobile = true;
+      }
+      changeDetectorRef.detectChanges();
+    };
+    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+
+    this.desktopQuery = media.matchMedia('(min-width: 610px)');
+    if (this.desktopQuery.matches) {
+      this.closedByMobile = false;
+    }
+    this.desktopQueryListener = () => {
+      if (this.desktopQuery.matches) {
+        this.closedByMobile = false;
+      }
+      changeDetectorRef.detectChanges();
+    };
+    this.desktopQuery.addEventListener('change', this.desktopQueryListener);
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    this.desktopQuery.removeEventListener('change', this.desktopQueryListener);
+  }
+
+  closeSidenav(sidenav) {
+    if (this.closedByMobile) {
+      sidenav.close();
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ak-nav-header',
@@ -7,11 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NavHeaderComponent implements OnInit {
 
+  @Output() clickIcon: EventEmitter<any> = new EventEmitter<any>();
   @Input() sidenav;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClickIcon() {
+    this.clickIcon.next();
   }
 
 }

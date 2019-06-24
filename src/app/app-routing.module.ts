@@ -8,11 +8,19 @@ const routes: Routes = [
   },
   {
     path: 'example-simple-full-width',
-    loadChildren: () => import('./example-layouts/example-simple-full-width/example-simple-full-width.module').then(m => m.ExampleSimpleFullWidthModule)
+    loadChildren: () => import('./example-layouts/simple/example-simple-full-width/example-simple-full-width.module').then(m => m.ExampleSimpleFullWidthModule)
   },
   {
     path: 'example-simple-tabbed',
-    loadChildren: () => import('./example-layouts/example-simple-tabbed/example-simple-tabbed.module').then(m => m.ExampleSimpleTabbedModule)
+    loadChildren: () => import('./example-layouts/simple/example-simple-tabbed/example-simple-tabbed.module').then(m => m.ExampleSimpleTabbedModule)
+  },
+  {
+    path: 'example-carded-full-width',
+    loadChildren: () => import('./example-layouts/carded/example-carded-full-width/example-carded-full-width.module').then(m => m.ExampleCardedFullWidthModule)
+  },
+  {
+    path: 'example-carded-tabbed',
+    loadChildren: () => import('./example-layouts/carded/example-carded-tabbed/example-carded-tabbed.module').then(m => m.ExampleCardedTabbedModule)
   },
   {
     path: 'sobre',

@@ -6,6 +6,8 @@
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
     "simpleTabbed": "Simples - Com abas",
+    "cardedFullWidth": "Card - Largura total",
+    "cardedTabbed": "Card - Com abas",
     "bemVindo": "Seja bem vindo à",
     "sobre": "Sobre"
   },
@@ -20,16 +22,19 @@
   },
   "menu": {
     "sobre": "Sobre",
-    "layouts": "Layouts"
+    "layoutsCarded": "Layouts - Card",
+    "layoutsSimple": "Layouts - Simples"
   },
   "submenu": {
     "simpleFullWidth": "Simples - Largura total",
-    "simpleTabbed": "Simples - Com abas"
+    "simpleTabbed": "Simples - Com abas",
+    "cardedFullWidth": "Card - Largura total",
+    "cardedTabbed": "Card - Com abas"
   },
   "botao": {
     "tipoCobranca": "Salvar"
   },
   "autor": {
-    "nome": "Leonardo Marques de Castro Leite"
+    "nome": "Leonardo Marques"
   }
 }

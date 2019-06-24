@@ -85,7 +85,7 @@ $warn: mat-palette($mat-yellow, 800);
 
 $theme: custom-theme($primary, $accent, $warn);
 
-$ak-padding: 15px;
+$ak-padding: 12px;
 
 .mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
   color: rgba(black, 0.87);
@@ -133,13 +133,74 @@ body {
   border-bottom: 1px solid mat-color($accent, 300);
 }
 
-
 .accent {
-  background-color: mat-color($primary, 500);
+  background-color: mat-color($accent, 500);
   color: white;
 }
 
 .warn {
-  background-color: mat-color($warn, 500);
+  background-color: mat-color($warn);
   color: black;
+}
+
+.primary {
+  background-color: mat-color($primary);
+  color: white;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  height: 42px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 15px;
+}
+
+p {
+  font-size: 14px;
+}
+
+blockquote {
+  border-left: 3px solid rgba(0,0,0,.12);
+  font-style: italic;
+  margin: 1em 0;
+  padding-left: 16px;
+  margin-top: 24px!important;
+  margin-bottom: 24px!important;
+}
+
+blockquote footer {
+  font-style: normal;
+  display: block;
+}
+
+blockquote footer:before {
+  content: "— ";
+}
+
+.secondary-text {
+  color: rgba(0,0,0,.54);
+}
+
+a {
+  color: mat-color($primary);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+img {
+  width: 100%;
 }

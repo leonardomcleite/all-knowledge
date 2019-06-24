@@ -1,16 +1,21 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import './styles/theming.scss';
 @import '~material-design-icons/iconfont/material-icons.css';
+@import './styles/theming.scss';
+
+//Styles components
+@import './styles/components/menu';
 @import './styles/components/layouts';
 
 @include mat-core();
 @include angular-material-theme($theme);
 
+
 * {
-    font-family: 'Raleway', sans-serif;
+    // font-family: 'Raleway', sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Arial ,sans-serif;
     outline: none !important;
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Muli', 'Helvetica Neue', Arial ,sans-serif;
+    // font-family: 'Raleway', sans-serif;
 }

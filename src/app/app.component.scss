@@ -1,5 +1,11 @@
 @import '../styles/theming.scss';
 
+@media only screen and (max-width: 600px) {
+  .ak-content, .ak-content.sidenav-open  {
+    width: 100% !important;
+  }
+}
+
 .ak-container {
   display: flex;
   flex-direction: column;
