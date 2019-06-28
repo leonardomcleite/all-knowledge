@@ -4,6 +4,7 @@ echo "${HOSTNAME}"
 
 function reset() {
     echo "Removendo imagens anteriores..."
+    echo
 
     if [[ "$HOSTNAME" == "servidor-all-knowledge" ]]; then
         cd ~/projetos/all-knowledge
@@ -11,16 +12,16 @@ function reset() {
         cd ~/Projetos/Pessoal/all-knowledge
     fi
 
-    echo "... Removendo node_modules"
+    echo "rm -rf node_modules/"
     rm -rf node_modules/
 
-    echo "... Removendo package-lock.json"
+    echo "rm -rf package-lock.json"
     rm -rf package-lock.json
 
-    echo "... Removendo dist"
+    echo "rm -rf docs/docker/dist"
     rm -rf docs/docker/dist
 
-    echo "... Removendo container all-knowledge"
+    echo "docker rm --force /all-knowledge"
     docker rm --force /all-knowledge
 
     echo "SUCCESS RESET"
@@ -39,7 +40,7 @@ function deploy() {
     docker build -t all-knowledge docs/docker/
 
     echo "... subindo container build no docker: docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge"
-    docker run -d -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env
+    docker run -d -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
 
     echo "SUCCESS BUILD"
 }
