@@ -39,7 +39,7 @@ function deploy() {
     docker build -t all-knowledge docs/docker/
 
     echo "... subindo container build no docker: docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge"
-    docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
+    docker run -d -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
 
     echo "SUCCESS BUILD"
 }
