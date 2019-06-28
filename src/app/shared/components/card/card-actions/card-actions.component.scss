@@ -1,0 +1,9 @@
+@import 'theming.scss';
+
+mat-card-actions.mat-card-actions {
+    padding: 16px;
+    margin: 16px -16px -16px -16px;
+    &.border-top {
+        border-top: 1px solid mat-color($accent, 300);
+    }
+}

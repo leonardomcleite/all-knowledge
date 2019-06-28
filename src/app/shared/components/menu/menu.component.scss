@@ -1,0 +1,60 @@
+@import 'theming.scss';
+
+.nav-container {
+  display: flex;
+  flex-flow: column;
+  font-size: 14px;
+}
+
+.nav-menu-link,
+.nav-submenu-link {
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  flex-basis: 100%;
+  display: flex;
+  flex-flow: column;
+  text-decoration: none;
+}
+
+
+.nav-link-title {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link-title.submenu {
+  padding-left: 30px;
+}
+
+.active {
+  background-color: mat-color($primary, 500);
+  border-radius: 0 20px 20px 0;
+  margin-right: 16px;
+}
+
+span.nav-link-title.no-route span {
+  text-decoration: none;
+}
+
+span.nav-link-title:hover {
+  & span {
+    text-decoration: underline;
+  }
+}
+
+mat-chip-list {
+  padding: 9px 10px;
+}
+
+mat-chip.mat-standard-chip {
+  min-height: 20px;
+}
+
+mat-icon.menu-icon.mat-icon {
+  padding-right: 10px;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}

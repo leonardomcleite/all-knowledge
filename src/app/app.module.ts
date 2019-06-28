@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -44,7 +43,6 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatExpansionModule,
     MatDividerModule
   ],
   declarations: [

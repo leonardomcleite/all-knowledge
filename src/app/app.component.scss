@@ -1,8 +1,10 @@
-@import '../styles/theming.scss';
+@import '../assets/styles/theming.scss';
 
 @media only screen and (max-width: 600px) {
-  .ak-content, .ak-content.sidenav-open  {
-    width: 100% !important;
+
+  .ak-content,
+  .ak-content.sidenav-open {
+    width: 100%;
   }
 }
 
@@ -20,6 +22,7 @@
   top: 45px;
   margin-bottom: 90px;
   width: 100%;
+
   &.sidenav-open {
     width: calc(100% - 250px);
   }
@@ -42,7 +45,8 @@
   bottom: 0;
 }
 
-.ak-header, .ak-footer {
+.ak-header,
+.ak-footer {
   position: fixed;
   left: 250px;
   right: 0;
@@ -51,7 +55,9 @@
 }
 
 .ak-is-mobile {
-  &.ak-header, &.ak-footer {
+
+  &.ak-header,
+  &.ak-footer {
     left: 0;
   }
 }

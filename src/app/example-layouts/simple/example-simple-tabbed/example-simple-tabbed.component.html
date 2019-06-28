@@ -59,10 +59,34 @@
       </div>
     </ak-simple-tabbed-item>
     <ak-simple-tabbed-item label="Tab2">
-      <div>Container</div>
+      <ak-card>
+        <ak-card-header>
+          <ak-card-avatar>
+            <mat-icon>star_border</mat-icon>
+          </ak-card-avatar>
+          <ak-card-title>Shiba Inu</ak-card-title>
+          <ak-card-subtitle>Dog Breed</ak-card-subtitle>
+        </ak-card-header>
+        <ak-card-content>
+          <form [formGroup]="formGroup">
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>{{'label.nome' | translate}}</mat-label>
+                <input matInput placeholder="{{'label.nome' | translate}}" formControlName="nome">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+                <mat-error>{{'validacao.campoObrigatorio' | translate}}</mat-error>
+              </mat-form-field>
+            </p>
+          </form>
+        </ak-card-content>
+        <ak-card-actions>
+          <button mat-raised-button>Action</button>
+        </ak-card-actions>
+      </ak-card>
     </ak-simple-tabbed-item>
     <ak-simple-tabbed-item label="Tab3">
-      <div>Container</div>
+      <div>Content</div>
     </ak-simple-tabbed-item>
   </ak-simple-tabbed-content>
 </ak-simple-tabbed>

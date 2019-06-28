@@ -6,7 +6,9 @@ import { SobreComponent } from './sobre.component';
 import { SimpleFullWidthModule } from '@all-knowledge/shared/components/page-layouts/simple/simple-full-width/simple-full-width.module';
 
 @NgModule({
-  declarations: [SobreComponent],
+  declarations: [
+    SobreComponent
+  ],
   imports: [
     CommonModule,
     SobreRoutingModule,

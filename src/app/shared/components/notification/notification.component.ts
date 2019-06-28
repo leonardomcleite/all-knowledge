@@ -19,4 +19,5 @@ export class NotificationComponent {
   closeSnackBarMensagem() {
     this.snackBarRef.dismiss();
   }
+
 }

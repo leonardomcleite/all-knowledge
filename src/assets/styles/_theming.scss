@@ -129,7 +129,7 @@ body {
   font-weight: bold;
 }
 
-.mat-tab-header {
+mat-tab-header.mat-tab-header {
   border-bottom: 1px solid mat-color($accent, 300);
 }
 
@@ -145,6 +145,11 @@ body {
 
 .primary {
   background-color: mat-color($primary);
+  color: white;
+}
+
+.error, .danger {
+  background-color: mat-color($mat-red);
   color: white;
 }
 
@@ -176,8 +181,8 @@ blockquote {
   font-style: italic;
   margin: 1em 0;
   padding-left: 16px;
-  margin-top: 24px!important;
-  margin-bottom: 24px!important;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 blockquote footer {
@@ -203,4 +208,16 @@ a {
 
 img {
   width: 100%;
+}
+
+mat-error.mat-error {
+  height: 15px;
+  color: red;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick,
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label,
+::ng-deep .mat-form-field-invalid .mat-input-element {
+  color: red;
+  caret-color: red;
 }

@@ -1,13 +1,12 @@
 {
   "name": "All Knowledge",
   "short_name": "AK",
-  "start_url": "http://35.199.115.251/",
   "manifest_version": "1",
   "lang": "pt-BR",
   "version": "0.0.1",
   "background_color": "#FFF",
   "orientation": "any",
-  "display": "Browser",
+  "display": "browser",
   "description": "Aplicação criada para mostrar todo o conhecimento do autor no framework Angular.",
   "icons": [{
     "src": "./assets/images/all-knowledge.png",

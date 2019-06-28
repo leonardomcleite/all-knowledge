@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatDialogModule, MatExpansionModule, MatIconModule, MatListModule, MatRadioModule, MatSnackBarModule, MatTabsModule } from '@angular/material';
-import { NotificationComponent } from './notification.component';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
+import { NotificationComponent } from './notification.component';
 
 @NgModule({
   imports: [
@@ -11,25 +13,15 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
 
     MatButtonModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatListModule,
-    MatRadioModule,
-    MatDialogModule,
     MatIconModule,
     MatSnackBarModule,
-    MatTabsModule,
     TranslateModule
   ],
   declarations: [
     NotificationComponent
   ],
-  exports: [
-    NotificationComponent
-  ],
   entryComponents: [
     NotificationComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class NotificationModule { }

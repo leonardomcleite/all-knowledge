@@ -11,7 +11,7 @@
         [class.active]="rla.isActive && menu.route != null"
         (click)="onClickMenu(menu.route != null)">
         <mat-icon class="menu-icon">{{menu?.icon}}</mat-icon>
-        {{menu.nameMenu | translate}}
+        <span>{{menu.nameMenu | translate}}</span>
         <mat-chip-list *ngIf="menu.nameMenu.indexOf('layout') > -1">
           <mat-chip class="warn">{{menu?.submenus?.length}}</mat-chip>
         </mat-chip-list>

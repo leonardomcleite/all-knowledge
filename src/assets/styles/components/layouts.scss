@@ -1,4 +1,4 @@
-@import 'styles/theming.scss';
+@import '../theming.scss';
 
 @function heightHeader() {
   @return 100px - (2 * $ak-padding);
@@ -9,7 +9,7 @@
 .simple-full-width-content, .carded-full-width-content {
   padding: $ak-padding 0;
   max-height: calc(100vh - 214px);
-  overflow-y: scroll !important;
+  overflow-y: scroll;
 }
 
 .simple-full-width-content {
@@ -18,22 +18,19 @@
 
 .carded-full-width-content, .full-width-content {
   max-height: calc(100vh - 250px);
-  // background-color: #fff;
-  // border-radius: 8px;
 }
 
 .simple-tabbed-content mat-tab-body {
-  padding: 10px !important;
-  max-height: calc(100vh - 259px) !important;
+  padding: 10px;
+  max-height: calc(100vh - 259px);
 }
 
 .carded-tabbed-content mat-tab-body {
-  padding-top : 10px !important;
-  max-height: calc(100vh - 285px) !important;
+  padding-top : 10px;
+  max-height: calc(100vh - 285px);
 }
 
 .carded-tabbed-content {
-  // border-radius: 8px;
   background: #fff;
   padding: $ak-padding;
   border-radius: 8px;
