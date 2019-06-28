@@ -3,7 +3,7 @@ HOSTNAME=$(hostname)
 echo "${HOSTNAME}"
 
 function reset() {
-    echo "Removendo imagens anteriores..."
+    echo "# Removendo imagens anteriores..."
     echo
 
     if [[ "$HOSTNAME" == "servidor-all-knowledge" ]]; then
@@ -24,11 +24,14 @@ function reset() {
     echo "docker rm --force /all-knowledge"
     docker rm --force /all-knowledge
 
+    echo
     echo "SUCCESS RESET"
 }
 
 function deploy() {
-    echo "Deployando a aplicacao..."
+    echo
+    echo "# Deployando a aplicacao..."
+    echo
 
     echo "npm install"
     npm install
@@ -40,8 +43,10 @@ function deploy() {
     docker build -t all-knowledge docs/docker/
 
     echo "... subindo container build no docker: docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge"
-    docker run -d -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
+    # docker run -d -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
+    docker run -d --name all-knowledge -it -p 80:80/tcp --privileged=true --env-file=docs/docker-conf/APP.env all-knowledge
 
+    echo
     echo "SUCCESS BUILD"
 }
 
