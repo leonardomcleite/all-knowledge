@@ -1,4 +1,4 @@
-<mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
+<!-- <mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
   <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened">
     <mat-icon>menu</mat-icon>
   </button>
@@ -24,4 +24,5 @@
 <mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">
   <span class="autor-title">{{'label.autor' | translate}}: </span>
   <span class="autor">{{'autor.nome' | translate}}</span>
-</mat-toolbar>
+</mat-toolbar> -->
+<router-outlet></router-outlet>
