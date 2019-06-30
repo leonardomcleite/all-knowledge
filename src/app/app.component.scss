@@ -1,7 +1,6 @@
 @import 'theming.scss';
 
 @media only screen and (max-width: 600px) {
-
   .ak-content,
   .ak-content.sidenav-open {
     width: 100%;
@@ -55,7 +54,6 @@
 }
 
 .ak-is-mobile {
-
   &.ak-header,
   &.ak-footer {
     left: 0;

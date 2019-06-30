@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomepageComponent } from './core/components/homepage/homepage.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./core/components/homepage/homepage.module').then(m => m.HomepageModule)
+    component: HomepageComponent
   },
   {
     path: 'example-simple-full-width',
