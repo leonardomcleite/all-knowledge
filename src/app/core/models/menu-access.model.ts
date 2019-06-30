@@ -6,14 +6,16 @@ export class MenuAccess {
   icon: string;
   hidden: boolean;
   favorite: boolean;
-  submenus: any;
+  children: any;
+  count: boolean;
 
-  constructor(nameMenu?: string, route?: string, icon?: string, hidden?: boolean, favorite?: boolean, submenus?) {
+  constructor(nameMenu?: string, route?: string, icon?: string, hidden?: boolean, favorite?: boolean, count?: boolean, children?) {
     this.nameMenu = nameMenu;
     this.route = route;
     this.icon = icon;
     this.hidden = hidden;
     this.favorite = favorite;
-    this.submenus = submenus;
+    this.children = children;
+    this.count = count;
   }
 }

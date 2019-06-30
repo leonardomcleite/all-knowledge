@@ -11,15 +11,17 @@ export class MenuService {
 
   getMenus() {
     return of([
-      new MenuAccess('menu.layoutsSimple', null, 'view_quilt', false, false, [
-        new MenuAccess('submenu.simpleFullWidth', 'example-simple-full-width', null, false, false),
-        new MenuAccess('submenu.simpleTabbed', 'example-simple-tabbed', null, false, false)
+      new MenuAccess('menu.layouts', null, 'view_quilt', false, false, false, [
+        new MenuAccess('menu.simple', null, null, false, false, true, [
+          new MenuAccess('submenu.fullWidth', 'example-simple-full-width', null, false, false),
+          new MenuAccess('submenu.tabbed', 'example-simple-tabbed', null, false, false)
+        ]),
+        new MenuAccess('menu.carded', null, null, false, false, true, [
+          new MenuAccess('submenu.fullWidth', 'example-carded-full-width', null, false, false),
+          new MenuAccess('submenu.tabbed', 'example-carded-tabbed', null, false, false, false)
+        ]),
       ]),
-      new MenuAccess('menu.layoutsCarded', null, 'view_quilt', false, false, [
-        new MenuAccess('submenu.cardedFullWidth', 'example-carded-full-width', null, false, false),
-        new MenuAccess('submenu.cardedTabbed', 'example-carded-tabbed', null, false, false)
-      ]),
-      new MenuAccess('menu.sobre', 'sobre', 'import_contacts', false, false, null),
+      new MenuAccess('menu.sobre', 'sobre', 'import_contacts', false, false, false, null),
     ]);
   }
 }

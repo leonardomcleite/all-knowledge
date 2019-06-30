@@ -1,33 +1,24 @@
-<div class="nav-container">
-  <div class="nav-container" *ngFor="let menu of menus">
-    <div class="nav-menu-link">
+<ul class="container">
+  <ng-template #recursiveList let-menus>
+    <li *ngFor="let menu of menus; let i = index" class="menu">
       <span
-        class="nav-link-title bold"
+        class="link-title bold"
         [routerLink]="menu.route"
         [routerLinkActiveOptions]="{exact: false}"
         routerLinkActive
         #rla="routerLinkActive"
-        [class.no-route]="menu.route == null"
         [class.active]="rla.isActive && menu.route != null"
         (click)="onClickMenu(menu.route != null)">
-        <mat-icon class="menu-icon">{{menu?.icon}}</mat-icon>
-        <span>{{menu.nameMenu | translate}}</span>
-        <mat-chip-list *ngIf="menu.nameMenu.indexOf('layout') > -1">
-          <mat-chip class="warn">{{menu?.submenus?.length}}</mat-chip>
+        <mat-icon class="menu-icon" >{{menu?.icon}}</mat-icon>
+        <span [class.no-route]="menu.route == null" class="text">{{menu.nameMenu | translate}}</span>
+        <mat-chip-list *ngIf="menu?.count">
+          <mat-chip class="warn">{{menu?.children?.length}}</mat-chip>
         </mat-chip-list>
       </span>
-      <div 
-        *ngFor="let submenu of menu.submenus"
-        class="nav-submenu-link">
-        <span class="nav-link-title submenu"
-          [routerLink]="[submenu.route]"
-          [routerLinkActiveOptions]="{exact: false}"
-          routerLinkActive
-          #rla2="routerLinkActive"
-          [class.active]="rla2.isActive && submenu.route != null"
-          (click)="onClickMenu(submenu.route != null)">{{submenu.nameMenu | translate}}
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
+      <ul *ngIf="menu?.children?.length > 0">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: menu?.children }"></ng-container>
+      </ul>
+    </li>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: menus }"></ng-container>
+</ul>

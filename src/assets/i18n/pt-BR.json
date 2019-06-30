@@ -22,14 +22,13 @@
   },
   "menu": {
     "sobre": "Sobre",
-    "layoutsCarded": "Layouts - Card",
-    "layoutsSimple": "Layouts - Simples"
+    "layouts": "Layouts",
+    "carded": "Card",
+    "simple": "Simples"
   },
   "submenu": {
-    "simpleFullWidth": "Simples - Largura total",
-    "simpleTabbed": "Simples - Com abas",
-    "cardedFullWidth": "Card - Largura total",
-    "cardedTabbed": "Card - Com abas"
+    "fullWidth": "Largura total",
+    "tabbed": "Com abas"
   },
   "botao": {
     "tipoCobranca": "Salvar"

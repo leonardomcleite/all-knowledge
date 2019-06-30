@@ -29,4 +29,8 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  calcPadding(i) {
+    return `${(10 * (i + 1))}px`;
+  }
+
 }
