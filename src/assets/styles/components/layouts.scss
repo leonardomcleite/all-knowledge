@@ -6,24 +6,24 @@
 
 @media only screen and (max-width: 750px) {
   .simple-full-width-content, .carded-full-width-content {
-    max-height: calc(100vh - 264px) !important;
+    max-height: calc(100vh - 284px) !important;
   }
 
   .carded-full-width-content, .full-width-content {
-    max-height: calc(100vh - 300px) !important;
+    max-height: calc(100vh - 320px) !important;
   }
 
 
   .simple-tabbed-content mat-tab-body {
-    max-height: calc(100vh - 309px) !important;
+    max-height: calc(100vh - 329px) !important;
   }
 
   .carded-tabbed-content mat-tab-body {
-    max-height: calc(100vh - 335px) !important;
+    max-height: calc(100vh - 355px) !important;
   }
 
   .full-width-content {
-    max-height: calc(100vh - 275px) !important;
+    max-height: calc(100vh - 295px) !important;
   }
 }
 
