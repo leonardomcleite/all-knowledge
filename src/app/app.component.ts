@@ -9,14 +9,11 @@ import { InternationalizationService } from './core/services/internationalizatio
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  sideOpened = false;
+  sideOpened = true;
+  isMobile: boolean;
 
-  // mobileQuery: MediaQueryList;
-  // desktopQuery: MediaQueryList;
-  // private desktopQueryListener: () => void;
-  // private mobileQueryListener: () => void;
-
-  // closedByMobile: boolean;
+  mobileAndDesktopQuery: MediaQueryList[] = [];
+  mobileAndDesktopQueryListener: any[] = [];
 
   constructor(
     public changeDetectorRef: ChangeDetectorRef,
@@ -27,42 +24,43 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    // if (this.mobileQuery.matches) {
-    //   this.sideOpened = false;
-    //   this.closedByMobile = true;
-    // }
-    // this.mobileQueryListener = () => {
-    //   if (this.mobileQuery.matches) {
-    //     this.closedByMobile = true;
-    //   }
-    //   changeDetectorRef.detectChanges();
-    // };
-    // this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    this.mobileAndDesktopQuery.push(this.media.matchMedia('(max-width: 600px)'));
+    this.mobileAndDesktopQuery.push(this.media.matchMedia('(min-width: 610px)'));
 
-    // this.desktopQuery = media.matchMedia('(min-width: 610px)');
-    // if (this.desktopQuery.matches) {
-    //   this.closedByMobile = false;
-    // }
-    // this.desktopQueryListener = () => {
-    //   if (this.desktopQuery.matches) {
-    //     this.closedByMobile = false;
-    //   }
-    //   changeDetectorRef.detectChanges();
-    // };
-    // this.desktopQuery.addEventListener('change', this.desktopQueryListener);
+    if (this.mobileAndDesktopQuery[0].matches) {
+      this.sideOpened = false;
+      this.isMobile = true;
+    }
+
+    this.mobileAndDesktopQueryListener.push(() => {
+      if (this.mobileAndDesktopQuery[0].matches) {
+        this.isMobile = true;
+      }
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.mobileAndDesktopQueryListener.push(() => {
+      if (this.mobileAndDesktopQuery[1].matches) {
+        this.isMobile = false;
+      }
+      this.changeDetectorRef.detectChanges();
+    });
+
+    this.mobileAndDesktopQuery[0].addEventListener('change', this.mobileAndDesktopQueryListener[0]);
+    this.mobileAndDesktopQuery[1].addEventListener('change', this.mobileAndDesktopQueryListener[1]);
+
   }
 
   ngOnDestroy(): void {
-    // this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
-    // this.desktopQuery.removeEventListener('change', this.desktopQueryListener);
+    this.mobileAndDesktopQuery.forEach((element, index) => {
+      element.removeEventListener('change', this.mobileAndDesktopQueryListener[index]);
+    });
   }
 
   closeSidenav(sidenav) {
-    // if (this.closedByMobile) {
-    //   sidenav.close();
-    // }
-    sidenav.close();
+    if (this.isMobile) {
+      sidenav.close();
+    }
   }
 
 }

@@ -10,8 +10,7 @@
     (openedStart)="sideOpened = true"
     (closedStart)="sideOpened = false"
     class="ak-sidenav"    
-    fixedTopGap="45"
-    [mode]="'over'">
+    [mode]="isMobile ? 'over' : 'side'">
     <ak-nav-header [sidenav]="sidenav" (clickIcon)="closeSidenav(sidenav)"></ak-nav-header>
     <ak-menu (clickMenu)="closeSidenav(sidenav)"></ak-menu>
   </mat-sidenav>
