@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     this.internationalizationService.init();
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      console.log("Mobile");
+      alert("Mobile");
     }
   }
 
