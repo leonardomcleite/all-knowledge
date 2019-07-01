@@ -21,11 +21,14 @@ export class AppComponent implements OnInit, OnDestroy {
     private internationalizationService: InternationalizationService,
   ) {
     this.internationalizationService.init();
+    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      console.log("Mobile");
+    }
   }
 
   ngOnInit(): void {
     this.mobileAndDesktopQuery.push(this.media.matchMedia('(max-width: 600px)'));
-    this.mobileAndDesktopQuery.push(this.media.matchMedia('(min-width: 610px)'));
+    this.mobileAndDesktopQuery.push(this.media.matchMedia('(min-width: 600px)'));
 
     if (this.mobileAndDesktopQuery[0].matches) {
       this.sideOpened = false;
