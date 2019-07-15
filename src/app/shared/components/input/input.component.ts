@@ -2,6 +2,7 @@ import { TypeField, TypeFieldEnum } from '@all-knowledge/core/enums/type-field.e
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import moment from 'moment';
+import { HintModel } from './models/hint.model';
 
 @Component({
   selector: 'ak-input',
@@ -23,6 +24,8 @@ export class InputComponent implements OnInit {
   @Input() frmGroup: FormGroup;
   @Input() frmControlName: string;
   @Input() type: TypeField = TypeFieldEnum.NUMBER;
+  @Input() icon: string;
+  @Input() hints: any;
   @Input() disabled: (_?: any) => boolean | boolean;
   @Input() formFieldClass: (_?: any) => any  | string;
   @Input() inputClass: (_?: any) => any  | string;
@@ -82,18 +85,18 @@ export class InputComponent implements OnInit {
     }
   }
 
+  markTouched() {
+    this.frmGroup.get(this.frmControlName).markAsTouched();
+    this.frmGroup.get(this.frmControlName).markAsDirty();
+    this.frmGroup.get(this.frmControlName).updateValueAndValidity();
+  }
+
   /**
    * Emite o evento blur
    * @param event - Evento do blur
    */
   onBlur(event: any) {
     this.blur.emit(event);
-  }
-
-  markTouched() {
-    this.frmGroup.get(this.frmControlName).markAsTouched();
-    this.frmGroup.get(this.frmControlName).markAsDirty();
-    this.frmGroup.get(this.frmControlName).updateValueAndValidity();
   }
 
 }

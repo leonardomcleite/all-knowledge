@@ -71,6 +71,8 @@
           <form [formGroup]="formGroup">
             <p>
               <ak-input
+                [hints]="[{value: 'teste', align: 'start'}, {value: 'teste2', align: 'end'}]"
+                icon="mode_edit"
                 name="{{'label.nome' | translate}}"
                 placeholder="{{'label.digiteNomeCompleto' | translate}}"
                 frmControlName="name"
@@ -80,6 +82,7 @@
             </p>
             <p>
               <ak-input
+                icon="mode_edit"
                 name="{{'label.date' | translate}}"
                 placeholder="{{'label.date' | translate}}"
                 frmControlName="date"
@@ -89,6 +92,7 @@
             </p>
             <p>
               <ak-input
+                icon="mode_edit"
                 [mask]="{digitos: '5 , 2'}"
                 name="{{'label.valor' | translate}}"
                 placeholder="{{'label.valor' | translate}}"

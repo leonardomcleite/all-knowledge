@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import moment from 'moment';
 
 @Component({
   selector: 'ak-example-simple-tabbed',
@@ -22,7 +21,6 @@ export class ExampleSimpleTabbedComponent implements OnInit {
 
   ngOnInit() {
     this.buildFormGroup();
-    this.observables();
     this.getRouteParams();
   }
   getRouteParams() {
@@ -36,12 +34,6 @@ export class ExampleSimpleTabbedComponent implements OnInit {
       name: new FormControl(null, [Validators.required]),
       date: new FormControl(null, [Validators.required]),
       value: new FormControl(null, [Validators.required])
-    });
-  }
-
-  observables() {
-    this.formGroup.get('name').valueChanges.subscribe(val => {
-      console.log(val);
     });
   }
 

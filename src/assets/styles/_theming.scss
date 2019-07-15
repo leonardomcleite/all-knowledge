@@ -229,3 +229,7 @@ mat-calendar {
 .hidden {
   display: none;
 }
+
+mat-form-field .mat-form-field-hint-wrapper, mat-hint {
+  display: block;
+}

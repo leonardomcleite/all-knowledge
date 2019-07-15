@@ -30,15 +30,14 @@
       [placeholder]="placeholder"
       (blur)="onBlur($event)"
       matInput>
-    <mat-icon matSuffix *ngIf="icon">{{icon}}</mat-icon>
-    <mat-hint *ngFor="let item of hints">{{item}}</mat-hint>
+    <mat-icon matSuffix *ngIf="icon && type !== typeFieldEnum.DATE">{{icon}}</mat-icon>
+    <mat-hint [align]="item.align" *ngFor="let item of hints">{{item.value}}</mat-hint>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('required') && frmGroup.get(frmControlName)?.touched)">{{'validacao.campoObrigatorio' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('maxLength') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxLength' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('minLength') && frmGroup.get(frmControlName)?.touched)">{{'validacao.minLength' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('max') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxValur' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('min') && frmGroup.get(frmControlName)?.touched)">{{'validacao.minValue' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get('dateExibition')?.hasError('Mask error') && frmGroup.get('dateExibition')?.touched)">{{'validacao.formatInvalid' | translate}} {{format}}</mat-error>
-    
     <ng-content></ng-content>
   </mat-form-field>
 </form>
