@@ -1,3 +1,4 @@
+import { OptionsNotificationModel } from '@all-knowledge/core/models/options-notifications.model';
 import { Component } from '@angular/core';
 import { MatSnackBarRef } from '@angular/material';
 
@@ -8,7 +9,7 @@ import { MatSnackBarRef } from '@angular/material';
 })
 export class NotificationComponent {
 
-  options: any;
+  options: OptionsNotificationModel;
 
   constructor(
     public snackBarRef: MatSnackBarRef < NotificationComponent >

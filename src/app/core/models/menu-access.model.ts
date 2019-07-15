@@ -1,4 +1,4 @@
-export class MenuAccess {
+export class MenuModel {
   id: number;
   nameMenu: string;
   description: string;

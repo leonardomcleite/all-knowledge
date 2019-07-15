@@ -1,7 +1,11 @@
 {
   "label": {
+    "autor": "Autor",
+    "date": "Data",
+    "digiteNomeCompleto": "Digite o nome completo",
+    "erro": "Erro",
     "nome": "Nome",
-    "autor": "Autor"
+    "valor": "Valor"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
@@ -12,13 +16,20 @@
     "sobre": "Sobre"
   },
   "validacao": {
-    "campoObrigatorio": "Campo obrigat\u00f3rio"
+    "campoObrigatorio": "Campo obrigat\u00f3rio",
+    "maxLength": "Quantidade m\u00e1xima de caracteres excedida",
+    "minLength": "Quantidade m\u00ednima de caracteres não atendida",
+    "maxValue": "Valor m\u00e1ximo excedido",
+    "minValue": "Valor m\u00ednimo não atendido",
+    "formatInvalid": "Formato do campo inv\u00e1lido"
   },
   "msg": {
     "sucesso": "Dados salvos com sucesso.",
-    "erro503": "Falha de conex\u00e3o.",
-    "erro401": "Usuário não autorizado.",
     "semRegistros": "Nenhum registro encontrado."
+  },
+  "erro": {
+    "503": "Falha de conex\u00e3o.",
+    "401": "Usu\u00e1rio não autorizado."
   },
   "menu": {
     "sobre": "Sobre",

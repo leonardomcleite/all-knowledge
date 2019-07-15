@@ -2,7 +2,7 @@
   <ak-simple-tabbed-header>
     <span>{{'titulo.simpleTabbed' | translate}}</span>
   </ak-simple-tabbed-header>
-  <ak-simple-tabbed-content>
+  <ak-simple-tabbed-content [(selectedIndex)]="params.tab">
     <ak-simple-tabbed-item label="Tab1">
       <div >
         <h1>Early Sunrise in Winter</h1>
@@ -70,13 +70,32 @@
         <ak-card-content>
           <form [formGroup]="formGroup">
             <p>
-              <mat-form-field appearance="outline">
-                <mat-label>{{'label.nome' | translate}}</mat-label>
-                <input matInput placeholder="{{'label.nome' | translate}}" formControlName="nome">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
-                <mat-error>{{'validacao.campoObrigatorio' | translate}}</mat-error>
-              </mat-form-field>
+              <ak-input
+                name="{{'label.nome' | translate}}"
+                placeholder="{{'label.digiteNomeCompleto' | translate}}"
+                frmControlName="name"
+                [frmGroup]="formGroup"
+                [type]="typeFieldEnum.TEXT">
+              </ak-input>
+            </p>
+            <p>
+              <ak-input
+                name="{{'label.date' | translate}}"
+                placeholder="{{'label.date' | translate}}"
+                frmControlName="date"
+                [frmGroup]="formGroup"
+                [type]="typeFieldEnum.DATE">
+              </ak-input>
+            </p>
+            <p>
+              <ak-input
+                [mask]="{digitos: '5 , 2'}"
+                name="{{'label.valor' | translate}}"
+                placeholder="{{'label.valor' | translate}}"
+                frmControlName="value"
+                [frmGroup]="formGroup"
+                [type]="typeFieldEnum.NUMBER">
+              </ak-input>
             </p>
           </form>
         </ak-card-content>

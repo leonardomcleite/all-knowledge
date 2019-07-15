@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuService } from './services/menu.service';
-import { MenuAccess } from '@all-knowledge/core/models/menu-access.model';
+import { MenuModel } from '@all-knowledge/core/models/menu-access.model';
 
 @Component({
   selector: 'ak-menu',
@@ -11,14 +11,14 @@ export class MenuComponent implements OnInit {
 
   @Output() clickMenu: EventEmitter<any> = new EventEmitter<any>();
 
-  menus: [MenuAccess];
+  menus: [MenuModel];
 
   constructor(
     private menuService: MenuService,
   ) {}
 
   ngOnInit() {
-    this.menuService.getMenus().toPromise().then((returnQuery: [MenuAccess]) => {
+    this.menuService.getMenus().toPromise().then((returnQuery: [MenuModel]) => {
       this.menus = returnQuery;
     });
   }

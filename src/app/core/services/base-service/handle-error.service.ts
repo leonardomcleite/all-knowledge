@@ -1,8 +1,8 @@
+import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Subject } from 'rxjs/internal/Subject';
-import { InternationalizationService } from '../internationalization/internationalization.service';
 
 @Injectable()
 export class HandleErrorService {
@@ -11,13 +11,20 @@ export class HandleErrorService {
 
   constructor(
     private router: Router,
-    private inter: InternationalizationService,
+    private notificationService: NotificationService
   ) {}
 
   handleError(err: any, customCatchError: boolean) {
+    // Se erro for timeout
+    if (err.name === 'TimeoutError') {
+      this.exibirMensagemDeErro(err, 'erro.timeout');
+      this.breakCatchErros();
+      return throwError(err);
+    }
+
     // Se erro for por falta de permisão, redirecionar para página não autorizado
     if (err.status === 401) {
-      this.exibirMensagemDeErro(err);
+      this.exibirMensagemDeErro(err, 'erro.401');
       this.router.navigate(['']);
       this.breakCatchErros();
       return throwError(err);
@@ -53,10 +60,8 @@ export class HandleErrorService {
   }
 
   private exibirMensagemDeErro(error: any, customMessage?: any) {
-    // message = message != null ? message : this.msgDefault;
-    // this.inter.translate(message).subscribe(translate => {
-    //   this.msgService.msgErro(translate);
-    // });
+    const message = customMessage != null ? customMessage : error.error;
+    this.notificationService.error(`label.erro`, message);
   }
 
 }

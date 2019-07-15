@@ -1,16 +1,20 @@
-export type TypesNotification = 'success' |'warning' | 'error' | 'information';
+import { HttpErrorResponse } from '@angular/common/http';
 
-export class OptionsNotification {
+export type TypesNotification = 'success' |'warning' | 'error' | 'information';
+export type TypesVerticalPosition = 'top' | 'bottom';
+export type TypesHorizontalPosition = 'start' | 'center' | 'end' | 'left' | 'right';
+
+export class OptionsNotificationModel {
   title: string;
-  message: any;
+  message: string;
   type: TypesNotification;
   actionLabel?: string;
   showAction: boolean;
-  verticalPosition: 'top' | 'bottom';
-  horizontalPosition: 'start' | 'center' | 'end' | 'left' | 'right';
+  verticalPosition: TypesVerticalPosition;
+  horizontalPosition: TypesHorizontalPosition;
   time?: number;
   callbackAction?: Function;
-  error?: any;
+  error?: HttpErrorResponse;
 
   /**
    * Opções para notificação

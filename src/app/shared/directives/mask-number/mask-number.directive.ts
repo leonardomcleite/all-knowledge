@@ -2,8 +2,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/cor
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-// tslint:disable-next-line: directive-selector
-  selector: '[maskNumber]',
+  selector: '[akMaskNumber]',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: MaskNumberDirective,
@@ -24,13 +23,15 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   casasDecimais: number;
   tamanhoMax: number;
 
-  @Input() set maskNumber(mask: any) {
+  @Input('akMaskNumber') set maskNumber(mask: any) {
     this._maskNumber = mask;
     this.ngOnInit();
   }
-  private _maskNumber;
+  private _maskNumber: any = {digitos: '5 , 2'};
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    private elementRef?: ElementRef
+  ) { }
 
   ngOnInit() {
     this.separadorDecimal = this._maskNumber.decimal || ',';
@@ -47,9 +48,13 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
       if (!isNaN(value)) {
         value = parseFloat(value).toFixed(this.casasDecimais).replace('.', this.separadorDecimal);
       }
-      this.el.nativeElement.value = this.aplicarMascara(value.toString());
+      if (this.elementRef) {
+        this.elementRef.nativeElement.value = this.aplicarMascara(value.toString());
+      }
     } else {
-      this.el.nativeElement.value = '';
+      if (this.elementRef) {
+        this.elementRef.nativeElement.value = '';
+      }
     }
   }
 
@@ -64,7 +69,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   @HostListener('input', ['$event'])
   onKeyup($event: any) {
     let valor = '';
-    if ($event.target.value == null || $event.target.value === '') { return; }
+    if ($event.target.value == null || $event.target.value === '') { this.onChange(null); return; }
     if ($event.target.value === this.separadorDecimal) {
       $event.target.value = '0' + this.separadorDecimal;
       valor = $event.target.value;
@@ -76,7 +81,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
 
   @HostListener('blur', ['$event'])
   onBlur($event: any) {
-    if ($event.target.value == null || $event.target.value === '') { return; }
+    if ($event.target.value == null || $event.target.value === '') { this.onChange(null); return; }
     const valor: string = this.aplicaMascaraFaltante($event.target.value);
     this.atualizaInput($event, valor);
   }
@@ -105,7 +110,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
     if (rightComma.length < this.casasDecimais) {
       rightComma = `${this.separadorDecimal}${rightComma}${Array((this.casasDecimais - rightComma.length) + 1).join('0')}`;
     } else {
-      rightComma = this.casasDecimais != 0 ? this.separadorDecimal + rightComma : '';
+      rightComma = this.casasDecimais !== 0 ? this.separadorDecimal + rightComma : '';
     }
 
     return `${leftComma}${rightComma}`;

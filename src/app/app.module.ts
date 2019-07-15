@@ -1,7 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDividerModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,12 +20,10 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +40,6 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatDividerModule
   ],
   declarations: [
     AppComponent,

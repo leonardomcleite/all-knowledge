@@ -6,7 +6,7 @@
     <i *ngIf="options?.type === 'success'" class="icon-ok-c icon-notification"></i>
   </div>
   <div class="content">
-    <span class="dialog__content">{{options?.title}}</span>
+    <span class="dialog__content">{{options?.title | translate}}</span>
     <span class="dialog-text">{{options?.message | translate}}</span>
   </div>
   <button mat-icon-button (click)="closeSnackBarMensagem()">

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: ExampleSimpleTabbedComponent
+  },
+  {
+    path: ':tab',
+    component: ExampleSimpleTabbedComponent
   }
 ];
 
