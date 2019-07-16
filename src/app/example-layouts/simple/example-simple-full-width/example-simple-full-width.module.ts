@@ -1,4 +1,3 @@
-import { DrawerModule } from '@all-knowledge/shared/components/drawer/drawer.module';
 import { SimpleFullWidthModule } from '@all-knowledge/shared/components/page-layouts/simple/simple-full-width/simple-full-width.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -24,13 +23,17 @@ import { ExampleSimpleFullWidthComponent } from './example-simple-full-width.com
     ExampleDrawerComponent
   ],
   imports: [
+    // Angular
     CommonModule,
+
+    // App
     ExampleSimpleFullWidthRoutingModule,
-
     SimpleFullWidthModule,
-    TranslateModule,
-    DrawerModule,
 
+    // Translate
+    TranslateModule,
+
+    // Angular Material
     MatCardModule,
     MatIconModule,
     MatButtonModule,

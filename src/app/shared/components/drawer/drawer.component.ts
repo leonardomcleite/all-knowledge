@@ -1,7 +1,7 @@
 import { Component, ComponentRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DrawerService } from './drawer.service';
-import { DrawerIconModel, DrawerModel } from './models/drawer';
+import { DrawerModel } from './models/drawer';
 
 @Component({
   selector: 'ak-drawer',
@@ -35,7 +35,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Redenriza o component na drawer
+   * Renderiza o component na drawer
    */
   loadComponent() {
     this.content.clear();
@@ -64,10 +64,6 @@ export class DrawerComponent implements OnInit, OnDestroy {
 
   close() {
     this.drawerService.close();
-  }
-
-  onIconClick(icon: DrawerIconModel) {
-    icon.callback();
   }
 
   getStyles() {

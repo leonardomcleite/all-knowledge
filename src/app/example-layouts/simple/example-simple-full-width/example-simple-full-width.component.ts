@@ -14,8 +14,7 @@ export class ExampleSimpleFullWidthComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openDrawer() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);

@@ -14,25 +14,30 @@ import { ExampleSimpleTabbedRoutingModule } from './example-simple-tabbed-routin
 import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component';
 
 @NgModule({
+  declarations: [
+    ExampleSimpleTabbedComponent
+  ],
   imports: [
+    // Angular
     CommonModule,
     ReactiveFormsModule,
-    ExampleSimpleTabbedRoutingModule,
 
+    // App
+    ExampleSimpleTabbedRoutingModule,
     SimpleTabbedModule,
     CardModule,
+    InputModule,
+
+    // Ngx Tranlate
     TranslateModule,
 
+    // Angular Material
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
 
-    InputModule,
-  ],
-  declarations: [
-    ExampleSimpleTabbedComponent
   ]
 })
 export class ExampleSimpleTabbedModule { }

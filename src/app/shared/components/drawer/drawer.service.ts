@@ -30,17 +30,16 @@ export class DrawerService {
 
   /**
    * Cria uma drawer
-   * @param componentFactory - componentFactory
-   * @param module - Se for lazyload informar caminho do módulo
+   * @param componentFactory - componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent)
    * @param inputs - @Input(): {input1: value, input2: value}
    * @param outputs - @Output(): {input1: (_: any) => this.executaAlgumMetodo(_)}
    * @param title - Titulo da drawer
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(componentFactory: ComponentFactory<any>, inputs?: any, outputs?: any, title?: string, size?: string, icons?: any): Observable<any> {
+  public open(componentFactory: ComponentFactory<any>, title?: string, size?: string, inputs?: object, outputs?: object, ): Observable<any> {
     const onDestroySubject = new Subject<any>();
-    const drawer: DrawerModel = new DrawerModel(componentFactory, 0, 'up', true, title, inputs, outputs, size ? size : 'lg', icons);
+    const drawer: DrawerModel = new DrawerModel(componentFactory, title, size ? size : 'lg', inputs, outputs);
 
     const drawers = this.getDrawers();
     drawers.push({ value: drawer, onDestroySubject });
@@ -64,7 +63,6 @@ export class DrawerService {
       if (drawers.indexOf(drawer) === drawers.length - 1) {
         drawer.value.showOverlay = false;
       }
-
     });
 
     setTimeout(() => {

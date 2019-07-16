@@ -31,26 +31,13 @@
     animation-fill-mode: forwards;
     $breakpoints-width: sm, md, lg;
     $sizes-width-pc: 35%, 55%, 85%;
+    transition: cubic-bezier(0, 0, 0.2, 1) 0.5s;
 
     @for $i from 1 through length($breakpoints-width) {
       $size: #{nth($sizes-width-pc, $i)};
 
       &.\--drawer-width-#{nth($breakpoints-width, $i)} {
         width: calc(#{$size} - 65px) !important
-      }
-    }
-  }
-
-  .drawer-smartpanel {
-    margin-right: 50px;
-    $breakpoints-width: sm, md, lg;
-    $sizes-width-pc: 35%, 55%, 85%;
-
-    @for $i from 1 through length($breakpoints-width) {
-      $size: #{nth($sizes-width-pc, $i)};
-
-      &.\--drawer-width-#{nth($breakpoints-width, $i)} {
-        width: calc(#{$size} - 115px) !important
       }
     }
   }
@@ -64,8 +51,7 @@
   .drawer__header {
     display: flex;
     flex-direction: row;
-    height: 50px;
-    min-height: 50px;
+    align-items: center;
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: mat-color($background, card);
@@ -88,8 +74,6 @@
   .drawer__content-place {
     background-color: mat-color($background, card);
     border: mat-color($foreground, divider);
-    // padding: 16px;
-    // min-height: 100%;
   }
 
   .drawer__overlay {
