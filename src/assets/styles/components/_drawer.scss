@@ -64,8 +64,8 @@
   .drawer__header {
     display: flex;
     flex-direction: row;
-    height: 70px;
-    min-height: 40px;
+    height: 50px;
+    min-height: 50px;
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: mat-color($background, card);
@@ -87,9 +87,9 @@
 
   .drawer__content-place {
     background-color: mat-color($background, card);
-    padding: 16px;
     border: mat-color($foreground, divider);
-    min-height: 100%;
+    // padding: 16px;
+    // min-height: 100%;
   }
 
   .drawer__overlay {

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,12 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageModule } from './core/components/homepage/homepage.module';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
+import { DrawerService } from './shared/components/drawer/drawer.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
-import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { CommonModule } from '@angular/common';
-import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
-import { FactoryService } from './core/services/factory/factory.service';
 
 @NgModule({
   imports: [
@@ -52,17 +51,10 @@ import { FactoryService } from './core/services/factory/factory.service';
   ],
   declarations: [
     AppComponent,
-    ExampleDrawerComponent,
-  ],
-  exports: [
-    ExampleDrawerComponent
-  ],
-  entryComponents: [
-    ExampleDrawerComponent
   ],
   providers: [
     InternationalizationService,
-    FactoryService,
+    DrawerService,
   ],
   bootstrap: [AppComponent]
 })

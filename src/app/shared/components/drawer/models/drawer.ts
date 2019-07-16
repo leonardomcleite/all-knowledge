@@ -1,21 +1,21 @@
+import { ComponentFactory, ComponentRef } from '@angular/core';
+
 export  class DrawerModel {
   status: number;
   direction: string;
   showOverlay: boolean;
-  component: any;
-  module: any;
+  componentFactory: ComponentFactory<any>;
   title: string;
-  inputs?: any;
-  outputs?: any;
+  inputs?: object;
+  outputs?: object;
   size?: string;
   icons?: DrawerIconModel[];
 
-  constructor(status: number, direction: string, showOverlay: boolean, component: any, module: any, title: string, inputs?: any, outputs?: any, size?: string, icons?: DrawerIconModel[]) {
+  constructor(componentFactory: ComponentFactory<any>, status: number, direction: string, showOverlay: boolean, title: string, inputs?: any, outputs?: any, size?: string, icons?: DrawerIconModel[]) {
+    this.componentFactory = componentFactory;
     this.status = status;
     this.direction = direction;
     this.showOverlay = showOverlay;
-    this.component = component;
-    this.module = module;
     this.title = title;
     this.inputs = inputs;
     this.outputs = outputs;

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentFactory, ComponentRef } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { map } from 'rxjs/operators';
 import { DrawerModel } from './models/drawer';
@@ -30,7 +30,7 @@ export class DrawerService {
 
   /**
    * Cria uma drawer
-   * @param selectorComponent - seletor do componente ex: 'ak-example-drawer'
+   * @param componentFactory - componentFactory
    * @param module - Se for lazyload informar caminho do módulo
    * @param inputs - @Input(): {input1: value, input2: value}
    * @param outputs - @Output(): {input1: (_: any) => this.executaAlgumMetodo(_)}
@@ -38,9 +38,9 @@ export class DrawerService {
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(selectorComponent: any, module?: any, inputs?: any, outputs?: any, title?: string, size?: string, icons?: any): Observable<any> {
+  public open(componentFactory: ComponentFactory<any>, inputs?: any, outputs?: any, title?: string, size?: string, icons?: any): Observable<any> {
     const onDestroySubject = new Subject<any>();
-    const drawer: DrawerModel = new DrawerModel(0, 'up', true, selectorComponent, module, title, inputs, outputs, size ? size : 'lg', icons);
+    const drawer: DrawerModel = new DrawerModel(componentFactory, 0, 'up', true, title, inputs, outputs, size ? size : 'lg', icons);
 
     const drawers = this.getDrawers();
     drawers.push({ value: drawer, onDestroySubject });

@@ -1,35 +1,17 @@
-<div *ngIf="drawer.showOverlay" class="drawer__overlay --drawer-overlay-top-basic"></div>
+<div *ngIf="drawer?.showOverlay" class="drawer__overlay --drawer-overlay-top-basic"></div>
 <div class="drawer --drawer-width-{{drawer.size}}" [ngClass]="getStyles()">
   <div class="drawer__container --drawer-height-basic">
     <div class="drawer__header">
-      <div class="fx-row --fx-center">
-        <button class="drawer__button-close --click" mat-icon-button color="default" (click)="close()">
-          <i class="icon-close --icon-size-md"></i>
-        </button>
-      </div>
-      <div *ngIf="!drawer.title" class="fx-row --fx-center --fx-item-expanded">
-        <div class="drawer__title">
-          <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
-        </div>
-      </div>
-      <div *ngIf="drawer.title" class="fx-row --fx-center --fx-item-expanded">
-        <div class="drawer__title">
-          {{ drawer.title }}
-        </div>
-      </div>
-      <div class="fx-row --fx-center" *ngIf="drawerTitleContentTemplate">
-        <ng-container *ngTemplateOutlet="drawerTitleContentTemplate"></ng-container>
-      </div>
-      <div class="fx-row --fx-center">
-        <button *ngFor="let icon of drawer.icons" class="drawer__button" mat-icon-button color="default" (click)="onIconClick(icon)">
-          <i class="{{ icon.icone }} --icon-font-size-lg"></i>
-        </button>
+      <button class="drawer__button-close" mat-icon-button color="default" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <div class="drawer__title">
+        {{ drawer?.title }}
       </div>
     </div>
     <div class="drawer__content">
       <div class="drawer__content-place">
-        <ng-container #drawerContent>
-        </ng-container>
+        <ng-container #drawerContent></ng-container>
       </div>
     </div>
   </div>

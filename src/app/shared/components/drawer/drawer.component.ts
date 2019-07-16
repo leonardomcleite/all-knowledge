@@ -1,5 +1,4 @@
-import { FactoryService } from '@all-knowledge/core/services/factory/factory.service';
-import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, EventEmitter, Input, NgModuleFactory, NgModuleRef, OnDestroy, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DrawerService } from './drawer.service';
 import { DrawerIconModel, DrawerModel } from './models/drawer';
@@ -15,23 +14,15 @@ export class DrawerComponent implements OnInit, OnDestroy {
 
   @Input() drawer: DrawerModel;
 
-  component: Type<any>;
-  module: NgModuleFactory<any>;
-  componentResolved: ComponentFactory<any>;
-  componentRef: ComponentRef<any>;
-  titleTemplate: ComponentRef<any>;
-  drawerTitleContentTemplate: ComponentRef<any>;
-  subscription: Array<Subscription> = new Array<Subscription>();
+  public componentRef: ComponentRef<any>;
+  public subscription: Array<Subscription> = new Array<Subscription>();
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private factory: FactoryService,
     private drawerService: DrawerService,
   ) {}
 
-
   ngOnInit() {
-    this.createDynamicComponent();
+    this.loadComponent();
   }
 
   async ngOnDestroy() {
@@ -43,55 +34,31 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.componentRef.destroy();
   }
 
-  createDynamicComponent() {
-    let factory;
+  /**
+   * Redenriza o component na drawer
+   */
+  loadComponent() {
     this.content.clear();
-    if (this.drawer.module) {
-      this.factory.getModule(this.drawer.module).then(module => {
-        this.module = module;
-        this.component = this.factory.getComponent(this.drawer.component, this.module);
-        const moduleRef: NgModuleRef<any> = this.module.create(this.content.injector);
-        factory = moduleRef.componentFactoryResolver.resolveComponentFactory(this.component);
-      });
-    } else {
-      this.component = this.factory.getComponent(this.drawer.component, this.module);
-      factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
-    }
-    this.componentRef = this.content.createComponent(factory);
+    this.componentRef = this.content.createComponent(this.drawer.componentFactory);
     this.bindInputsAndOutputs();
-    this.componentRef.changeDetectorRef.detectChanges();
-    this.getDrawerTitle();
-    this.getDrawerTitleButtons();
   }
 
+  /**
+   * Seta todos os @Input's e @Output's
+   */
   bindInputsAndOutputs() {
-    this.drawer.inputs = { ...this.drawer.inputs, tipoComponent: 'drawer' };
+    // Set Inputs
     Object.assign(this.componentRef.instance, this.drawer.inputs);
 
+    // Set Outputs
     for (const key in this.componentRef.instance) {
       if (this.drawer.outputs && this.drawer.outputs[key]) {
-        const property = this.componentRef.instance[key];
-        if (property && property instanceof EventEmitter) {
-          this.subscription.push(property.subscribe(this.drawer.outputs[key]));
+        const propriety = this.componentRef.instance[key];
+
+        if (propriety && propriety instanceof EventEmitter) {
+          propriety.subscribe(this.drawer.outputs[key]);
         }
       }
-    }
-  }
-
-  getDrawerTitle() {
-    const component = this.componentRef.instance;
-    if (component.pageTemplates) {
-      const page: any = Array.from(component.pageTemplates)[0];
-      if (page) {
-        this.titleTemplate = page.titleTemplate;
-      }
-    }
-  }
-
-  getDrawerTitleButtons() {
-    const component = this.componentRef.instance;
-    if (component.drawerTitleContentTemplate) {
-      this.drawerTitleContentTemplate = component.drawerTitleContentTemplate;
     }
   }
 

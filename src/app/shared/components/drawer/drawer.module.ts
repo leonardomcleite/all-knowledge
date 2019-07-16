@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { DrawerComponent } from './drawer.component';
-import { MatButtonModule } from '@angular/material';
-import { DrawerService } from './drawer.service';
 
 @NgModule({
   declarations: [
@@ -19,10 +18,8 @@ import { DrawerService } from './drawer.service';
     CommonModule,
 
     // Angular Material
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
-  providers: [
-    DrawerService
-  ]
 })
 export class DrawerModule { }

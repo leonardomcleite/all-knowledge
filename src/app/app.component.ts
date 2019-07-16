@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createObservableDrawers();
-    this.drawerService.open('ak-example-drawer', null, null, null, 'Example Drawer', 'lg');
-    this.drawerService.open('ak-example-drawer', null, null, null, 'Example Drawer', 'lg');
   }
 
   createObservableDrawers() {
