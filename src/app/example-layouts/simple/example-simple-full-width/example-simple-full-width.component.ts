@@ -1,6 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { DrawerService } from '@all-knowledge/shared/components/drawer/drawer.service';
-import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ak-example-simple-full-width',
@@ -9,16 +7,8 @@ import { ExampleDrawerComponent } from './example-drawer/example-drawer.componen
 })
 export class ExampleSimpleFullWidthComponent implements OnInit {
 
-  constructor(
-    private drawerService: DrawerService,
-    private componentFactoryResolver: ComponentFactoryResolver,
-  ) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  openDrawer() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
-    this.drawerService.open(componentFactory, {title: 'Teste3'}, null, 'Example Drawer', 'lg');
-  }
 
 }

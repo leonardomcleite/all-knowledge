@@ -37,7 +37,7 @@ export class DrawerService {
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(componentFactory: ComponentFactory<any>, title?: string, size?: string, inputs?: object, outputs?: object, ): Observable<any> {
+  public open(componentFactory: ComponentFactory<any>, title?: string, size?: string, inputs?: any, outputs?: any): Observable<any> {
     const onDestroySubject = new Subject<any>();
     const drawer: DrawerModel = new DrawerModel(componentFactory, title, size ? size : 'lg', inputs, outputs);
 

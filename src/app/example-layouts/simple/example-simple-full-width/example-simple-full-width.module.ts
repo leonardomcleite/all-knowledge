@@ -7,20 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
-import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
 import { ExampleSimpleFullWidthRoutingModule } from './example-simple-full-width-routing.module';
 import { ExampleSimpleFullWidthComponent } from './example-simple-full-width.component';
 
 @NgModule({
   declarations: [
     ExampleSimpleFullWidthComponent,
-    ExampleDrawerComponent,
-  ],
-  exports: [
-    ExampleDrawerComponent
-  ],
-  entryComponents: [
-    ExampleDrawerComponent
   ],
   imports: [
     // Angular

@@ -4,18 +4,26 @@ import { SimpleTabbedModule } from '@all-knowledge/shared/components/page-layout
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatDatepickerModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
+import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
 import { ExampleSimpleTabbedRoutingModule } from './example-simple-tabbed-routing.module';
 import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component';
 
 @NgModule({
   declarations: [
-    ExampleSimpleTabbedComponent
+    ExampleSimpleTabbedComponent,
+    ExampleDrawerComponent,
+  ],
+  exports: [
+    ExampleDrawerComponent
+  ],
+  entryComponents: [
+    ExampleDrawerComponent
   ],
   imports: [
     // Angular
