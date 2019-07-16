@@ -1,15 +1,15 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { InternationalizationService } from './core/services/internationalization/internationalization.service';
-import { DrawerModel } from './shared/components/drawer/models/drawer';
-import { DrawerService } from './shared/components/drawer/drawer.service';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { InternationalizationService } from './core/services/internationalization/internationalization.service';
+import { DrawerService } from './shared/components/drawer/drawer.service';
+import { DrawerModel } from './shared/components/drawer/models/drawer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   sideOpened: boolean = true;
   isMobile: boolean = false;
@@ -27,27 +27,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.verifyIfIsDrawer();
-    this.drawerService.open('ak-example-drawer', null, null, null, 'Editar Agenda', 'md');
+    this.createObservableDrawers();
+    this.drawerService.open('ak-example-drawer', null, null, null, 'Example Drawer', 'lg');
+    this.drawerService.open('ak-example-drawer', null, null, null, 'Example Drawer', 'lg');
   }
 
-  ngAfterViewInit(): void {
-    // this.verifyIfIsDrawer();
-  }
-
-  verifyIfIsDrawer() {
+  createObservableDrawers() {
     const drawerObs = this.drawerService.getDrawerObservables();
     if (drawerObs) {
-      this.drawersSubject = drawerObs.subscribe(
-        drawers => {
-          this.drawers = drawers;
-        }
-      );
+      this.drawersSubject = drawerObs.subscribe(drawers => {
+        this.drawers = drawers;
+      });
     }
-  }
-
-  isDrawer(): boolean {
-    return true;
   }
 
   closeSidenav(sidenav) {

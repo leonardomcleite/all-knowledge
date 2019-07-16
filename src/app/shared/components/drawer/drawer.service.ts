@@ -30,7 +30,7 @@ export class DrawerService {
 
   /**
    * Cria uma drawer
-   * @param component - Componente ex: 'app-meu-component'
+   * @param selectorComponent - seletor do componente ex: 'ak-example-drawer'
    * @param module - Se for lazyload informar caminho do módulo
    * @param inputs - @Input(): {input1: value, input2: value}
    * @param outputs - @Output(): {input1: (_: any) => this.executaAlgumMetodo(_)}
@@ -38,9 +38,9 @@ export class DrawerService {
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(component: any, module?: any, inputs?: any, outputs?: any, title?: string, size?: string, icons?: any): Observable<any> {
+  public open(selectorComponent: any, module?: any, inputs?: any, outputs?: any, title?: string, size?: string, icons?: any): Observable<any> {
     const onDestroySubject = new Subject<any>();
-    const drawer: DrawerModel = new DrawerModel(0, 'up', true, component, module, title, inputs, outputs, size ? size : 'lg', icons);
+    const drawer: DrawerModel = new DrawerModel(0, 'up', true, selectorComponent, module, title, inputs, outputs, size ? size : 'lg', icons);
 
     const drawers = this.getDrawers();
     drawers.push({ value: drawer, onDestroySubject });
@@ -56,8 +56,26 @@ export class DrawerService {
   /**
    * Fecha todas a drawers
    */
-  public closeAllDrawers() {
-    this.drawerMap.get('drawers').drawers = [];
+  public closeAll() {
+    const drawers = this.getDrawers();
+    drawers.forEach(drawer => {
+      drawer.value.direction = 'down';
+      drawer.value.status--;
+      if (drawers.indexOf(drawer) === drawers.length - 1) {
+        drawer.value.showOverlay = false;
+      }
+
+    });
+
+    setTimeout(() => {
+      const length = drawers.length;
+      for (let index = 0; index < length; index++) {
+        const drawer = drawers.pop();
+        drawer.onDestroySubject.complete();
+        this.getDrawerSubject().next(drawers);
+      }
+    }, this.delayAnimation);
+
   }
 
   /**
