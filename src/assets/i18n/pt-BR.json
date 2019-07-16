@@ -5,7 +5,8 @@
     "digiteNomeCompleto": "Digite o nome completo",
     "erro": "Erro",
     "nome": "Nome",
-    "valor": "Valor"
+    "valor": "Valor",
+    "abrirDrawer": "Abrir Drawer"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
