@@ -104,26 +104,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   getStyles() {
-    return this.getAnimatedStyle().concat(this.getMultiStageStyle('DRAWER'));
-  }
-
-  getCardStyles() {
-    return this.getMultiStageStyle('CARD');
-  }
-
-  getOverlayStyles() {
-    return this.getMultiStageStyle('OVERLAY');
-  }
-
-  getMultiStageStyle(component: string) {
-    const multiStgExist = false;
-    if (component === 'DRAWER') {
-      return multiStgExist ? ' --drawer-top-multistage' : ' --drawer-top-basic';
-    } else if (component === 'OVERLAY') {
-      return multiStgExist ? ' --drawer-overlay-top-multistage' : ' --drawer-overlay-top-basic';
-    } else if (component === 'CARD') {
-      return multiStgExist ? ' --drawer-height-multistage' : ' --drawer-height-basic';
-    }
+    return this.getAnimatedStyle().concat(' --drawer-top-basic');
   }
 
   getAnimatedStyle(): string {

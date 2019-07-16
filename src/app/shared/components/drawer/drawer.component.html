@@ -1,7 +1,6 @@
-<div *ngIf="drawer.showOverlay" class="drawer__overlay" [ngClass]="getOverlayStyles()"></div>
-<div class="drawer --drawer-width-{{drawer.size}}"
-[ngClass]="getStyles()">
-  <div class="drawer__container" [ngClass]="getCardStyles()">
+<div *ngIf="drawer.showOverlay" class="drawer__overlay --drawer-overlay-top-basic"></div>
+<div class="drawer --drawer-width-{{drawer.size}}" [ngClass]="getStyles()">
+  <div class="drawer__container --drawer-height-basic">
     <div class="drawer__header">
       <div class="fx-row --fx-center">
         <button class="drawer__button-close --click" mat-icon-button color="default" (click)="close()">
