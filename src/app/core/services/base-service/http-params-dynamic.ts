@@ -1,13 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import moment from 'moment';
 
-export function appendar(params: any, httpParams: HttpParams, condicoes: Array < any > , path: string[] = []) {
+export function append(params: any, httpParams: HttpParams, condicoes: Array < any > , path: string[] = []) {
   if (params != null) {
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
         path.push(key);
         if (!(params[key] instanceof Date) && typeof params[key] === 'object') {
-          httpParams = appendar(params[key], httpParams, condicoes, path);
+          httpParams = append(params[key], httpParams, condicoes, path);
         } else if (params[key] != null && params[key] !== '' && !condicoes.some(e => e === params[key])) {
           httpParams = httpParams.append(path.join('.'), params[key] instanceof Date ? moment(params[key]).format('YYYY-MM-DD') : params[key].toString());
         }
@@ -29,7 +29,7 @@ export const HttpParamsDynamic = (params: any, condicoes ?: Array < any > ): Htt
 
   condicoes = condicoes || [];
   let httpParams = new HttpParams();
-  httpParams = appendar(params, httpParams, condicoes, []);
+  httpParams = append(params, httpParams, condicoes, []);
   return httpParams;
 
 };

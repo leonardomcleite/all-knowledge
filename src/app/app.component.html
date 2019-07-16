@@ -24,3 +24,6 @@
   <span class="autor-title">{{'label.autor' | translate}}: </span>
   <span class="autor">{{'autor.nome' | translate}}</span>
 </mat-toolbar>
+
+<!-- Drawer -->
+<ak-drawer [drawer]="drawer" *ngFor="let drawer of drawers"></ak-drawer>

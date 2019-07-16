@@ -15,9 +15,15 @@ import { HomepageModule } from './core/components/homepage/homepage.module';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
+import { DrawerModule } from './shared/components/drawer/drawer.module';
+import { CommonModule } from '@angular/common';
+import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
+import { FactoryService } from './core/services/factory/factory.service';
 
 @NgModule({
   imports: [
+    // Angular
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -32,10 +38,13 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
       }
     }),
 
+    // App
     HomepageModule,
     MenuModule,
     NavHeaderModule,
+    DrawerModule,
 
+    // Angular Material
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -43,9 +52,17 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
   ],
   declarations: [
     AppComponent,
+    ExampleDrawerComponent,
+  ],
+  exports: [
+    ExampleDrawerComponent
+  ],
+  entryComponents: [
+    ExampleDrawerComponent
   ],
   providers: [
-    InternationalizationService
+    InternationalizationService,
+    FactoryService,
   ],
   bootstrap: [AppComponent]
 })

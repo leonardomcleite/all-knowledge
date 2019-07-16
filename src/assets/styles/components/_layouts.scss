@@ -1,4 +1,5 @@
-@import '../theming.scss';
+
+@import 'theming.scss';
 
 @function heightHeader() {
   @return 100px - (2 * $ak-padding);
