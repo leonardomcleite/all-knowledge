@@ -31,7 +31,7 @@ export class MaskDirective implements OnInit {
       switch (this._akMask.type) {
         case this.maskTypeEnum.NUMBER:
           this.maskNumberDirective = new MaskNumberDirective(this.el);
-          this.maskNumberDirective.maskNumber = this._akMask;
+          this.maskNumberDirective.akMaskNumber = this._akMask;
           this.maskNumberDirective.ngOnInit();
           break;
       }

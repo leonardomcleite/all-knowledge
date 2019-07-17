@@ -12,41 +12,41 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class MaskNumberDirective implements ControlValueAccessor, OnInit {
 
+  // Parametros da interface ControlValueAccessor
   onTouched: any;
   onChange: any;
 
-  sufixo: any;
-  prefixo: string;
-  separadorDecimal: string;
-  separadorMilhar: string;
-  digitos: string;
-  casasDecimais: number;
-  tamanhoMax: number;
+  // Opções da máscara
+  decimalSeparator: string;
+  thousandSeparator: string;
+  decimals: number;
+  integers: number;
 
-  @Input('akMaskNumber') set maskNumber(mask: any) {
-    this._maskNumber = mask;
-    this.ngOnInit();
-  }
-  private _maskNumber: any = {digitos: '5 , 2'};
+  @Input()
+  set akMaskNumber(mask: any) { this.akMaskNumberChange = mask; this.ngOnInit(); }
+  get akMaskNumber() { return this.akMaskNumberChange; }
+  private akMaskNumberChange: any = {digits: '14 , 2'};
 
   constructor(
     private elementRef?: ElementRef
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.separadorDecimal = this._maskNumber.decimal || ',';
-    this.separadorMilhar = this._maskNumber.milhar || '.';
-    this.prefixo = this._maskNumber.prefixo || '';
-    this.sufixo = this._maskNumber.sufixo || '';
-    const digitos = this._maskNumber.digitos ? this._maskNumber.digitos.split(',').map(el => { if (!isNaN(el)) { return parseInt(el, 10); } }) : [];
-    this.casasDecimais = digitos[1] || this._maskNumber.casasDecimais || 2;
-    this.tamanhoMax = digitos[0];
+    this.decimalSeparator = this.akMaskNumber.decimal || ',';
+    this.thousandSeparator = this.akMaskNumber.milhar || '.';
+    const digits = this.akMaskNumber.digits ? this.akMaskNumber.digits.split(',').map(el => { if (!isNaN(el)) { return parseInt(el, 10); } }) : [];
+    this.integers = this.akMaskNumber.integers || digits[0] || Infinity;
+    this.decimals = this.akMaskNumber.decimals || digits[1] || 2;
   }
 
+  /**
+   * Implementação da interface ControlValueAccessor
+   * @param value - value
+   */
   writeValue(value: any): void {
     if (value != null && value !== '') {
       if (!isNaN(value)) {
-        value = parseFloat(value).toFixed(this.casasDecimais).replace('.', this.separadorDecimal);
+        value = parseFloat(value).toFixed(this.decimals).replace('.', this.decimalSeparator);
       }
       if (this.elementRef) {
         this.elementRef.nativeElement.value = this.aplicarMascara(value.toString());
@@ -58,109 +58,109 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
     }
   }
 
+  /**
+   * Implementação da interface ControlValueAccessor
+   * @param fn - fn
+   */
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
+  /**
+   * Implementação da interface ControlValueAccessor
+   * @param fn - fn
+   */
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
   @HostListener('input', ['$event'])
   onKeyup($event: any) {
-    let valor = '';
+    let value = '';
     if ($event.target.value == null || $event.target.value === '') { this.onChange(null); return; }
-    if ($event.target.value === this.separadorDecimal) {
-      $event.target.value = '0' + this.separadorDecimal;
-      valor = $event.target.value;
+    if ($event.target.value === this.decimalSeparator) {
+      $event.target.value = '0' + this.decimalSeparator;
+      value = $event.target.value;
     } else {
-      valor = this.aplicarMascara($event.target.value);
+      value = this.aplicarMascara($event.target.value);
     }
-    this.atualizaInput($event, valor);
+    this.atualizaInput($event, value);
   }
 
   @HostListener('blur', ['$event'])
   onBlur($event: any) {
     if ($event.target.value == null || $event.target.value === '') { this.onChange(null); return; }
-    const valor: string = this.aplicaMascaraFaltante($event.target.value);
-    this.atualizaInput($event, valor);
+    const value: string = this.aplicaMascaraFaltante($event.target.value);
+    this.atualizaInput($event, value);
   }
 
-  private atualizaInput($event: any, valor: string) {
-    $event.target.value = valor;
-    // Insere o prefixo caso exista
-    if (this.prefixo !== '') {
-      valor = valor.substring(valor.indexOf(this.prefixo) + this.prefixo.length).trim();
-    }
-    // Insere o sufixo caso exista
-    if (this.sufixo !== '') {
-      valor = valor.slice(0, valor.indexOf(this.sufixo)).trim();
-    }
+  private atualizaInput($event: any, value: string) {
+    $event.target.value = value;
     // Altera separador decimal conforme informado
-    if (this.separadorDecimal === ',') {
-      this.onChange(valor.replace(/\./g, '').replace(',', '.'));
+    if (this.decimalSeparator === ',') {
+      this.onChange(value.replace(/\./g, '').replace(',', '.'));
     } else {
-      this.onChange(valor.replace(/\,/g, ''));
+      this.onChange(value.replace(/\,/g, ''));
     }
   }
 
-  private aplicaMascaraFaltante(valor: string): string {
-    let { rightComma, leftComma } = this.separarDecimais(valor);
+  private aplicaMascaraFaltante(value: string): string {
+    let { rightComma, leftComma } = this.separateDecimals(value);
 
-    if (rightComma.length < this.casasDecimais) {
-      rightComma = `${this.separadorDecimal}${rightComma}${Array((this.casasDecimais - rightComma.length) + 1).join('0')}`;
+    if (rightComma.length < this.decimals) {
+      rightComma = `${this.decimalSeparator}${rightComma}${Array((this.decimals - rightComma.length) + 1).join('0')}`;
     } else {
-      rightComma = this.casasDecimais !== 0 ? this.separadorDecimal + rightComma : '';
+      rightComma = this.decimals !== 0 ? this.decimalSeparator + rightComma : '';
     }
 
     return `${leftComma}${rightComma}`;
   }
 
-  private aplicarMascara(valor: string): string {
-    let { rightComma, leftComma } = this.separarDecimais(valor);
+  private aplicarMascara(value: string): string {
+    let { rightComma, leftComma } = this.separateDecimals(value);
     if (rightComma.length > 0 && leftComma.length === 0) { leftComma = '0'; }
     leftComma = leftComma.replace(/\D/g, '');
     const t = parseInt(leftComma, 10);
     leftComma = isNaN(t) ? leftComma : t.toString();
 
-    if (rightComma === '' && valor.includes(this.separadorDecimal) && this.casasDecimais !== 0) { rightComma = this.separadorDecimal; }
+    if (rightComma === '' && value.includes(this.decimalSeparator) && this.decimals !== 0) { rightComma = this.decimalSeparator; }
 
-    // valida digitos a esquerda do separador decimal
-    if (leftComma.length > (this.tamanhoMax - this.casasDecimais)) {
-      rightComma = `${leftComma.substr((this.tamanhoMax - this.casasDecimais))}${rightComma}`;
-      leftComma = leftComma.substr(0, (this.tamanhoMax - this.casasDecimais));
+    // valida digits a esquerda do separador decimal
+    if (leftComma.length > this.integers) {
+      rightComma = `${leftComma.substr(this.integers)}${rightComma}`;
+      leftComma = leftComma.substr(0, this.integers);
     }
-    // valida digitos a esquerda do separador decimal
-    if (rightComma.length > this.casasDecimais) {
-      rightComma = rightComma.substr(0, this.casasDecimais);
+    // valida digits a esquerda do separador decimal
+    if (rightComma.length > this.decimals) {
+      rightComma = rightComma.substr(0, this.decimals);
     }
     if (rightComma) {
       rightComma = rightComma.replace(/\D/g, '');
-      rightComma = `${this.separadorDecimal}${rightComma}`;
+      rightComma = `${this.decimalSeparator}${rightComma}`;
     }
 
-    leftComma = this.insereSeparadorMilhar(leftComma);
+    leftComma = this.insertThousandSeparator(leftComma);
     return `${leftComma}${rightComma}`;
   }
 
-  private separarDecimais(valor: string) {
-    const leftComma: string = valor.includes(this.separadorDecimal) ? (valor.substring(0, valor.indexOf(this.separadorDecimal))) : valor;
-    const rightComma: string = valor.includes(this.separadorDecimal) ? (valor.substring(valor.indexOf(this.separadorDecimal) + 1, valor.length)).replace(/\D/g, '') : '';
+  private separateDecimals(value: string) {
+    const leftComma: string = value.includes(this.decimalSeparator) ? (value.substring(0, value.indexOf(this.decimalSeparator))) : value;
+    const rightComma: string = value.includes(this.decimalSeparator) ? (value.substring(value.indexOf(this.decimalSeparator) + 1, value.length)).replace(/\D/g, '') : '';
     return { rightComma, leftComma };
   }
 
-  private insereSeparadorMilhar(leftComma: string): string {
-    let sepMilhar = 0;
-    let valorComSepMilhar = '';
+  private insertThousandSeparator(leftComma: string): string {
+    let thousandSep = 0;
+    let valueWithSeparatorThousand = '';
     for (let i = (leftComma.length - 1); i >= 0; i--) {
-      if (sepMilhar === 3) {
-        valorComSepMilhar = this.separadorMilhar + valorComSepMilhar;
-        sepMilhar = 0;
+      if (thousandSep === 3) {
+        valueWithSeparatorThousand = this.thousandSeparator + valueWithSeparatorThousand;
+        thousandSep = 0;
       }
-      valorComSepMilhar = leftComma.charAt(i) + valorComSepMilhar;
-      sepMilhar++;
+      valueWithSeparatorThousand = leftComma.charAt(i) + valueWithSeparatorThousand;
+      thousandSep++;
     }
 
-    return valorComSepMilhar;
+    return valueWithSeparatorThousand;
   }
 }

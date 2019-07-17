@@ -22,7 +22,7 @@
     "minLength": "Quantidade m\u00ednima de caracteres n\u00e3o atendida",
     "maxValue": "Valor m\u00e1ximo excedido",
     "minValue": "Valor m\u00ednimo não atendido",
-    "formatInvalid": "Formato do campo inv\u00e1lido",
+    "campoInvalido": "Campo inv\u00e1lido: ",
     "dataInvalida": "Data inv\u00e1lida",
     "numeroInvalida": "Número inv\u00e1lido"
   },

@@ -38,7 +38,7 @@ export class ExampleSimpleTabbedComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: new FormControl(null, [Validators.required]),
       date: new FormControl(null, [Validators.required]),
-      value: new FormControl(null, [Validators.required])
+      value: new FormControl(null)
     });
   }
 

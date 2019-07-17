@@ -1,19 +1,12 @@
-import { AfterViewInit, Component, ContentChildren, Input, QueryList, ViewChild } from '@angular/core';
+import { AfterViewInit, ContentChildren, Input, QueryList, Type, ViewChild } from '@angular/core';
 import { MatTab, MatTabGroup } from '@angular/material';
 import { Router } from '@angular/router';
-import { SimpleTabbedItemComponent } from '../simple-tabbed-item/simple-tabbed-item.component';
 
-@Component({
-  selector: 'ak-simple-tabbed-content',
-  templateUrl: './simple-tabbed-content.component.html',
-  styleUrls: ['./simple-tabbed-content.component.scss'],
-})
-export class SimpleTabbedContentComponent implements AfterViewInit {
-
-  @ContentChildren(SimpleTabbedItemComponent) tabbedItems: QueryList<MatTab>;
-  @ContentChildren(MatTab) tabsFromNgContent: QueryList<MatTab>;
+export abstract class TabbedClass implements AfterViewInit {
 
   @ViewChild(MatTabGroup, {static: true}) matTabGroup: MatTabGroup;
+
+  @ContentChildren(MatTab) tabsFromNgContent: QueryList<MatTab>;
 
   @Input() setTabInRoute: boolean;
   @Input()
@@ -25,8 +18,10 @@ export class SimpleTabbedContentComponent implements AfterViewInit {
   }
   private selectedIndexChange: any = 0;
 
+  tabbedItems: any;
+
   constructor(
-    private router: Router,
+    private router?: Router,
   ) {}
 
   ngAfterViewInit() {

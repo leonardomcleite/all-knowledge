@@ -1,22 +1,18 @@
 import { TypeField, TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import moment from 'moment';
-import { TranslatePipe } from '@ngx-translate/core';
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD/MM/YYYY',
   },
   display: {
     dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
+    monthYearLabel: 'MM YYYY',
+    dateA11yLabel: 'DD/MM/YYYY',
+    monthYearA11yLabel: 'MM YYYY',
   },
 };
 
@@ -25,12 +21,8 @@ export const MY_FORMATS = {
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [
-    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
-    // application's root module. We provide it at the component level here, due to limitations of
-    // our example generation script.
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-    TranslatePipe
   ],
 })
 export class InputComponent implements OnInit {
@@ -42,33 +34,15 @@ export class InputComponent implements OnInit {
   @Input() frmControlName: string;
   @Input() type: TypeField = TypeFieldEnum.NUMBER;
   @Input() icon: string;
-  @Input() hints: any;
+  @Input() suffix: string;
+  @Input() hints: Array<string>;
   @Input() disabled: (_?: any) => boolean | boolean;
-  @Input() formFieldClass: (_?: any) => any  | string;
-  @Input() inputClass: (_?: any) => any  | string;
-
-  @Input()
-  set placeholder(value) {
-    this._placeholder = this.setPlaceholder(value);
-  }
-  get placeholder() {
-    return this._placeholder;
-  }
-  private _placeholder: string = this.setPlaceholder(null);
-
-  @Input()
-  set mask(value) {
-    this._mask = value;
-    this.format = value;
-  }
-  get mask() {
-    return this._mask;
-  }
-  private _mask: any;
+  @Input() formFieldClass: (_?: any) => any | string;
+  @Input() inputClass: (_?: any) => any | string;
+  @Input() set placeholder(value) { this.placeholderChange = this.setPlaceholder(value); } get placeholder() { return this.placeholderChange; } private placeholderChange: string = this.setPlaceholder(null);
+  @Input() set mask(value) { this.maskChange = value; } get mask() { return this.maskChange; } private maskChange: string | object;
 
   readonly typeFieldEnum = TypeFieldEnum;
-  format: string = 'DD/MM/AAAA';
-  date;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -77,12 +51,11 @@ export class InputComponent implements OnInit {
   ngOnInit() {
     this.buildFormGroup();
     this.checkIsDisabled();
-    this.frmGroup.get(this.frmControlName).valueChanges.subscribe((val) => {
-      console.log(this.frmGroup.get(this.frmControlName).errors);
-    });
-    console.log(this.name);
   }
 
+  /**
+   * Checa se o formGroup foi criado, caso contrário o método cria.
+   */
   buildFormGroup() {
     if (this.frmGroup.get(this.frmControlName) == null) {
       this.frmGroup = this.formBuilder.group({
@@ -91,12 +64,22 @@ export class InputComponent implements OnInit {
     }
   }
 
+  /**
+   * Habilita ou desabilita o campo caso a propriedade "disable" seja informada via @Input()
+   */
   checkIsDisabled() {
-    if (this.disabled) {
-      this.frmGroup.get(this.frmControlName).disable();
+    if (this.disabled != null) {
+      if (this.disabled instanceof Boolean) {
+        this.disabled ? this.frmGroup.get(this.frmControlName).disable() : this.frmGroup.get(this.frmControlName).enable();
+      } else {
+        this.disabled() ? this.frmGroup.get(this.frmControlName).disable() : this.frmGroup.get(this.frmControlName).enable();
+      }
     }
   }
 
+  /**
+   * Marca o campo como visitado
+   */
   markTouched() {
     this.frmGroup.get(this.frmControlName).markAsTouched();
     this.frmGroup.get(this.frmControlName).updateValueAndValidity();
@@ -111,10 +94,14 @@ export class InputComponent implements OnInit {
     this.blur.emit(event);
   }
 
-  setPlaceholder(placeholder): string {
+  /**
+   * Seta placeholder interno como "Campo obrigatório" quando não informado e o campo seja obrigatório
+   * @param placeholder - string
+   */
+  setPlaceholder(placeholder: string): string {
     if (this.frmGroup) {
       const req: any = 'required';
-      return placeholder == null && this.frmGroup.get(this.frmControlName).validator(req).required  ? 'validacao.campoObrigatorio' : placeholder;
+      return placeholder == null && this.frmGroup.get(this.frmControlName).validator && this.frmGroup.get(this.frmControlName).validator(req).required  ? 'validacao.campoObrigatorio' : placeholder;
     } else {
       return 'validacao.campoObrigatorio';
     }

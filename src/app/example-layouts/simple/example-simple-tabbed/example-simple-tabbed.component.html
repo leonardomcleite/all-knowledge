@@ -2,7 +2,7 @@
   <ak-simple-tabbed-header>
     <span>{{'titulo.simpleTabbed' | translate}}</span>
   </ak-simple-tabbed-header>
-  <ak-simple-tabbed-content [(selectedIndex)]="params.tab">
+  <ak-simple-tabbed-content [(selectedIndex)]="params.tab" [setTabInRoute]="true">
     <ak-simple-tabbed-item label="Tab1">
       <div>
         <h1>Early Sunrise in Winter</h1>
@@ -73,6 +73,7 @@
               <ak-input
                 [hints]="[{value: 'teste', align: 'start'}, {value: 'teste2', align: 'end'}]"
                 icon="mode_edit"
+                mask="(00) 0 0000-0000"
                 name="{{'label.nome' | translate}}"
                 frmControlName="name"
                 [frmGroup]="formGroup"
@@ -91,8 +92,8 @@
             </p>
             <p>
               <ak-input
-                icon="mode_edit"
-                [mask]="{digitos: '5 , 2'}"
+                [mask]="{integers: 14, decimals: 2}"
+                suffix="R$"
                 name="{{'label.valor' | translate}}"
                 placeholder="{{'label.valor' | translate}}"
                 frmControlName="value"

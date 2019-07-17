@@ -1,6 +1,6 @@
 <form  [formGroup]="frmGroup">
   <mat-form-field appearance="outline">
-    <mat-label>{{name}}{{placeholder ? ' *' : ''}}</mat-label>
+    <mat-label>{{name}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
     <input
       *ngIf="type === typeFieldEnum.DATE"
       [formControlName]="frmControlName"
@@ -20,11 +20,13 @@
       matInput>
     <input
       *ngIf="type === typeFieldEnum.TEXT"
+      [mask]="mask"
       [formControlName]="frmControlName"
       [placeholder]="placeholder | translate"
       (blur)="onBlur($event)"
       matInput>
-    <mat-icon matSuffix *ngIf="icon && type !== typeFieldEnum.DATE">{{icon}}</mat-icon>
+    <mat-icon matSuffix *ngIf="icon && type !== typeFieldEnum.DATE && suffix == null">{{icon}}</mat-icon>
+    <mat-icon matSuffix *ngIf="suffix && type !== typeFieldEnum.DATE"><span class="sufixx">{{suffix}}</span></mat-icon>
     <mat-hint [align]="item.align" *ngFor="let item of hints">{{item.value}}</mat-hint>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('required') && frmGroup.get(frmControlName)?.touched)">{{'validacao.campoObrigatorio' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('maxLength') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxLength' | translate}}</mat-error>
@@ -32,6 +34,7 @@
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('max') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxValur' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('min') && frmGroup.get(frmControlName)?.touched)">{{'validacao.minValue' | translate}}</mat-error>
     <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('matDatepickerParse') && frmGroup.get(frmControlName)?.touched)">{{'validacao.dataInvalida' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('Mask error') && frmGroup.get(frmControlName)?.touched)">{{'validacao.campoInvalido' | translate}}{{mask}}</mat-error>
     <ng-content></ng-content>
   </mat-form-field>
 </form>
