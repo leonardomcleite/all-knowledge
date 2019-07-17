@@ -5,7 +5,8 @@
     "digiteNomeCompleto": "Digite o nome completo",
     "erro": "Erro",
     "nome": "Nome",
-    "valor": "Valor"
+    "valor": "Valor",
+    "abrirDrawer": "Abir Drawer"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
@@ -18,7 +19,7 @@
   "validacao": {
     "campoObrigatorio": "Campo obrigat\u00f3rio",
     "maxLength": "Quantidade m\u00e1xima de caracteres excedida",
-    "minLength": "Quantidade m\u00ednima de caracteres não atendida",
+    "minLength": "Quantidade m\u00ednima de caracteres n\u00e3o atendida",
     "maxValue": "Valor m\u00e1ximo excedido",
     "minValue": "Valor m\u00ednimo não atendido",
     "formatInvalid": "Formato do campo inv\u00e1lido"
