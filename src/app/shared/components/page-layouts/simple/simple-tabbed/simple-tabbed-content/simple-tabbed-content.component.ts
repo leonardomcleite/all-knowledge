@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ContentChildren, Input, QueryList, ViewChild } from '@angular/core';
 import { MatTab, MatTabGroup } from '@angular/material';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleTabbedItemComponent } from '../simple-tabbed-item/simple-tabbed-item.component';
 
 @Component({
@@ -27,6 +27,7 @@ export class SimpleTabbedContentComponent implements AfterViewInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngAfterViewInit() {
@@ -39,8 +40,12 @@ export class SimpleTabbedContentComponent implements AfterViewInit {
   }
 
   setParamRoute(indexTab: number) {
-    if (this.setTabInRoute) {
-      this.router.navigate([this.router.url, indexTab]);
+    if (this.setTabInRoute && this.activatedRoute.snapshot.params) {
+      if (this.activatedRoute.snapshot.params.tab) {
+        this.router.navigateByUrl(this.router.url.replace(this.activatedRoute.snapshot.params.tab, indexTab.toString()));
+      } else {
+        this.router.navigate([this.router.url, indexTab]);
+      }
     }
   }
 

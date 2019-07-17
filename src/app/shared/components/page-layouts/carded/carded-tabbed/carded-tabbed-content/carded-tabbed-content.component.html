@@ -1,6 +1,6 @@
 <div class="carded-tabbed-content mat-elevation-z2">
   <div class="tabbed-group">
-    <mat-tab-group (selectedIndexChange)="setParamRoute($event)">
+    <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedIndexChange)="setParamRoute($event)">
       <ng-content select="[ak-carded-tabbed-item]"></ng-content>
     </mat-tab-group>
   </div>
