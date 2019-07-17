@@ -1,5 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MaskNumberModel } from './mask.-number.type';
 
 @Directive({
   selector: '[akMaskNumber]',
@@ -16,27 +17,21 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   onTouched: any;
   onChange: any;
 
-  // Opções da máscara
-  decimalSeparator: string;
-  thousandSeparator: string;
-  decimals: number;
-  integers: number;
-
   @Input()
   set akMaskNumber(mask: any) { this.akMaskNumberChange = mask; this.ngOnInit(); }
   get akMaskNumber() { return this.akMaskNumberChange; }
-  private akMaskNumberChange: any = {digits: '14 , 2'};
+  private akMaskNumberChange: MaskNumberModel = new MaskNumberModel();
 
   constructor(
     private elementRef?: ElementRef
   ) {}
 
   ngOnInit() {
-    this.decimalSeparator = this.akMaskNumber.decimal || ',';
-    this.thousandSeparator = this.akMaskNumber.milhar || '.';
-    const digits = this.akMaskNumber.digits ? this.akMaskNumber.digits.split(',').map(el => { if (!isNaN(el)) { return parseInt(el, 10); } }) : [];
-    this.integers = this.akMaskNumber.integers || digits[0] || Infinity;
-    this.decimals = this.akMaskNumber.decimals || digits[1] || 2;
+    if (this.akMaskNumber == null) {
+      this.akMaskNumber = new MaskNumberModel();
+    } else if (!(this.akMaskNumber instanceof MaskNumberModel)) {
+      this.akMaskNumber = new MaskNumberModel(this.akMaskNumber.integers, this.akMaskNumber.decimals, this.akMaskNumber.decimalSeparator, this.akMaskNumber.thousandSeparator);
+    }
   }
 
   /**
@@ -46,7 +41,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   writeValue(value: any): void {
     if (value != null && value !== '') {
       if (!isNaN(value)) {
-        value = parseFloat(value).toFixed(this.decimals).replace('.', this.decimalSeparator);
+        value = parseFloat(value).toFixed(this.akMaskNumber.decimals).replace('.', this.akMaskNumber.decimalSeparator);
       }
       if (this.elementRef) {
         this.elementRef.nativeElement.value = this.aplicarMascara(value.toString());
@@ -78,8 +73,8 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   onKeyup($event: any) {
     let value = '';
     if ($event.target.value == null || $event.target.value === '') { this.onChange(null); return; }
-    if ($event.target.value === this.decimalSeparator) {
-      $event.target.value = '0' + this.decimalSeparator;
+    if ($event.target.value === this.akMaskNumber.decimalSeparator) {
+      $event.target.value = '0' + this.akMaskNumber.decimalSeparator;
       value = $event.target.value;
     } else {
       value = this.aplicarMascara($event.target.value);
@@ -97,7 +92,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   private atualizaInput($event: any, value: string) {
     $event.target.value = value;
     // Altera separador decimal conforme informado
-    if (this.decimalSeparator === ',') {
+    if (this.akMaskNumber.decimalSeparator === ',') {
       this.onChange(value.replace(/\./g, '').replace(',', '.'));
     } else {
       this.onChange(value.replace(/\,/g, ''));
@@ -107,10 +102,10 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   private aplicaMascaraFaltante(value: string): string {
     let { rightComma, leftComma } = this.separateDecimals(value);
 
-    if (rightComma.length < this.decimals) {
-      rightComma = `${this.decimalSeparator}${rightComma}${Array((this.decimals - rightComma.length) + 1).join('0')}`;
+    if (rightComma.length < this.akMaskNumber.decimals) {
+      rightComma = `${this.akMaskNumber.decimalSeparator}${rightComma}${Array((this.akMaskNumber.decimals - rightComma.length) + 1).join('0')}`;
     } else {
-      rightComma = this.decimals !== 0 ? this.decimalSeparator + rightComma : '';
+      rightComma = this.akMaskNumber.decimals !== 0 ? this.akMaskNumber.decimalSeparator + rightComma : '';
     }
 
     return `${leftComma}${rightComma}`;
@@ -123,20 +118,20 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
     const t = parseInt(leftComma, 10);
     leftComma = isNaN(t) ? leftComma : t.toString();
 
-    if (rightComma === '' && value.includes(this.decimalSeparator) && this.decimals !== 0) { rightComma = this.decimalSeparator; }
+    if (rightComma === '' && value.includes(this.akMaskNumber.decimalSeparator) && this.akMaskNumber.decimals !== 0) { rightComma = this.akMaskNumber.decimalSeparator; }
 
     // valida digits a esquerda do separador decimal
-    if (leftComma.length > this.integers) {
-      rightComma = `${leftComma.substr(this.integers)}${rightComma}`;
-      leftComma = leftComma.substr(0, this.integers);
+    if (leftComma.length > this.akMaskNumber.integers) {
+      rightComma = `${leftComma.substr(this.akMaskNumber.integers)}${rightComma}`;
+      leftComma = leftComma.substr(0, this.akMaskNumber.integers);
     }
     // valida digits a esquerda do separador decimal
-    if (rightComma.length > this.decimals) {
-      rightComma = rightComma.substr(0, this.decimals);
+    if (rightComma.length > this.akMaskNumber.decimals) {
+      rightComma = rightComma.substr(0, this.akMaskNumber.decimals);
     }
     if (rightComma) {
       rightComma = rightComma.replace(/\D/g, '');
-      rightComma = `${this.decimalSeparator}${rightComma}`;
+      rightComma = `${this.akMaskNumber.decimalSeparator}${rightComma}`;
     }
 
     leftComma = this.insertThousandSeparator(leftComma);
@@ -144,8 +139,8 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
   }
 
   private separateDecimals(value: string) {
-    const leftComma: string = value.includes(this.decimalSeparator) ? (value.substring(0, value.indexOf(this.decimalSeparator))) : value;
-    const rightComma: string = value.includes(this.decimalSeparator) ? (value.substring(value.indexOf(this.decimalSeparator) + 1, value.length)).replace(/\D/g, '') : '';
+    const leftComma: string = value.includes(this.akMaskNumber.decimalSeparator) ? (value.substring(0, value.indexOf(this.akMaskNumber.decimalSeparator))) : value;
+    const rightComma: string = value.includes(this.akMaskNumber.decimalSeparator) ? (value.substring(value.indexOf(this.akMaskNumber.decimalSeparator) + 1, value.length)).replace(/\D/g, '') : '';
     return { rightComma, leftComma };
   }
 
@@ -154,7 +149,7 @@ export class MaskNumberDirective implements ControlValueAccessor, OnInit {
     let valueWithSeparatorThousand = '';
     for (let i = (leftComma.length - 1); i >= 0; i--) {
       if (thousandSep === 3) {
-        valueWithSeparatorThousand = this.thousandSeparator + valueWithSeparatorThousand;
+        valueWithSeparatorThousand = this.akMaskNumber.thousandSeparator + valueWithSeparatorThousand;
         thousandSep = 0;
       }
       valueWithSeparatorThousand = leftComma.charAt(i) + valueWithSeparatorThousand;

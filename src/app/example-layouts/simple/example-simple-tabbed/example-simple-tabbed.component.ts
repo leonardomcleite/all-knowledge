@@ -1,8 +1,10 @@
 import { TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
-import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormControlModel } from '@all-knowledge/core/models/form-control.model';
 import { DrawerService } from '@all-knowledge/shared/components/drawer/drawer.service';
+import { MaskNumberModel } from '@all-knowledge/shared/directives/mask-number/mask.-number.type';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
 
 @Component({
@@ -11,6 +13,10 @@ import { ExampleDrawerComponent } from './example-drawer/example-drawer.componen
   styleUrls: ['./example-simple-tabbed.component.scss']
 })
 export class ExampleSimpleTabbedComponent implements OnInit {
+
+  name: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
+  date: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
+  value: FormControlModel | FormControl = new FormControlModel(null, [], [], new MaskNumberModel(1, 2));
 
   formGroup: FormGroup;
   typeFieldEnum = TypeFieldEnum;
@@ -26,6 +32,9 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   ngOnInit() {
     this.buildFormGroup();
     this.getRouteParams();
+    this.date.valueChanges.subscribe(val => {
+      console.log('FormControl date:' + val);
+    });
   }
 
   getRouteParams() {
@@ -35,10 +44,11 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   }
 
   buildFormGroup() {
+    this.value.mask = new MaskNumberModel(1, 2);
     this.formGroup = this.formBuilder.group({
-      name: new FormControl(null, [Validators.required]),
-      date: new FormControl(null, [Validators.required]),
-      value: new FormControl(null)
+      name: this.name,
+      date: this.date,
+      value: this.value
     });
   }
 

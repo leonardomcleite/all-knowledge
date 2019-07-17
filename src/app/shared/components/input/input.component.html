@@ -1,6 +1,6 @@
 <form  [formGroup]="frmGroup">
   <mat-form-field appearance="outline">
-    <mat-label>{{name}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
+    <mat-label>{{name | translate}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
     <input
       *ngIf="type === typeFieldEnum.DATE"
       [formControlName]="frmControlName"

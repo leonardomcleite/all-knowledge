@@ -71,10 +71,9 @@
           <form [formGroup]="formGroup">
             <p>
               <ak-input
-                [hints]="[{value: 'teste', align: 'start'}, {value: 'teste2', align: 'end'}]"
                 icon="mode_edit"
                 mask="(00) 0 0000-0000"
-                name="{{'label.nome' | translate}}"
+                name="label.nome"
                 frmControlName="name"
                 [frmGroup]="formGroup"
                 [type]="typeFieldEnum.TEXT">
@@ -82,9 +81,8 @@
             </p>
             <p>
               <ak-input
-                icon="mode_edit"
-                name="{{'label.date' | translate}}"
-                placeholder="{{'label.date' | translate}}"
+                name="label.date"
+                placeholder="label.date"
                 frmControlName="date"
                 [frmGroup]="formGroup"
                 [type]="typeFieldEnum.DATE">
@@ -92,11 +90,11 @@
             </p>
             <p>
               <ak-input
-                [mask]="{integers: 14, decimals: 2}"
                 suffix="R$"
-                name="{{'label.valor' | translate}}"
-                placeholder="{{'label.valor' | translate}}"
+                name="label.valor"
+                placeholder="label.valor"
                 frmControlName="value"
+                [mask]="value.mask"
                 [frmGroup]="formGroup"
                 [type]="typeFieldEnum.NUMBER">
               </ak-input>
