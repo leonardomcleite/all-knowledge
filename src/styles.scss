@@ -8,10 +8,10 @@
 @include angular-material-theme($theme);
 
 * {
-  font-family: 'Muli', 'Helvetica Neue', Arial ,sans-serif;
+  font-family: $font-family;
   outline: none !important;
 }
 
 body {
-  font-family: 'Muli', 'Helvetica Neue', Arial ,sans-serif;
+  font-family: $font-family;
 }

@@ -1,0 +1,13 @@
+app-masked-date-picker {
+  mat-form-field.mat-form-field {
+    width: 100%;
+  }
+  .mat-form-field-infix {
+    width: 100%;
+  }
+}
+
+.datepicker__content {
+  position: absolute;
+  padding-top: 10px;
+}

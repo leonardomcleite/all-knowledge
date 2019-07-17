@@ -1,0 +1,72 @@
+@mixin mat-checkbox($theme) {
+  $foreground : map-get($theme, foreground);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  $inner-container-height: 15px;
+  $inner-container-width: 15px;
+
+  $ripple-left: calc(50% - 12px);
+  $ripple-top: calc(50% - 12px);
+  $ripple-height: 25px;
+  $ripple-width: 25px;
+
+  $frame-border-width: 1px;
+
+  .mat-checkbox-indeterminate {
+    &.mat-accent {
+      .mat-checkbox-background {
+        background-color: mat-color($accent) !important;
+      }
+    }
+  }
+
+  .mat-checkbox-checked {
+    &.mat-accent {
+      .mat-checkbox-background {
+        background-color: mat-color($accent) !important;
+      }
+    }
+  }
+
+  .mat-checkbox {
+    &:not(.mat-checkbox-disabled) {
+      &.mat-accent {
+        .mat-checkbox-ripple {
+          .mat-ripple-element {
+            background-color: $tooltip-rgb-color-focus !important;
+          }
+        }
+      }
+    }
+  }
+
+  mat-checkbox.mat-checkbox {
+    .mat-checkbox-layout {
+      .mat-checkbox-label {
+        font-size: $text-md;
+      }
+
+      .mat-checkbox-inner-container {
+        height: $inner-container-height;
+        width: $inner-container-width;
+
+        .mat-checkbox-ripple {
+          left: $ripple-left;
+          top: $ripple-top;
+          height: $ripple-height;
+          width: $ripple-width;
+          background: transparent;
+        }
+
+        .mat-checkbox-frame {
+          border-width: $frame-border-width;
+          border-color: mat-color($foreground, divider);
+        }
+      }
+    }
+  }
+
+}
+
+

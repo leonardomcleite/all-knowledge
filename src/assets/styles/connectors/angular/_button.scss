@@ -1,0 +1,218 @@
+@mixin mat-button($theme) {
+  $colors: (
+    primary: map-get($theme, primary),
+    accent: map-get($theme, accent),
+    warn: map-get($theme, warn),
+    success: map-get($theme, success),
+    alert: map-get($theme, alert),
+  );
+
+  $button-box-shadow: no;
+  $button-border-radius: 3px;
+  $button-border-size: 1px;
+  $button-height: 32px;
+  $btn-custom-w: 160px;
+  $btn-custom-h: 32px;
+
+  .mat-button,
+  .mat-raised-button,
+  .mat-stroked-button {
+    line-height: $button-height !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $text-sm;
+    border-radius: $button-border-radius;
+
+    [class*='icon-']:before {
+      font-size: $icons-before-size;
+    }
+  }
+
+  // Mat Stroked Button
+  .mat-stroked-button {
+    border: $button-border-size solid currentColor !important;
+  }
+
+  @each $color, $value in $colors {
+    .mat-stroked-button.mat-#{$color} {
+      border-color: mat-color($value);
+      color: mat-color($value);
+    }
+
+    .mat-raised-button.mat-#{$color} {
+      background-color: mat-color($value);
+      color: mat-color($value, default-contrast);
+    }
+  }
+
+  // Mat Toggle Button
+  .mat-button-toggle-button {
+    i {
+      padding-right: 15px;
+    }
+  }
+
+  @if $button-box-shadow == no {
+    button.mat-mini-fab:not([class*=mat-elevation-z]):active:not([class*=mat-elevation-z]),
+    button.mat-mini-fab:not([class*=mat-elevation-z]),
+    button.mat-fab:not([class*=mat-elevation-z]):active:not([class*=mat-elevation-z]),
+    button.mat-fab:not([class*=mat-elevation-z]),
+    button.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]),
+    button.mat-raised-button:not([class*=mat-elevation-z]) {
+      box-shadow: none;
+    }
+  }
+
+  /*
+  --------------------------------------------
+  --------------- ESTILO ANTIGO --------------
+  --------------------------------------------
+  */
+  button.mat-raised-button {
+    &.\--blank-accent {
+      border: solid 1px mat-color(map-get($colors, accent));
+      color: $accent;
+    }
+
+    &.\--blank-warn {
+      border: solid 1px mat-color(map-get($colors, warn));
+      color: $warn;
+    }
+
+    &.\--blank-primary {
+      border: solid 1px mat-color(map-get($colors, primary));
+      color: $primary;
+    }
+
+    &.\--btn-custom-x-y {
+      width: $btn-custom-w;
+      height: $btn-custom-h;
+      vertical-align: middle;
+    }
+
+    &.\--btn-custom-x-y-success, &.\--btn-accent {
+      padding: 0px;
+      width: $btn-custom-w;
+      height: $btn-custom-h;
+      vertical-align: middle;
+      background-color: mat-color(map-get($colors, accent));
+      color: #ffffff;
+    }
+
+    &.\--btn-success{
+      padding: 0px;
+      width: $btn-custom-w;
+      height: $btn-custom-h;
+      vertical-align: middle;
+      background-color: mat-color(map-get($colors, success));
+      color: #ffffff;
+    }
+
+    &.\--btn-custom-x-y-warn, &.\--btn-warn {
+      padding: 0px;
+      width: $btn-custom-w;
+      height: $btn-custom-h;
+      vertical-align: middle;
+      background-color: mat-color(map-get($colors, warn));
+      color: #ffffff;
+    }
+
+    &.\--btn-default {
+      background-color: mat-color(map-get($colors, accent));
+      height: 30px;
+      color: #ffffff;
+      min-width: 130px;
+      font-weight: 700;
+      font-size: $text-sm;
+      text-transform: capitalize;
+      line-height: 2.5;
+
+      .\--btn-default__content {
+        justify-content: center;
+        flex: auto;
+        align-self: center;
+        padding: 0 10px;
+        padding-top: 3px;
+      }
+
+      [class*='icon-']:before {
+        font-size: 14px;
+        margin-top: 0px;
+      }
+    }
+  }
+
+  mat-card-header.mat-card-header {
+    .\--btn-ronded-sm {
+      width: $btn-ronded-sm-width;
+      min-width: $btn-ronded-sm-min-width;
+      height: $btn-ronded-sm-height;
+      border-radius: 50%;
+      // background-color: mat-color($accent);
+      color: #ffffff;
+      margin-top: 1px;
+
+      [class*='icon-'] {
+        line-height: 2;
+      }
+
+      [class*='icon-']:before {
+        font-size: $btn-ronded-sm-icon-font-size;
+      }
+    }
+  }
+
+  .\--badge-style {
+    text-align: center;
+    min-width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .badge-content {
+      font-size: $badge-font-size;
+      color: #ffffff;
+    }
+  }
+
+  button.mat-icon-button.\--btn-icon-xl {
+    padding-top: 30px;
+    width: $btn-icon-xl-width;
+    height: $btn-icon-xl-height;
+  }
+
+  button.mat-icon-button.\--btn-icon-md {
+    width: $btn-icon-md-width;
+    min-width: $btn-icon-md-min-width;
+    height: $btn-icon-md-height;
+  }
+
+  button.mat-icon-button.\--btn-icon-xl i:before {
+    font-size: $icons-xl-font-size;
+  }
+
+  button.mat-icon-button.\--btn-icon-md i:before {
+    font-size: $icons-md-font-size;
+  }
+
+  button.\--btn-floating {
+    position: fixed;
+    right: $btn-floating-right;
+    bottom: $btn-floating-bottom;
+    z-index: $btn-floating-z-index;
+  }
+
+  button.mat-icon-button[disabled] {
+    color: transparent !important;
+  }
+}
+
+.accordion-doc-button{
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: height 0.4s;
+}

@@ -1,0 +1,105 @@
+.btn-step-header {
+  @extend .\--click;
+  position: absolute;
+  z-index: 1;
+  height: $btn_base-height;
+  width: $btn_base-width;
+}
+
+.btn-stepper--force-bottom {
+  position: absolute;
+  bottom: 16px;
+}
+
+mat-horizontal-stepper.\--vertical {
+
+  display: flex !important;
+  flex-direction: row;
+
+  &.\--bottom-space .mat-horizontal-content-container {
+    border-bottom: $general-border;
+    padding: 0;
+    margin-bottom: $stepper-vertical-mb !important;
+  }
+  .mat-horizontal-stepper-header-container{
+    //@extend .fx-col;
+    display: block;
+    position: relative;
+    border-right: $general-border;
+    align-items: unset !important;
+    padding-top: $stepper-vertical__header-pt;
+    border-bottom: none !important;
+  }
+  .mat-horizontal-stepper-header[aria-selected=true] {
+    flex: auto !important;
+  }
+  .mat-horizontal-stepper-header[aria-selected=false] .mat-step-icon {
+    background-color: $iconResolved !important;
+  }
+  &.\--header-not-clickable .mat-horizontal-stepper-header[aria-selected=true] .mat-step-icon {
+    background-color:  mat-color($mat-accent, 500) !important;
+  }
+  &.\--header-not-clickable .mat-step-label-selected {
+    color:  mat-color($mat-accent, 500) !important;
+    font-size: inherit !important;
+  }
+  &.\--collapsed .mat-step-header {
+    width: $stepper-vertical__header-width--collapsed;
+  }
+  .mat-step-header {
+    padding-left: $stepper-vertical__header-pl !important;
+  }
+  .mat-horizontal-stepper-content[aria-expanded=true]{
+    height: 100%;
+  }
+}
+
+mat-horizontal-stepper.mat-stepper-horizontal {
+
+  .mat-horizontal-content-container {
+    padding: 0px;
+  }
+
+  .mat-step-header .mat-step-icon {
+    background-color: mat-color($mat-accent, 500);
+  }
+
+  .mat-step-header .mat-step-icon-not-touched {
+    background-color: $iconToResolve;
+  }
+
+  .mat-horizontal-stepper-header-container {
+    border-bottom: $general-border;
+  }
+
+  .mat-horizontal-stepper-header {
+    display: flex;
+    height: $mat-stepper-header-height ;
+    overflow: hidden;
+    align-items: center;
+    padding: $mat-stepper-header-padding;
+    margin: 0 10px;
+    flex: 0 1 10%;
+
+    &[aria-selected = true] {
+      flex:1 1 20%;
+
+      .mat-step-label.mat-step-label-selected {
+        color: mat-color($mat-accent,500);
+      }
+
+      .mat-step-icon {
+        background-color: mat-color($mat-accent,500);
+      }
+    }
+  }
+
+  .mat-horizontal-stepper-header-container {
+
+    .mat-stepper-horizontal-line {
+      border: none;
+      margin: 0px;
+      min-width: 0px;
+    }
+  }
+}

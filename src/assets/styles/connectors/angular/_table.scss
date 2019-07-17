@@ -1,0 +1,286 @@
+// ================= ANGULAR MATERIAL LEGADO ========================
+// ==================================================================
+// ==================================================================
+.mat-tab-group {
+  // Altera header da table do material
+    &.mat-primary {
+        .mat-ink-bar {
+          background-color: mat-color($mat-primary , 500);
+        }
+
+      .mat-tab-label {
+        opacity: 1;
+        &:not(.mat-tab-disabled):focus {
+          background-color: inherit;
+          opacity: 1;
+        }
+
+        &.mat-tab-label.mat-tab-disabled {
+          color:#1b1d1f;
+        }
+      }
+    }
+    .mat-tab-header {
+      .mat-tab-label, .mat-tab-link {
+        font-size: 12px;
+        color:#1b1d1f;
+      }
+    }
+  }
+
+
+
+.tb-container {
+    display: flex;
+    flex-direction: column;
+
+    &.mat-table {
+
+        [class*='icon-']:before {
+            font-size: $icons-font-size;
+        }
+
+        .mat-icon-button {
+            height: 20px;
+            line-height: 20px;
+        }
+
+        // overflow: auto;
+        overflow-y: hidden;
+        max-height: 500px;
+        background-color: $t-header-color;
+
+        &.\--tb-size-sm {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 1000px;
+            }
+        }
+
+        &.\--tb-size-ssm {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 800px;
+            }
+        }
+
+        &.\--tb-size-md {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 1500px;
+            }
+        }
+
+        &.\--tb-size-xl {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 2800px;
+            }
+        }
+
+        &.\--tb-size-xxl {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 3200px;
+            }
+        }
+
+        &.\--tb-size-lg {
+            .mat-header-row {
+                height: 30px;
+            }
+            .mat-header-row, .mat-row {
+                min-width: 2200px;
+            }
+        }
+
+    }
+
+    .mat-row {
+        background-color: #ffffff;
+        min-height: $t-mat-cell-heigth;
+
+        .mat-cell {
+            //background-color: #666666;
+            &:after { content: "\00a0 "; }
+        }
+
+
+        &.\--js-tb-row-selected {
+            .mat-cell {
+                color: #ffffff;
+            }
+
+            visibility: visible;
+            background-color: rgb(132, 216, 255);
+        }
+
+        &.\--js-tb-row-selected:hover {
+            background-color: rgb(132, 216, 255);
+            cursor: unset;
+        }
+
+        &.\--js-tb-row-expanded {
+            .mat-cell {
+                color: #ffffff;
+            }
+
+            background-color: rgb(132, 216, 255);
+        }
+
+        &.\--js-tb-row-expanded:hover {
+            background-color: rgb(100, 200, 255);
+            cursor: pointer;
+        }
+
+    }
+
+    .mat-row:hover {
+        cursor: unset;
+        background-color: $tableHeaderCollor;
+    }
+
+    .\--tb-border-roll-full {
+        border: 1px solid  rgba(0, 0, 0, 0.12);
+    }
+
+    .\--tb-cell-borded-right {
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        //min-height: 56px;
+    }
+
+    .\--tb-cell-min-heigt {
+       // min-height: 56px;
+    }
+
+    .\--tb-cell-center {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .\--tb-inline-cell-center {
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .\--tb-cell-borded-left {
+        border-left: 1px solid rgba(0, 0, 0, 0.12);
+       // min-height: 56px;
+    }
+
+    .\--tb-cell-internal-space-left-sm {
+        padding-left: 10px;
+    }
+
+    .\--tb-cell-internal-space-left-md {
+        padding-left: 15px;
+    }
+
+    .\--tb-cell-ex, .\--tb-cell-expanded, .\--tb-cell-extended {
+        flex: 1 1 100%;
+    }
+
+    .\--tb-cell-large {
+        flex: 1 1 80%;
+    }
+
+    .\--tb-cell-min {
+        flex: 0 1 1px;
+    }
+
+    .\--tb-cell-id {
+        flex: 0 1 40px;
+    }
+
+    .\--tb-cell-sm {
+        flex: 0 1 10%;
+    }
+
+    .\--tb-cell-sm--2 {
+        flex: 0 1 20%;
+    }
+
+    .\--tb-cell-md {
+        flex: 0 1 30%;
+    }
+
+    .\--tb-cell-smd {
+        flex: 0 1 20%;
+    }
+
+    .\--tb-cell-lg {
+        flex: 0 1 48%;
+    }
+
+    .\--tb-cell-xs {
+        flex: 0 1 6%;
+    }
+
+    .\--tb-cell-exs {
+        flex: 0 1 4%;
+    }
+
+    .\--tb-cell-half {
+        flex: 0 1 50%;
+    }
+
+    .\--tb-cell-xl {
+        flex: 0 1 60%;
+    }
+
+    .\--tb-cell-space-sm-right {
+        padding-right: 10px;
+    }
+
+    .\--tb-cell-space-md-right {
+        padding-right: 20px;
+    }
+
+    .\--tb-cell-aling-right {
+        justify-content: flex-end;
+        padding-right: 10px;
+    }
+
+    .\--tb-cell-elips {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+}
+
+.tb-dropdown.tb-container {
+  .mat-row:hover {
+    cursor: pointer;
+    background-color: $tableHeaderCollor;
+  }
+
+  .mat-row {
+    &.\--js-tb-row-selected:hover {
+      background-color: rgb(132, 216, 255);
+      cursor: unset;
+    }
+
+    &.\--js-tb-row-expanded:hover {
+      background-color: rgb(100, 200, 255);
+      cursor: pointer;
+    }
+  }
+}
+
+// ================= FIM ============================================
+// ==================================================================
+// ==================================================================

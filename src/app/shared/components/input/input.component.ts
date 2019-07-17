@@ -1,25 +1,42 @@
 import { TypeField, TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, AbstractControl } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import moment from 'moment';
-import { HintModel } from './models/hint.model';
+import { TranslatePipe } from '@ngx-translate/core';
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'ak-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    TranslatePipe
+  ],
 })
 export class InputComponent implements OnInit {
 
   @Output() blur: EventEmitter<any> = new EventEmitter();
 
-  /**
-   * Dica para usuário saber o que digitar
-   */
-  @Input() placeholder: string;
-  /**
-   * Nome que aparecerá no form
-   */
   @Input() name: string;
   @Input() frmGroup: FormGroup;
   @Input() frmControlName: string;
@@ -29,6 +46,15 @@ export class InputComponent implements OnInit {
   @Input() disabled: (_?: any) => boolean | boolean;
   @Input() formFieldClass: (_?: any) => any  | string;
   @Input() inputClass: (_?: any) => any  | string;
+
+  @Input()
+  set placeholder(value) {
+    this._placeholder = this.setPlaceholder(value);
+  }
+  get placeholder() {
+    return this._placeholder;
+  }
+  private _placeholder: string = this.setPlaceholder(null);
 
   @Input()
   set mask(value) {
@@ -42,17 +68,19 @@ export class InputComponent implements OnInit {
 
   readonly typeFieldEnum = TypeFieldEnum;
   format: string = 'DD/MM/AAAA';
+  date;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit() {
     this.buildFormGroup();
     this.checkIsDisabled();
     this.frmGroup.get(this.frmControlName).valueChanges.subscribe((val) => {
-      this.frmGroup.get(this.frmControlName).markAsTouched();
+      console.log(this.frmGroup.get(this.frmControlName).errors);
     });
+    console.log(this.name);
   }
 
   buildFormGroup() {
@@ -61,22 +89,6 @@ export class InputComponent implements OnInit {
         [this.frmControlName]: new FormControl(null),
       });
     }
-    if (this.type === TypeFieldEnum.DATE) {
-      this.frmGroup.addControl('dateExibition', new FormControl(this.frmGroup.get(this.frmControlName).value, this.frmGroup.get(this.frmControlName).validator));
-      this.createObservable();
-      this.mask = null;
-    }
-  }
-
-  createObservable() {
-    this.frmGroup.get('dateExibition').valueChanges.subscribe((val: any) => {
-      if (val) {
-        const date = moment(val).format('YYYY-MM-DD');
-        this.frmGroup.get(this.frmControlName).setValue(date);
-        this.frmGroup.get(this.frmControlName).setErrors(this.frmGroup.get('dateExibition').errors);
-        this.frmGroup.get(this.frmControlName).updateValueAndValidity();
-      }
-    });
   }
 
   checkIsDisabled() {
@@ -87,7 +99,6 @@ export class InputComponent implements OnInit {
 
   markTouched() {
     this.frmGroup.get(this.frmControlName).markAsTouched();
-    this.frmGroup.get(this.frmControlName).markAsDirty();
     this.frmGroup.get(this.frmControlName).updateValueAndValidity();
   }
 
@@ -96,7 +107,17 @@ export class InputComponent implements OnInit {
    * @param event - Evento do blur
    */
   onBlur(event: any) {
+    this.markTouched();
     this.blur.emit(event);
+  }
+
+  setPlaceholder(placeholder): string {
+    if (this.frmGroup) {
+      const req: any = 'required';
+      return placeholder == null && this.frmGroup.get(this.frmControlName).validator(req).required  ? 'validacao.campoObrigatorio' : placeholder;
+    } else {
+      return 'validacao.campoObrigatorio';
+    }
   }
 
 }
