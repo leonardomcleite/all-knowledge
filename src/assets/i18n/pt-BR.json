@@ -6,7 +6,8 @@
     "erro": "Erro",
     "nome": "Nome",
     "valor": "Valor",
-    "abrirDrawer": "Abir Drawer"
+    "abrirDrawer": "Abir Drawer",
+    "celular": "Celular"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",

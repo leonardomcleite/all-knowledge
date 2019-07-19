@@ -72,9 +72,18 @@
             <p>
               <ak-input
                 icon="mode_edit"
-                mask="(00) 0 0000-0000"
                 name="label.nome"
                 frmControlName="name"
+                [frmGroup]="formGroup"
+                [type]="typeFieldEnum.TEXT">
+              </ak-input>
+            </p>
+            <p>
+              <ak-input
+                icon="phone"
+                mask="(00) 0 0000-0000"
+                name="label.celular"
+                frmControlName="phone"
                 [frmGroup]="formGroup"
                 [type]="typeFieldEnum.TEXT">
               </ak-input>

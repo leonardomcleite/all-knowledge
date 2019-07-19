@@ -31,13 +31,7 @@ export class AppDateAdapter extends NativeDateAdapter {
     //   return date.toDateString();
     // }
     const value = date ? moment(date).toDate() : moment().toDate();
-    if (displayFormat === 'input') {
-      return moment(value).format('DD/MM/YYYY');
-    } else if (displayFormat === 'inputMonth') {
-      return moment(value).format('MM/YYYY');
-    } else {
-      return moment(value).toDate().toDateString();
-    }
+    return moment(value).format(displayFormat);
   }
 
 }

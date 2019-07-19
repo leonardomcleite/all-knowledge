@@ -17,6 +17,7 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   name: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
   date: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
   value: FormControlModel = new FormControlModel(null, [], [], new MaskNumberModel(1, 2));
+  phone: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
 
   formGroup: FormGroup;
   typeFieldEnum = TypeFieldEnum;
@@ -48,7 +49,8 @@ export class ExampleSimpleTabbedComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: this.name,
       date: this.date,
-      value: this.value
+      value: this.value,
+      phone: this.phone
     });
   }
 

@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { InputComponent } from './input.component';
 
-export let options: Partial<IConfig> | (() => Partial<IConfig>);
+export let options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
