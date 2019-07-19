@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
 import { DrawerService } from './shared/components/drawer/drawer.service';
 import { DrawerModel } from './shared/components/drawer/models/drawer';
+import { environment } from '@all-knowledge/env/environment';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createObservableDrawers();
+    console.log(environment.ambiente);
   }
 
   createObservableDrawers() {

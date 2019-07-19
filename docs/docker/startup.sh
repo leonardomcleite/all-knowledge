@@ -8,8 +8,8 @@ function configure() {
     echo "Context: ${APP_BASE_HREF}"
   fi
 
-  sed -i 's@$APP_BACKEND_URL_CORE@'"${APP_BACKEND_URL_CORE}"'@g' ${APP_DIRECTORY}/main.*.js
-  echo "Back-end URL: ${APP_BACKEND_URL_CORE}"
+  sed -i 's@$ENVIRONMENT@'"${ENVIRONMENT}"'@g' ${APP_DIRECTORY}/main.*.js
+  echo "Back-end URL: ${ENVIRONMENT}"
 
   sed -i 's@$APP_FRONT_REDIRECTURL@'"${APP_FRONT_REDIRECTURL}"'@g' ${APP_DIRECTORY}/main.*.js
   echo "Front-end Redirect URL: ${APP_FRONT_REDIRECTURL}"
