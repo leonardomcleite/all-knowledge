@@ -16,7 +16,7 @@ export class ExampleSimpleTabbedComponent implements OnInit {
 
   name: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
   date: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
-  value: FormControlModel | FormControl = new FormControlModel(null, [], [], new MaskNumberModel(1, 2));
+  value: FormControlModel = new FormControlModel(null, [], [], new MaskNumberModel(1, 2));
 
   formGroup: FormGroup;
   typeFieldEnum = TypeFieldEnum;

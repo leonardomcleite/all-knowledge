@@ -10,7 +10,7 @@ import { DrawerModel } from './models/drawer';
 })
 export class DrawerComponent implements OnInit, OnDestroy {
 
-  @ViewChild('drawerContent', { read: ViewContainerRef, static: true }) content: ViewContainerRef;
+  @ViewChild('content', { read: ViewContainerRef, static: true }) content: ViewContainerRef;
 
   @Input() drawer: DrawerModel;
 
@@ -24,6 +24,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadComponent();
   }
+
 
   async ngOnDestroy() {
     if (this.subscription.length > 0) {
