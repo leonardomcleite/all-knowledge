@@ -121,6 +121,10 @@ body {
   background: mat-color($mat-grey, 100);
 }
 
+ak-card-avatar {
+  display: flex;
+}
+
 .ak-button-row button,
 .ak-button-row a {
   margin-right: 8px;
