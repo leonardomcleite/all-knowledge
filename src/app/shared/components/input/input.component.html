@@ -1,7 +1,8 @@
-<form  [formGroup]="frmGroup">
-  <mat-form-field appearance="outline">
+<form  [formGroup]="frmGroup" class="flex">
+  <mat-form-field appearance="outline" [ngClass]="classFormField">
     <mat-label>{{name | translate}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
     <input
+      [ngClass]="classInput"
       *ngIf="type === typeFieldEnum.DATE"
       [formControlName]="frmControlName"
       [placeholder]="placeholder | translate"
@@ -12,6 +13,7 @@
     <mat-datepicker #picker [class.hidden]="type !== typeFieldEnum.DATE"></mat-datepicker>
 
     <input
+      [ngClass]="classInput"
       *ngIf="type === typeFieldEnum.NUMBER"
       [akMaskNumber]="mask"
       [formControlName]="frmControlName"
@@ -19,6 +21,7 @@
       (blur)="onBlur($event)"
       matInput>
     <input
+      [ngClass]="classInput"
       *ngIf="type === typeFieldEnum.TEXT"
       [mask]="mask"
       [formControlName]="frmControlName"

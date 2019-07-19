@@ -37,8 +37,8 @@ export class InputComponent implements OnInit {
   @Input() suffix: string;
   @Input() hints: Array<string>;
   @Input() disabled: (_?: any) => boolean | boolean;
-  @Input() formFieldClass: (_?: any) => any | string;
-  @Input() inputClass: (_?: any) => any | string;
+  @Input() classInput: (_?: any) => any | string;
+  @Input() classFormField: (_?: any) => any | string;
   @Input() set placeholder(value) { this.placeholderChange = this.setPlaceholder(value); } get placeholder() { return this.placeholderChange; } private placeholderChange: string = this.setPlaceholder(null);
   @Input() set mask(value) { this.maskChange = value; } get mask() { return this.maskChange; } private maskChange: string | object;
 

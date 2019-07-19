@@ -15,8 +15,8 @@ import { ExampleDrawerComponent } from './example-drawer/example-drawer.componen
 export class ExampleSimpleTabbedComponent implements OnInit {
 
   name: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
-  date: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
-  value: FormControlModel = new FormControlModel(null, [], [], new MaskNumberModel(1, 2));
+  birthday: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
+  salario: FormControlModel = new FormControlModel(null, [], [], new MaskNumberModel(16, 2));
   phone: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
 
   formGroup: FormGroup;
@@ -33,9 +33,6 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   ngOnInit() {
     this.buildFormGroup();
     this.getRouteParams();
-    // this.date.valueChanges.subscribe(val => {
-    //   console.log('FormControl date:' + val);
-    // });
   }
 
   getRouteParams() {
@@ -45,11 +42,10 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   }
 
   buildFormGroup() {
-    this.value.mask = new MaskNumberModel(1, 2);
     this.formGroup = this.formBuilder.group({
       name: this.name,
-      date: this.date,
-      value: this.value,
+      birthday: this.birthday,
+      salario: this.salario,
       phone: this.phone
     });
   }

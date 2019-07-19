@@ -62,52 +62,52 @@
       <ak-card>
         <ak-card-header>
           <ak-card-avatar>
-            <mat-icon>star_border</mat-icon>
+            <mat-icon>assignment_ind</mat-icon>
           </ak-card-avatar>
-          <ak-card-title>Shiba Inu</ak-card-title>
-          <ak-card-subtitle>Dog Breed</ak-card-subtitle>
+          <ak-card-title>{{'titulo.titulo' | translate}}</ak-card-title>
+          <ak-card-subtitle>{{'subtitulo.subTitulo' | translate}}</ak-card-subtitle>
         </ak-card-header>
         <ak-card-content>
           <form [formGroup]="formGroup">
-            <p>
-              <ak-input
-                icon="mode_edit"
-                name="label.nome"
-                frmControlName="name"
-                [frmGroup]="formGroup"
-                [type]="typeFieldEnum.TEXT">
-              </ak-input>
-            </p>
-            <p>
-              <ak-input
-                icon="phone"
-                mask="(00) 0 0000-0000"
-                name="label.celular"
-                frmControlName="phone"
-                [frmGroup]="formGroup"
-                [type]="typeFieldEnum.TEXT">
-              </ak-input>
-            </p>
-            <p>
-              <ak-input
-                name="label.date"
-                placeholder="label.date"
-                frmControlName="date"
-                [frmGroup]="formGroup"
-                [type]="typeFieldEnum.DATE">
-              </ak-input>
-            </p>
-            <p>
-              <ak-input
-                suffix="R$"
-                name="label.valor"
-                placeholder="label.valor"
-                frmControlName="value"
-                [mask]="value.mask"
-                [frmGroup]="formGroup"
-                [type]="typeFieldEnum.NUMBER">
-              </ak-input>
-            </p>
+            <div class="flex col">
+              <div class="flex row">
+                <ak-input
+                  classFormField="full-width"
+                  icon="person"
+                  name="label.nomeCompleto"
+                  frmControlName="name"
+                  [frmGroup]="formGroup"
+                  [type]="typeFieldEnum.TEXT">
+                </ak-input>
+                <ak-input
+                  classFormField="full-width margin-left-default"
+                  icon="phone"
+                  mask="(00) 0 0000-0000"
+                  name="label.celular"
+                  frmControlName="phone"
+                  [frmGroup]="formGroup"
+                  [type]="typeFieldEnum.TEXT">
+                </ak-input>
+              </div>
+              <div class="flex row">
+                <ak-input
+                  classFormField="full-width"
+                  name="label.dataAniversario"
+                  frmControlName="birthday"
+                  [frmGroup]="formGroup"
+                  [type]="typeFieldEnum.DATE">
+                </ak-input>
+                <ak-input
+                  classFormField="full-width margin-left-default"
+                  suffix="R$"
+                  name="label.salario"
+                  frmControlName="salario"
+                  [mask]="salario.mask"
+                  [frmGroup]="formGroup"
+                  [type]="typeFieldEnum.NUMBER">
+                </ak-input>
+              </div>
+            </div>
           </form>
         </ak-card-content>
         <ak-card-actions>

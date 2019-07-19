@@ -88,11 +88,6 @@ $theme: custom-theme($primary, $accent, $warn);
 
 $ak-padding: 12px;
 
-.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
-  color: rgba(black, 0.87);
-  background-color: #fff;
-}
-
 .mat-drawer-side {
   border-right: 0px;
 }
@@ -125,9 +120,31 @@ ak-card-avatar {
   display: flex;
 }
 
+ak-input {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  &.row {
+    flex-direction: row;
+  }
+  &.col {
+    flex-direction: column;
+  }
+}
+
 .ak-button-row button,
 .ak-button-row a {
   margin-right: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.margin-left-default {
+  margin-left: 16px;
 }
 
 .bold {
