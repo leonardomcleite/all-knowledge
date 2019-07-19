@@ -1,5 +1,4 @@
 import { TypeField, TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
-import { AppDateAdapter, APP_DATE_FORMATS } from '@all-knowledge/core/helpers/date-adapter';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material';
@@ -23,8 +22,7 @@ export const MY_FORMATS = {
   styleUrls: ['./input.component.scss'],
   providers: [
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-    { provide: DateAdapter, useClass: AppDateAdapter },
-    // {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
   ],
 })
 export class InputComponent implements OnInit {

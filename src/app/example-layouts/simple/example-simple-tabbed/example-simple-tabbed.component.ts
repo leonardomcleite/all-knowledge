@@ -33,9 +33,9 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   ngOnInit() {
     this.buildFormGroup();
     this.getRouteParams();
-    this.date.valueChanges.subscribe(val => {
-      console.log('FormControl date:' + val);
-    });
+    // this.date.valueChanges.subscribe(val => {
+    //   console.log('FormControl date:' + val);
+    // });
   }
 
   getRouteParams() {
