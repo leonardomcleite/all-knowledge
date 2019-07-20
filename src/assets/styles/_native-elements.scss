@@ -1,0 +1,73 @@
+@mixin native-elements($theme) {
+  * {
+    font-family: $font-family;
+    outline: none !important;
+  }
+  
+  body {
+    font-family: $font-family;
+    background: mat-color($accent, 100);
+  }
+  
+  a {
+    color: mat-color($primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    height: 42px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h4 {
+    margin-top: 0;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  blockquote {
+    border-left: 3px solid mat-color($primary);
+    font-style: italic;
+    margin: 1em 0;
+    padding-left: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    &.warn {
+      border-left-color: mat-color($warn);
+    }
+    &.accent {
+      border-left-color: mat-color($accent);
+    }
+    &.danger {
+      border-left-color: mat-color($danger);
+    }
+  }
+  
+  blockquote footer {
+    font-style: normal;
+    display: block;
+  }
+  
+  blockquote footer:before {
+    content: "— ";
+  }
+}

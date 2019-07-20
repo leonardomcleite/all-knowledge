@@ -1,20 +1,9 @@
-
-@mixin ak-core($theme, $dark-theme) {
-  @include angular-material-theme($theme);
-  @include mat-button($theme);
-  @include mat-checkbox($theme);
-  @include mat-input($theme);
-  @include mat-menu($theme);
-  @include mat-tooltip($theme);
-  @include mat-radio-button($theme);
-  
-  .ak-dark-theme {
-    @include angular-material-theme($dark-theme);
-    @include mat-button($dark-theme);
-    @include mat-checkbox($dark-theme);
-    @include mat-input($dark-theme);
-    @include mat-menu($dark-theme);
-    @include mat-tooltip($dark-theme);
-    @include mat-radio-button($dark-theme);
-  }
+@mixin ak-core($light-theme) {
+  @include angular-material-theme($light-theme);
+  @include native-elements($light-theme);
+  @include utils($light-theme);
+  @include mat-card($light-theme);
+  @include mat-form-field($light-theme);
+  @include mat-tab($light-theme);
+  @include mat-toolbar($light-theme);
 }

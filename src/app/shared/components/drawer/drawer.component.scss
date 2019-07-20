@@ -1,4 +1,4 @@
 @import 'theming.scss';
 @import '../../../../assets/styles/components/drawer.scss';
 
-@include ak-drawer($theme);
+@include ak-drawer($light-theme);
