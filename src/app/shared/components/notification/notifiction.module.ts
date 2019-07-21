@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { NotificationComponent } from './notification.component';
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   imports: [
@@ -23,5 +24,8 @@ import { NotificationComponent } from './notification.component';
   entryComponents: [
     NotificationComponent
   ],
+  providers: [
+    NotificationService
+  ]
 })
 export class NotificationModule { }

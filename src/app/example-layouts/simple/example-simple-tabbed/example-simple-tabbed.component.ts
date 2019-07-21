@@ -12,10 +12,7 @@ import { NotificationType, NotificationEnum } from '@all-knowledge/core/models/n
 @Component({
   selector: 'ak-example-simple-tabbed',
   templateUrl: './example-simple-tabbed.component.html',
-  styleUrls: ['./example-simple-tabbed.component.scss'],
-  providers: [
-    NotificationService
-  ]
+  styleUrls: ['./example-simple-tabbed.component.scss']
 })
 export class ExampleSimpleTabbedComponent implements OnInit {
 
