@@ -1,13 +1,13 @@
 $color-success: #269800;
-$color-warning: #f3ab00;
-$color-information: #1f7fec;
+$color-warn: #f3ab00;
+$color-info: #1f7fec;
 $color-error: #fa4616;
 $color-background: #E8E8E8;
 $color-default: #000;
 $color-gray: #787878;
 
-.mat-snack-bar-container {
-  background: $color-background;
+::ng-deep snack-bar-container.mat-snack-bar-container {
+  padding: 0px;
 }
 
 snack-bar-container {
@@ -23,12 +23,13 @@ snack-bar-container {
     font-size: 25px;
   }
 }
-.dialog__content {
+
+.content {
   color: $color-default;
   margin-bottom: 5px;
 }
 
-.dialog-text {
+.text {
   font-weight: normal;
 }
 
@@ -39,20 +40,20 @@ div.snackbar {
   &.success {
     color: $color-success;
   }
-  &.warning {
-    color: $color-warning;
+  &.warn {
+    color: $color-warn;
   }
-  &.information {
-    color: $color-information;
+  &.info {
+    color: $color-info;
   }
   &.error {
     color: $color-error;
   }
 }
 
-div.icon {
-  margin: 0 10px -63px -15px;
-  padding: 10px;
+div.border {
+  margin: 0 10px -69px -15px;
+  padding: 5px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -60,11 +61,11 @@ div.icon {
   &.success {
     background-color: $color-success;
   }
-  &.warning {
-    background-color: $color-warning;
+  &.warn {
+    background-color: $color-warn;
   }
-  &.information {
-    background-color: $color-information;
+  &.info {
+    background-color: $color-info;
   }
   &.error {
     background-color: $color-error;
@@ -76,11 +77,14 @@ div.icon {
 }
 
 div.actions {
-  margin: 10px 10px 10px 55px;
+  margin: 10px 10px 10px 20px;
   display: flex;
   flex-direction: row-reverse;
   padding-top: 10px;
   border-top: 1px solid #ccc;
+  &button {
+    margin: 0 auto;
+  }
 }
 
 div.content {

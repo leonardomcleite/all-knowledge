@@ -44,10 +44,9 @@ export class NotificationService implements OnDestroy {
     options.message = message;
     options.type =  'error';
     options.showAction =  true;
-    options.actionLabel =  'btn.fechar';
+    options.actionLabel =  'botao.fechar';
     options.error =  error;
     // Notificação de erro não fecha sozinha, logo o tempo é setado como nulo
-    options.time =  null;
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -68,7 +67,7 @@ export class NotificationService implements OnDestroy {
     options.message = message;
     options.type =  'success';
     options.showAction =  true;
-    options.actionLabel =  'btn.fechar';
+    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -87,9 +86,9 @@ export class NotificationService implements OnDestroy {
     const options: OptionsNotificationModel = new OptionsNotificationModel();
     options.title = title;
     options.message = message;
-    options.type =  'warning';
+    options.type =  'warn';
     options.showAction =  true;
-    options.actionLabel =  'btn.fechar';
+    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -108,9 +107,9 @@ export class NotificationService implements OnDestroy {
     const options: OptionsNotificationModel = new OptionsNotificationModel();
     options.title = title;
     options.message = message;
-    options.type =  'information';
+    options.type =  'info';
     options.showAction =  true;
-    options.actionLabel =  'btn.fechar';
+    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);

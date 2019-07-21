@@ -83,6 +83,7 @@ $ak-grey: (
 $primary: mat-palette($mat-blue);
 $accent: mat-palette($ak-grey, 900);
 $warn: mat-palette($mat-yellow, 800);
+$danger: mat-palette($mat-red);
 
 $theme: custom-theme($primary, $accent, $warn);
 
@@ -171,7 +172,7 @@ mat-tab-header.mat-tab-header {
 }
 
 .error, .danger {
-  background-color: mat-color($mat-red);
+  background-color: mat-color($danger);
   color: white;
 }
 

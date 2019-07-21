@@ -13,6 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
 import { ExampleSimpleTabbedRoutingModule } from './example-simple-tabbed-routing.module';
 import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component';
+import { NotificationModule } from '@all-knowledge/shared/components/notification/notifiction.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component'
     SimpleTabbedModule,
     CardModule,
     InputModule,
+    NotificationModule,
 
     // Ngx Tranlate
     TranslateModule,

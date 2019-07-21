@@ -18,6 +18,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DrawerService } from './shared/components/drawer/drawer.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
+import { NotificationModule } from './shared/components/notification/notifiction.module';
 
 @NgModule({
   imports: [

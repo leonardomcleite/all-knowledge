@@ -1,13 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationType } from './notification.model';
 
-export type TypesNotification = 'success' |'warning' | 'error' | 'information';
 export type TypesVerticalPosition = 'top' | 'bottom';
 export type TypesHorizontalPosition = 'start' | 'center' | 'end' | 'left' | 'right';
 
 export class OptionsNotificationModel {
   title: string;
   message: string;
-  type: TypesNotification;
+  type: NotificationType;
   actionLabel?: string;
   showAction: boolean;
   verticalPosition: TypesVerticalPosition;

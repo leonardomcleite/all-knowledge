@@ -6,11 +6,16 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
+import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
+import { NotificationType, NotificationEnum } from '@all-knowledge/core/models/notification.model';
 
 @Component({
   selector: 'ak-example-simple-tabbed',
   templateUrl: './example-simple-tabbed.component.html',
-  styleUrls: ['./example-simple-tabbed.component.scss']
+  styleUrls: ['./example-simple-tabbed.component.scss'],
+  providers: [
+    NotificationService
+  ]
 })
 export class ExampleSimpleTabbedComponent implements OnInit {
 
@@ -28,6 +33,7 @@ export class ExampleSimpleTabbedComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private drawerService: DrawerService,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -53,6 +59,23 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   openDrawer() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
     this.drawerService.open(componentFactory, 'Example Drawer', 'lg', {title: 'Teste3'}, null);
+  }
+
+  openNotification(type: NotificationType) {
+    switch (type) {
+      case NotificationEnum.SUCCESS:
+        this.notificationService.success('Teste', 'Teste');
+        break;
+      case NotificationEnum.ERROR:
+        this.notificationService.error('Teste', 'Teste');
+        break;
+      case NotificationEnum.INFORMATION:
+        this.notificationService.information('Teste', 'Teste');
+        break;
+      case NotificationEnum.WARNING:
+        this.notificationService.warning('Teste', 'Teste');
+        break;
+    }
   }
 
 }

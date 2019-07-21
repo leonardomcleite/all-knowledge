@@ -112,6 +112,10 @@
         </ak-card-content>
         <ak-card-actions>
           <button mat-raised-button color="primary" (click)="openDrawer()">{{'label.abrirDrawer' | translate}}</button>
+          <button mat-raised-button [ngClass]="error" (click)="openNotification('error')">{{'label.notificationError' | translate}}</button>
+          <button mat-raised-button [ngClass]="success" (click)="openNotification('success')">{{'label.notificationSuccess' | translate}}</button>
+          <button mat-raised-button [ngClass]="info" (click)="openNotification('info')">{{'label.notificationInfo' | translate}}</button>
+          <button mat-raised-button [ngClass]="warn" (click)="openNotification('warn')">{{'label.notificationWarn' | translate}}</button>
         </ak-card-actions>
       </ak-card>
     </ak-simple-tabbed-item>
