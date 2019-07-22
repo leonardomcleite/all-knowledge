@@ -163,6 +163,41 @@ $success-palette: (
   )
 );
 
+$background : (
+  status-bar:               mat-color($accent-palette, 300),
+  app-bar:                  mat-color($accent-palette, 100),
+  background:               mat-color($accent-palette, 100),
+  hover:                    rgba(black, 0.04),
+  card:                   white,
+  dialog:                 white,
+  disabled-button:          rgba(black, 0.12),
+  raised-button:          white,
+  focused-button:           $dark-focused,
+  selected-button:          mat-color($accent-palette, 300),
+  selected-disabled-button: mat-color($accent-palette, 400),
+  disabled-button-toggle:   mat-color($accent-palette, 200),
+  unselected-chip:          mat-color($accent-palette, 300),
+  disabled-list-option:     mat-color($accent-palette, 200),
+);
+
+$foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
 $primary: mat-palette($primary-palette);
 $accent: mat-palette($accent-palette, 900);
 $warn: mat-palette($warn-palette, 800);

@@ -8,4 +8,8 @@
   @include mat-calendar($theme);
   @include native-elements($theme);
   @include utils($theme);
+
+  @include ak-input($theme);
+  @include ak-card($theme);
+  @include ak-button($theme);
 }

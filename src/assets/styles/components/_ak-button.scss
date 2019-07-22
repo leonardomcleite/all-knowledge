@@ -1,0 +1,6 @@
+@mixin ak-button($theme) {
+  .ak-button-row button,
+  .ak-button-row a {
+    margin-right: 8px;
+  }
+}

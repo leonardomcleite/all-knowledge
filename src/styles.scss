@@ -1,3 +1,4 @@
+// Core
 @import '~material-design-icons/iconfont/material-icons.css';
 @import 'theming';
 @import 'core';
@@ -14,6 +15,9 @@
 
 // App
 @import 'components/layouts';
+@import 'components/ak-input';
+@import 'components/ak-card';
+@import 'components/ak-button';
 
 @include mat-core();
 @include ak-core($theme);

@@ -3,75 +3,27 @@
 @import 'palettes';
 @import 'angular-material/mat-form-field';
 
-$background : (
-  status-bar:               mat-color($accent, 300),
-  app-bar:                  mat-color($accent, 100),
-  background:               mat-color($accent, 100),
-  hover:                    rgba(black, 0.04),
-  card:                   white,
-  dialog:                 white,
-  disabled-button:          rgba(black, 0.12),
-  raised-button:          white,
-  focused-button:           $dark-focused,
-  selected-button:          mat-color($accent, 300),
-  selected-disabled-button: mat-color($accent, 400),
-  disabled-button-toggle:   mat-color($accent, 200),
-  unselected-chip:          mat-color($accent, 300),
-  disabled-list-option:     mat-color($accent, 200),
-);
-
-$foreground: (
-  base:              black,
-  divider:           $dark-dividers,
-  dividers:          $dark-dividers,
-  disabled:          $dark-disabled-text,
-  disabled-button:   rgba(black, 0.26),
-  disabled-text:     $dark-disabled-text,
-  elevation:         black,
-  hint-text:         $dark-disabled-text,
-  secondary-text:    $dark-secondary-text,
-  icon:              rgba(black, 0.54),
-  icons:             rgba(black, 0.54),
-  text:              rgba(black, 0.87),
-  slider-min:        rgba(black, 0.87),
-  slider-off:        rgba(black, 0.26),
-  slider-off-active: rgba(black, 0.38),
-);
-
-
-
-@function custom-theme($primary, $accent, $warn) {
+@function custom-theme($primary, $accent, $warn, $danger, $success) {
   @return (
     primary: $primary,
     accent: $accent,
     warn: $warn,
+    danger: $danger,
+    success: $success,
     is-dark: true,
     foreground: $background,
     background: $foreground,
   );
 }
 
+$theme: custom-theme($primary, $accent, $warn, $danger, $success);
 
-$theme: custom-theme($primary, $accent, $warn);
-
-ak-card-avatar {
-  display: flex;
+.accent, .primary, .info, .success, .error, .danger {
+  color: white;
 }
-
-ak-input {
-  width: 100%;
-}
-
-
-.ak-button-row button,
-.ak-button-row a {
-  margin-right: 8px;
-}
-
 
 .accent {
   background-color: mat-color($accent, 500);
-  color: white;
 }
 
 .warn {
@@ -81,22 +33,12 @@ ak-input {
 
 .primary, .info {
   background-color: mat-color($primary);
-  color: white;
 }
 
 .success {
   background-color: mat-color($success);
-  color: white;
-}
-
-.primary {
-  background-color: mat-color($primary);
-  color: white;
 }
 
 .error, .danger {
   background-color: mat-color($danger);
-  color: white;
 }
-
-
