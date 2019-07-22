@@ -1,0 +1,84 @@
+@mixin ak-notification($theme) {
+  snack-bar-container {
+    background: white;
+    &:hover {
+      background: darken(white, 2%);
+    }
+  }
+  
+  .content {
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .title {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+
+  .text {
+    font-weight: normal;
+    font-size: 16px;
+  }
+  
+  div.snackbar {
+    display: flex;
+    padding: 0 0 0 15px;
+    min-height: 50px;
+  }
+  
+  div.border {
+    margin: 0 10px -68px -15px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 3px 0 0 3px;
+    &.no-action {
+      margin: 0 10px 0 -15px;
+    }
+  }
+    
+  div.actions {
+    margin: 10px 10px 10px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 10px;
+    border-top: 1px solid mat-color($accent, 400);
+    &button {
+      margin: 0 auto;
+    }
+  }
+  
+  div.content {
+    max-width: 310px;
+    margin: 10px 0;
+    display: grid;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  button.btnAction.mat-button {
+    height: 39px;
+    margin: auto 0;
+  }
+  
+  snack-bar-container.mat-snack-bar-container {
+    background-color: white;
+    max-width: 600px;
+    padding: 0px;
+  }
+  
+  .btn-label {
+    text-transform: none;
+    padding-right: 5px;
+  }
+  
+  .mat-icon.icon-action {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    font-weight: normal;
+  }
+  
+}

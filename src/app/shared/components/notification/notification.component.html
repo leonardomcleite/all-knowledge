@@ -1,11 +1,11 @@
 <div class="snackbar">
-  <div [class]="'border ' + options?.type" [class.mg-normal]="!options?.showAction"></div>
+  <div [ngClass]="'border ' + options?.type + (options?.showAction ? '' : ' no-action')" [class.mg-normal]="!options?.showAction"></div>
   <div class="content">
-    <span class="content">{{options?.title | translate}}</span>
-    <span class="text">{{options?.message | translate}}</span>
+    <span class="title">{{options?.title | translate}}</span>
+    <span class="text secondary-text">{{options?.message | translate}}</span>
   </div>
   <button mat-icon-button (click)="closeSnackBarMensagem()">
-    <mat-icon class="icon-action">close</mat-icon>
+    <mat-icon class="icon-action secondary-text">close</mat-icon>
   </button>
 </div>
 <div class="actions" *ngIf="options?.showAction">

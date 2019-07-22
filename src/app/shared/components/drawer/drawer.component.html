@@ -1,16 +1,16 @@
-<div *ngIf="drawer?.showOverlay" class="drawer__overlay --drawer-overlay-top-basic"></div>
+<div *ngIf="drawer?.showOverlay" class="overlay"></div>
 <div class="drawer --drawer-width-{{drawer.size}}" [ngClass]="getStyles()">
-  <div class="drawer__container --drawer-height-basic">
-    <div class="drawer__header">
-      <button class="drawer__button-close mat-elevation-z2" mat-mini-fab color="primary" (click)="close()">
+  <div class="container">
+    <div class="header">
+      <button class="button-close mat-elevation-z2" mat-mini-fab color="primary" (click)="close()">
         <mat-icon>close</mat-icon>
       </button>
-      <div class="drawer__title">
+      <div class="title">
         {{drawer?.title}}
       </div>
     </div>
-    <div class="drawer__content">
-      <div class="drawer__content-place mat-elevation-z1">
+    <div class="content">
+      <div class="content-place mat-elevation-z1">
         <ng-container #content></ng-container>
       </div>
     </div>

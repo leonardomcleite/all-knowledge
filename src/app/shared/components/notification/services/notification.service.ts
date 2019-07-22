@@ -5,6 +5,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { NotificationComponent } from '../notification.component';
+import { open } from 'inspector';
 
 @Injectable()
 export class NotificationService implements OnDestroy {
@@ -43,9 +44,10 @@ export class NotificationService implements OnDestroy {
     options.title = title;
     options.message = message;
     options.type =  'error';
-    options.showAction =  true;
-    options.actionLabel =  'botao.fechar';
     options.error =  error;
+    options.time = 100000;
+    options.killPrevious = false;
+    options.showAction = false;
     // Notificação de erro não fecha sozinha, logo o tempo é setado como nulo
     if (callback != null) {
       options.callbackAction = (ret) => {
@@ -66,8 +68,6 @@ export class NotificationService implements OnDestroy {
     options.title = title;
     options.message = message;
     options.type =  'success';
-    options.showAction =  true;
-    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -87,8 +87,6 @@ export class NotificationService implements OnDestroy {
     options.title = title;
     options.message = message;
     options.type =  'warn';
-    options.showAction =  true;
-    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -108,8 +106,6 @@ export class NotificationService implements OnDestroy {
     options.title = title;
     options.message = message;
     options.type =  'info';
-    options.showAction =  true;
-    options.actionLabel =  'botao.fechar';
     if (callback != null) {
       options.callbackAction = (ret) => {
         callback(ret);
@@ -123,6 +119,11 @@ export class NotificationService implements OnDestroy {
    * @param options - Opções de exibição da notificação
    */
   public newNotification(options: OptionsNotificationModel) {
+    if (options.killPrevious) {
+      this.close.next(this.snackQueue.pop());
+      this.isInstanceVisible = false;
+    }
+
     this.snackQueue.push(options);
 
     if (!this.isInstanceVisible) {
@@ -156,7 +157,7 @@ export class NotificationService implements OnDestroy {
    */
   private createConfigSnackbar(optionsNotf: OptionsNotificationModel) {
     const config = new MatSnackBarConfig();
-    config.duration = optionsNotf.time ? optionsNotf.time : 3000;
+    config.duration = optionsNotf.time ? optionsNotf.time : 100000;
     config.verticalPosition = optionsNotf.verticalPosition ? optionsNotf.verticalPosition : 'top';
     config.horizontalPosition = optionsNotf.horizontalPosition ? optionsNotf.horizontalPosition : 'right';
     config.data = {

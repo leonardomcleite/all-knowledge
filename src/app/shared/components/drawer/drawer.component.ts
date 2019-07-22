@@ -25,7 +25,6 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.loadComponent();
   }
 
-
   async ngOnDestroy() {
     if (this.subscription.length > 0) {
       this.subscription.forEach(subs => {
@@ -68,10 +67,6 @@ export class DrawerComponent implements OnInit, OnDestroy {
   }
 
   getStyles() {
-    return this.getAnimatedStyle().concat(' --drawer-top-basic');
-  }
-
-  getAnimatedStyle(): string {
     if (this.drawer.direction === 'up') {
       if (this.drawer.status === 0) {
         return 'drawer--close';
