@@ -1,17 +1,19 @@
 @import '~material-design-icons/iconfont/material-icons.css';
-@import 'theming.scss';
+@import 'theming';
+@import 'core';
+@import 'native-elements';
+@import 'utils';
 
-//Styles components
+// Angular material adapter
+@import 'angular-material/mat-tab';
+@import 'angular-material/mat-form-field';
+@import 'angular-material/mat-card';
+@import 'angular-material/mat-sidenav';
+@import 'angular-material/mat-toolbar';
+@import 'angular-material/mat-calendar';
+
+// App
 @import 'components/layouts';
 
 @include mat-core();
-@include angular-material-theme($theme);
-
-* {
-  font-family: $font-family;
-  outline: none !important;
-}
-
-body {
-  font-family: $font-family;
-}
+@include ak-core($theme);

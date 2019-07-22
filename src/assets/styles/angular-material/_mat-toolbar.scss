@@ -1,0 +1,5 @@
+@mixin mat-toolbar($theme) {
+  mat-toolbar.mat-toolbar-row, mat-toolbar.mat-toolbar-single-row {
+    height: 45px;
+  }
+}

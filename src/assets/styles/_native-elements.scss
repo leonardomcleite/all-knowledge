@@ -1,0 +1,89 @@
+@mixin native-elements($theme) {
+  * {
+    font-family: $font-family;
+    outline: none !important;
+  }
+  
+  body {
+    background: mat-color($accent, 100);
+    font-family: $font-family;
+  }
+
+  a {
+    color: mat-color($primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    height: 42px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h4 {
+    margin-top: 0;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  img {
+    width: 100%;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: mat-color($accent, 500);
+    border-radius: 10px;
+  }
+  
+  blockquote {
+    border-left: 3px solid mat-color($primary);
+    font-style: italic;
+    margin: 1em 0;
+    padding-left: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    &.warn {
+      border-left-color: mat-color($warn);
+    }
+    &.accent {
+      border-left-color: mat-color($accent);
+    }
+    &.danger {
+      border-left-color: mat-color($danger);
+    }
+  }
+  
+  blockquote footer {
+    font-style: normal;
+    display: block;
+  }
+  
+  blockquote footer:before {
+    content: "— ";
+  }
+}

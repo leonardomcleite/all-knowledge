@@ -1,0 +1,5 @@
+@mixin mat-tab($theme) {
+  mat-tab-header.mat-tab-header {
+    border-bottom: 1px solid mat-color($accent, 300);
+  }
+}

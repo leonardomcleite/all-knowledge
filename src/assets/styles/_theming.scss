@@ -1,21 +1,23 @@
 @import '~@angular/material/theming';
 @import 'variables';
+@import 'palettes';
+@import 'angular-material/mat-form-field';
 
 $background : (
-  status-bar:               mat-color($mat-grey, 300),
-  app-bar:                  mat-color($mat-grey, 100),
-  background:               mat-color($mat-grey, 100),
+  status-bar:               mat-color($accent, 300),
+  app-bar:                  mat-color($accent, 100),
+  background:               mat-color($accent, 100),
   hover:                    rgba(black, 0.04),
   card:                   white,
   dialog:                 white,
   disabled-button:          rgba(black, 0.12),
   raised-button:          white,
   focused-button:           $dark-focused,
-  selected-button:          mat-color($mat-grey, 300),
-  selected-disabled-button: mat-color($mat-grey, 400),
-  disabled-button-toggle:   mat-color($mat-grey, 200),
-  unselected-chip:          mat-color($mat-grey, 300),
-  disabled-list-option:     mat-color($mat-grey, 200),
+  selected-button:          mat-color($accent, 300),
+  selected-disabled-button: mat-color($accent, 400),
+  disabled-button-toggle:   mat-color($accent, 200),
+  unselected-chip:          mat-color($accent, 300),
+  disabled-list-option:     mat-color($accent, 200),
 );
 
 $foreground: (
@@ -36,38 +38,7 @@ $foreground: (
   slider-off-active: rgba(black, 0.38),
 );
 
-$ak-grey: (
-  50: #f5f5f5,
-  100: #f5f5f5,
-  200: #eeeeee,
-  300: #e0e0e0,
-  400: #bdbdbd,
-  500: #9e9e9e,
-  600: #757575,
-  700: #616161,
-  800: #2d323e,
-  900: #1e2129,
-  A100: #ffffff,
-  A200: #eeeeee,
-  A400: #bdbdbd,
-  A700: #616161,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $light-primary-text,
-  )
-);
+
 
 @function custom-theme($primary, $accent, $warn) {
   @return (
@@ -80,42 +51,8 @@ $ak-grey: (
   );
 }
 
-$primary: mat-palette($mat-blue);
-$accent: mat-palette($ak-grey, 900);
-$warn: mat-palette($mat-yellow, 800);
-$danger: mat-palette($mat-red);
 
 $theme: custom-theme($primary, $accent, $warn);
-
-$ak-padding: 12px;
-
-.mat-drawer-side {
-  border-right: 0px;
-}
-
-mat-toolbar.mat-toolbar-row, mat-toolbar.mat-toolbar-single-row {
-  height: 45px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: mat-color($accent, 500);
-  border-radius: 10px;
-}
-
-body {
-  background: mat-color($mat-grey, 100);
-}
 
 ak-card-avatar {
   display: flex;
@@ -125,36 +62,12 @@ ak-input {
   width: 100%;
 }
 
-.flex {
-  display: flex;
-  &.row {
-    flex-direction: row;
-  }
-  &.col {
-    flex-direction: column;
-  }
-}
 
 .ak-button-row button,
 .ak-button-row a {
   margin-right: 8px;
 }
 
-.full-width {
-  width: 100%;
-}
-
-.margin-left-default {
-  margin-left: 16px;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-mat-tab-header.mat-tab-header {
-  border-bottom: 1px solid mat-color($accent, 300);
-}
 
 .accent {
   background-color: mat-color($accent, 500);
@@ -164,6 +77,16 @@ mat-tab-header.mat-tab-header {
 .warn {
   background-color: mat-color($warn);
   color: black;
+}
+
+.primary, .info {
+  background-color: mat-color($primary);
+  color: white;
+}
+
+.success {
+  background-color: mat-color($success);
+  color: white;
 }
 
 .primary {
@@ -176,119 +99,4 @@ mat-tab-header.mat-tab-header {
   color: white;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-}
 
-h1 {
-  margin: 0;
-  font-size: 24px;
-  height: 42px;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 15px;
-}
-
-p {
-  font-size: 14px;
-}
-
-blockquote {
-  border-left: 3px solid mat-color($primary);
-  font-style: italic;
-  margin: 1em 0;
-  padding-left: 16px;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  &.warn {
-    border-left-color: mat-color($warn);
-  }
-  &.accent {
-    border-left-color: mat-color($accent);
-  }
-  &.danger {
-    border-left-color: mat-color($mat-red);
-  }
-}
-
-blockquote footer {
-  font-style: normal;
-  display: block;
-}
-
-blockquote footer:before {
-  content: "— ";
-}
-
-.secondary-text {
-  color: rgba(0,0,0,.54);
-}
-
-a {
-  color: mat-color($primary);
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-img {
-  width: 100%;
-}
-
-mat-error.mat-error {
-  height: 15px;
-  color: red;
-}
-
-::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick,
-::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label,
-::ng-deep .mat-form-field-invalid .mat-input-element {
-  color: red;
-  caret-color: red;
-}
-
-mat-calendar {
-  background: white;
-}
-
-.hidden {
-  display: none;
-}
-
-mat-form-field .mat-form-field-hint-wrapper, mat-hint {
-  display: block;
-}
-
-mat-card.mat-card {
-  margin: 3px;
-}
-
-
-// Angular connectors
-// @import 'connectors/angular/accordion';
-// @import 'connectors/angular/button';
-// @import 'connectors/angular/card';
-// @import 'connectors/angular/checkbox';
-// @import 'connectors/angular/date-picker';
-// @import 'connectors/angular/drawer';
-// @import 'connectors/angular/fab';
-// @import 'connectors/angular/input';
-// @import 'connectors/angular/menu';
-// @import 'connectors/angular/radio-button';
-// @import 'connectors/angular/stepper';
-// @import 'connectors/angular/table';
-// @import 'connectors/angular/toolbar';
-// @import 'connectors/angular/tabs';
-// @import 'connectors/angular/toggle';
-// @import 'connectors/angular/tooltip';
-// @import 'connectors/angular/slide-toggle';
-// @import 'core';
-
-// @include ak-core($theme, $theme);

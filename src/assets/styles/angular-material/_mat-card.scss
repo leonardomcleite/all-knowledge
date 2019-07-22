@@ -1,0 +1,13 @@
+@mixin mat-card($theme) {
+  mat-card.mat-card {
+    margin: 3px;
+  }
+
+  mat-card-actions.mat-card-actions button.mat-raised-button {
+    margin: 0 0 0 8px;
+  }
+  
+  mat-card-actions.mat-card-actions button.mat-raised-button.right {
+    margin: 0 8px 0 0;
+  }
+}
