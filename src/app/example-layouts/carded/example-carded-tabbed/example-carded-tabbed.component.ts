@@ -1,5 +1,7 @@
 import { TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
 import { FormControlModel } from '@all-knowledge/core/models/form-control.model';
+import { NotificationEnum, NotificationType } from '@all-knowledge/core/models/notification.model';
+import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
 import { MaskNumberModel } from '@all-knowledge/shared/directives/mask-number/mask.-number.type';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -24,6 +26,7 @@ export class ExampleCardedTabbedComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -46,4 +49,20 @@ export class ExampleCardedTabbedComponent implements OnInit {
     });
   }
 
+  openNotification(type: NotificationType) {
+    switch (type) {
+      case NotificationEnum.SUCCESS:
+        this.notificationService.success('Teste', 'Teste');
+        break;
+      case NotificationEnum.ERROR:
+        this.notificationService.error('Teste', 'Teste');
+        break;
+      case NotificationEnum.INFORMATION:
+        this.notificationService.information('Teste', 'Teste');
+        break;
+      case NotificationEnum.WARNING:
+        this.notificationService.warning('Teste', 'Teste');
+        break;
+    }
+  }
 }

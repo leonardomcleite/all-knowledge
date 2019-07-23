@@ -1,12 +1,12 @@
 <ak-carded-tabbed>
   <ak-carded-tabbed-header>
-    <span>{{'titulo.cardedTabbed' | translate}}</span>
+    <span>{{'titulo.simpleTabbed' | translate}}</span>
   </ak-carded-tabbed-header>
-  <ak-carded-tabbed-content>
-    <ak-carded-tabbed-item label="Tab1">
-      <div >
-        <h1>Early Sunrise in Winter</h1>
-        <h4 class="secondary-text">Demo Content</h4>
+  <ak-carded-tabbed-content [(selectedIndex)]="params.tab" [setTabInRoute]="true">
+    <ak-carded-tabbed-item label="{{'label.artigo' | translate}}">
+      <div>
+        <h1>{{'titulo.nascerDoSol' | translate}}</h1>
+        <h4 class="secondary-text">{{'subtitulo.demoContent' | translate}}</h4>
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor nibh,
           convallis sed purus nec, auctor venenatis nisl. Suspendisse potenti. Nullam sagittis nulla in diam finibus, sed
           pharetra velit vestibulum. Suspendisse euismod in urna eu posuere. </p>
@@ -39,11 +39,11 @@
             href="#">Donec viverra sed felis at venenatis.</a> Mauris aliquam fringilla nulla, sit amet congue felis
           dignissim at. </p>
         <ul >
-          <li >Orci varius</li>
-          <li >Magnis dis</li>
-          <li >Conubia nostra</li>
-          <li >Semper urna</li>
-          <li >Donec viverra</li>
+          <li >Item 1</li>
+          <li >Item 2</li>
+          <li >Item 3</li>
+          <li >Item 4</li>
+          <li >Item 5</li>
         </ul>
         <p > Quisque accumsan augue tempor ante mollis, sed placerat diam porttitor. Vestibulum
           dignissim sem vel velit eleifend, non pellentesque quam convallis. Pellentesque est dolor, dignissim ac tortor
@@ -58,7 +58,7 @@
           ante sollicitudin. Donec viverra augue dolor, a venenatis tellus consectetur sit amet. </p>
       </div>
     </ak-carded-tabbed-item>
-    <ak-carded-tabbed-item label="Tab2">
+    <ak-carded-tabbed-item label="{{'label.formulario' | translate}}">
       <ak-card>
         <ak-card-header>
           <ak-card-avatar>
@@ -111,12 +111,17 @@
           </form>
         </ak-card-content>
         <ak-card-actions>
-          <button mat-raised-button color="primary">{{'label.abrirDrawer' | translate}}</button>
+          <ng-container right>
+            <button mat-raised-button class="error" (click)="openNotification('error')">{{'label.notificationError' | translate}}</button>
+            <button mat-raised-button class="success" (click)="openNotification('success')">{{'label.notificationSuccess' | translate}}</button>
+            <button mat-raised-button class="info" (click)="openNotification('info')">{{'label.notificationInfo' | translate}}</button>
+            <button mat-raised-button class="warn" (click)="openNotification('warn')">{{'label.notificationWarn' | translate}}</button>
+          </ng-container>
         </ak-card-actions>
       </ak-card>
     </ak-carded-tabbed-item>
-    <ak-carded-tabbed-item label="Tab3">
-      <div>Container</div>
+    <ak-carded-tabbed-item label="{{'label.abaVazia' | translate}}">
+      <div>Content</div>
     </ak-carded-tabbed-item>
   </ak-carded-tabbed-content>
 </ak-carded-tabbed>

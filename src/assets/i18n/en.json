@@ -6,13 +6,17 @@
     "erro": "Error",
     "nomeCompleto": "Full name",
     "salario": "Salary",
-    "abrirDrawer": "Open Drawer",
+    "abrirDrawer": "Open drawer",
     "celular": "Cell phone",
     "dataAniversario": "Birthday",
-    "notificationError": "Error Notification",
-    "notificationSuccess": "Success Notification ",
-    "notificationInfo": "Information Notification ",
-    "notificationWarn": "Warn Notification "
+    "notificationError": "Error notification",
+    "notificationSuccess": "Success notification",
+    "notificationInfo": "Information notification",
+    "notificationWarn": "Warn notification",
+    "artigo": "Article",
+    "formulario": "Form",
+    "abaVazia": "Tab empty",
+    "content": "Content"
   },
   "titulo": {
     "simpleFullWidth": "Simple - Full width",
@@ -21,10 +25,13 @@
     "cardedTabbed": "Carded - Tabbed",
     "bemVindo": "Welcome to",
     "sobre": "About",
-    "titulo": "Title"
+    "titulo": "Title",
+    "nascerDoSol": "Sunrise",
+    "exampleDrawer": "Example Drawer"
   },
   "subtitulo": {
-    "subTitulo": "Subtitle"
+    "subTitulo": "Subtitle",
+    "demoContent": "Demo Content"
   },
   "validacao": {
     "campoObrigatorio": "Required field",

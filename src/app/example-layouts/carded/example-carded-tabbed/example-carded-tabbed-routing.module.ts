@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: ExampleCardedTabbedComponent
   },
+  {
+    path: ':tab',
+    component: ExampleCardedTabbedComponent
+  }
 ];
 
 @NgModule({

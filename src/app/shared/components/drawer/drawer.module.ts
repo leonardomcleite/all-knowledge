@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 import { DrawerComponent } from './drawer.component';
 
 @NgModule({
@@ -16,6 +17,9 @@ import { DrawerComponent } from './drawer.component';
   imports: [
     // Angular Core
     CommonModule,
+
+    // Ngx Translate
+    TranslateModule,
 
     // Angular Material
     MatButtonModule,
