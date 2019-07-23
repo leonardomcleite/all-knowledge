@@ -2,4 +2,15 @@
   div.mat-menu-panel {
     background-color: white;
   }
+  
+  button.mat-menu-item {
+    padding: 0 16px 0 6px;
+  }
+
+  div.mat-menu-option {
+    border-bottom: 1px solid mat-color($accent, 100);
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 }
