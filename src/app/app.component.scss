@@ -1,6 +1,7 @@
 @import 'theming.scss';
 
 @media only screen and (max-width: 600px) {
+  ak-header,
   .ak-content,
   .ak-content.sidenav-open {
     width: 100%;
@@ -38,6 +39,7 @@
 
 .ak-header {
   top: 0;
+  width: calc(100% - 250px);
 }
 
 .ak-footer {
@@ -58,6 +60,10 @@
   &.ak-footer {
     left: 0;
   }
+
+  &.ak-header {
+    width: 100%;
+  }
 }
 
 .autor-title {
@@ -66,4 +72,8 @@
 
 .autor {
   font-size: 18px;
+}
+
+img.flag {
+  width: 40px;
 }

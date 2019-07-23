@@ -1,18 +1,13 @@
 import { environment } from '@all-knowledge/env/environment.js';
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Observable } from 'rxjs/internal/Observable';
-import * as ptBR from '../../../../assets/i18n/pt-BR.json';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable()
 export class InternationalizationService {
 
-  /**
-   * Setar o idioma nativo para tradução
-   */
-  public set language(language: string) {
-    this.translateService.use(language);
-  }
+  public onLangChange: Subject<any> = new Subject<any>();
 
   constructor(
     private translateService: TranslateService
@@ -22,10 +17,12 @@ export class InternationalizationService {
    * Inicializar o tradutor
    */
   public init() {
-    let translates: any;
-    translates = JSON.parse(JSON.stringify(ptBR));
-    this.translateService.setTranslation(environment.defaultLanguage , translates.default);
-    this.language = environment.defaultLanguage;
+    this.translateService.setDefaultLang(environment.defaultLanguage);
+    this.translateService.use(environment.defaultLanguage);
+
+    this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.onLangChange.next(event.lang);
+    });
   }
 
   /**
@@ -34,6 +31,13 @@ export class InternationalizationService {
    */
   public translate(value: string): Observable<any> {
     return this.translateService.get(value);
+  }
+
+  /**
+   * Setar o idioma nativo para tradução
+   */
+  public changeLanguage(language) {
+    this.translateService.use(language);
   }
 
 }

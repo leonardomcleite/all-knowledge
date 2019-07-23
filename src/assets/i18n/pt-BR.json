@@ -61,5 +61,9 @@
   },
   "autor": {
     "nome": "Leonardo Marques"
+  },
+  "countries": {
+    "BR": "Brasil",
+    "USA": "Estados Unidos"
   }
 }

@@ -4,6 +4,7 @@ import { InternationalizationService } from './core/services/internationalizatio
 import { DrawerService } from './shared/components/drawer/drawer.service';
 import { DrawerModel } from './shared/components/drawer/models/drawer';
 import { environment } from '@all-knowledge/env/environment';
+import { CountriesModel } from './core/models/countries.model';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit {
   isMobile: boolean = false;
   drawers: Array<DrawerModel>;
   drawersSubject: Subscription;
+  countries: Array<CountriesModel>;
+  countrySelected: CountriesModel;
 
   constructor(
     private internationalizationService: InternationalizationService,
@@ -29,7 +32,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createObservableDrawers();
+    this.setCountries();
     console.log(environment.ambiente);
+
+    this.internationalizationService.onLangChange.subscribe((language) => {
+      this.countrySelected = this.countries.filter((item) => item.codeLanguage === language)[0];
+    });
   }
 
   createObservableDrawers() {
@@ -41,10 +49,31 @@ export class AppComponent implements OnInit {
     }
   }
 
+  setCountries() {
+    this.countries = new Array<CountriesModel>();
+    this.countries.push(new CountriesModel(
+      'brazil.svg',
+      'pt-BR',
+      'Brasil',
+      'BR'
+    ));
+    this.countries.push(new CountriesModel(
+      'USA.svg',
+      'en',
+      'Estados Unidos',
+      'USA'
+    ));
+  }
+
   closeSidenav(sidenav) {
     if (this.isMobile) {
       sidenav.close();
     }
+  }
+
+  changeLanguage(country: CountriesModel) {
+    this.countrySelected = country;
+    this.internationalizationService.changeLanguage(country.codeLanguage);
   }
 
 }

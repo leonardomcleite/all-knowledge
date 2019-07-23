@@ -1,7 +1,23 @@
-<mat-toolbar class="ak-header mat-elevation-z2" [class.ak-is-mobile]="!sideOpened">
-  <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened">
-    <mat-icon>menu</mat-icon>
-  </button>
+<mat-toolbar [class.ak-is-mobile]="!sideOpened" class="flex row ak-header mat-elevation-z2">
+  <div class="flex row left">
+    <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="flex row right">
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img class="flag" [src]="'assets/images/flags/' + countrySelected?.thumbnail" [alt]="countrySelected?.fullName" *ngIf="countrySelected">
+        <span>{{countrySelected?.shortName}}</span>
+      </button>
+    </div>
+    <mat-menu #menu="matMenu">
+      <div class="flex row mat-menu-option" *ngFor="let country of countries">
+        <img class="flag" [src]="'assets/images/flags/' + country?.thumbnail" [alt]="country?.fullName">
+        <button mat-menu-item (click)="changeLanguage(country)" >{{('countries.' + country?.shortName) | translate}}</button>
+      </div>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="ak-container">

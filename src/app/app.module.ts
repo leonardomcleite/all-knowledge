@@ -18,6 +18,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
 import { DrawerService } from './shared/components/drawer/drawer.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
     }),
@@ -50,6 +51,7 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatMenuModule,
   ],
   declarations: [
     AppComponent,
@@ -62,7 +64,6 @@ import { NavHeaderModule } from './shared/components/nav-header/nav-header.modul
 })
 export class AppModule { }
 
-// required for AOT compilation
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './assets/i18n/');
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

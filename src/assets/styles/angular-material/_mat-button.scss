@@ -1,0 +1,7 @@
+@mixin mat-button($theme) {
+  button.mat-icon-button {
+    width: auto;
+    height: auto;
+    line-height: initial;
+  }
+}

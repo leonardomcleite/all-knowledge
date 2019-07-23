@@ -1,0 +1,69 @@
+{
+  "label": {
+    "autor": "Autor",
+    "date": "Date",
+    "digiteNomeCompleto": "Enter full name",
+    "erro": "Error",
+    "nomeCompleto": "Full name",
+    "salario": "Salary",
+    "abrirDrawer": "Open Drawer",
+    "celular": "Cell phone",
+    "dataAniversario": "Birthday",
+    "notificationError": "Error Notification",
+    "notificationSuccess": "Success Notification ",
+    "notificationInfo": "Information Notification ",
+    "notificationWarn": "Warn Notification "
+  },
+  "titulo": {
+    "simpleFullWidth": "Simple - Full width",
+    "simpleTabbed": "Simple - Tabbed",
+    "cardedFullWidth": "Card - Full width",
+    "cardedTabbed": "Card - Tabbed",
+    "bemVindo": "Welcome to",
+    "sobre": "About",
+    "titulo": "Title"
+  },
+  "subtitulo": {
+    "subTitulo": "Subtitle"
+  },
+  "validacao": {
+    "campoObrigatorio": "Required field",
+    "maxLength": "Maximum number of characters exceeded",
+    "minLength": "Minimum amount of characters not met",
+    "maxValue": "Maximum value exceeded",
+    "minValue": "Minimum value not met",
+    "campoInvalido": "Invalid field: ",
+    "dataInvalida": "Invalid date",
+    "numeroInvalida": "Invalid number"
+  },
+  "msg": {
+    "sucesso": "Data saved successfully.",
+    "semRegistros": "No records found."
+  },
+  "erro": {
+    "503": "Connection failed.",
+    "401": "Unauthorized user."
+  },
+  "menu": {
+    "sobre": "About",
+    "layouts": "Layouts",
+    "carded": "Card",
+    "simple": "Simple"
+  },
+  "submenu": {
+    "fullWidth": "Full width",
+    "tabbed": "Tabbed"
+  },
+  "botao": {
+    "tipoCobranca": "Save",
+    "fechar": "Close",
+    "ok": "OK"
+  },
+  "autor": {
+    "nome": "Leonardo Marques"
+  },
+  "countries": {
+    "BR": "Brazil",
+    "USA": "United States"
+  }
+}
