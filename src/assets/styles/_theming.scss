@@ -31,8 +31,12 @@ $theme: custom-theme($primary, $accent, $warn, $danger, $success);
   color: black;
 }
 
-.primary, .info {
+.primary {
   background-color: mat-color($primary);
+}
+
+.info {
+  background-color: mat-color($primary, 900);
 }
 
 .success {

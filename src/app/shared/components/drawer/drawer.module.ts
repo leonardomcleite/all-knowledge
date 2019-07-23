@@ -14,7 +14,7 @@ import { DrawerComponent } from './drawer.component';
     DrawerComponent
   ],
   imports: [
-    // Angular
+    // Angular Core
     CommonModule,
 
     // Angular Material

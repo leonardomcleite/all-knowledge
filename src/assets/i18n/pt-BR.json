@@ -56,7 +56,8 @@
   },
   "botao": {
     "tipoCobranca": "Salvar",
-    "fechar": "Fechar"
+    "fechar": "Fechar",
+    "ok": "OK"
   },
   "autor": {
     "nome": "Leonardo Marques"

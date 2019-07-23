@@ -10,13 +10,17 @@ import { NotificationService } from './services/notification.service';
 
 @NgModule({
   imports: [
+    // Angular
     CommonModule,
     FormsModule,
 
+    // Ngx Translate
+    TranslateModule,
+
+    // Angular Material
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,
-    TranslateModule
   ],
   declarations: [
     NotificationComponent

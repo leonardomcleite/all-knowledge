@@ -8,7 +8,7 @@ export class OptionsNotificationModel {
   title: string;
   message: string;
   type: NotificationType;
-  actionLabel?: string = 'botao.fechar';
+  actionLabel?: string = 'botao.ok';
   showAction: boolean = true;
   verticalPosition: TypesVerticalPosition;
   horizontalPosition: TypesHorizontalPosition;

@@ -10,11 +10,14 @@ import { SimpleFullWidthModule } from '@all-knowledge/shared/components/page-lay
     SobreComponent
   ],
   imports: [
+    // Angular Core
     CommonModule,
-    SobreRoutingModule,
 
+    // App
+    SobreRoutingModule,
     SimpleFullWidthModule,
 
+    // Ngx Translate
     TranslateModule,
   ]
 })

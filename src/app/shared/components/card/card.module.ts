@@ -29,8 +29,10 @@ import { CardAvatarComponent } from './card-avatar/card-avatar.component';
     CardAvatarComponent
   ],
   imports: [
+    // Angular Core
     CommonModule,
 
+    // Angular Material
     MatCardModule,
   ]
 })

@@ -27,7 +27,7 @@ import { NotificationModule } from '@all-knowledge/shared/components/notificatio
     ExampleDrawerComponent
   ],
   imports: [
-    // Angular
+    // Angular Core
     CommonModule,
     ReactiveFormsModule,
 
@@ -47,7 +47,6 @@ import { NotificationModule } from '@all-knowledge/shared/components/notificatio
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-
   ]
 })
 export class ExampleSimpleTabbedModule { }

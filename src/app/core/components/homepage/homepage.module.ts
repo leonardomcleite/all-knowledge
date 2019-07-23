@@ -10,11 +10,15 @@ import { TranslateModule } from '@ngx-translate/core';
     HomepageComponent
   ],
   imports: [
+    // Angular Core
     CommonModule,
-    HomepageRoutingModule,
 
-    TranslateModule,
+    // App
+    HomepageRoutingModule,
     SimpleFullWidthModule,
+
+    // Ngx Translate
+    TranslateModule,
   ]
 })
 export class HomepageModule { }

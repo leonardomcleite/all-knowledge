@@ -3,9 +3,29 @@
     display: flex;
     &.row {
       flex-direction: row;
+      &.left {
+        justify-content: flex-start;
+      }
+      &.right {
+        justify-content: flex-end;
+        flex-grow: 1;
+      }
+      &.center {
+        justify-content: center;
+      }
     }
     &.col {
       flex-direction: column;
+      &.left {
+        align-content: flex-start;
+      }
+      &.right {
+        align-content: flex-end;
+        flex-grow: 1;
+      }
+      &.center {
+        align-content: center;
+      }
     }
   }
   

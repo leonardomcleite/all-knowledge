@@ -15,14 +15,14 @@ import { ExampleSimpleFullWidthComponent } from './example-simple-full-width.com
     ExampleSimpleFullWidthComponent,
   ],
   imports: [
-    // Angular
+    // Angular Core
     CommonModule,
 
     // App
     ExampleSimpleFullWidthRoutingModule,
     SimpleFullWidthModule,
 
-    // Translate
+    // Ngx Translate
     TranslateModule,
 
     // Angular Material

@@ -18,7 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ExampleCardedTabbedComponent
   ],
   imports: [
-    // Angular
+    // Angular Core
     CommonModule,
     ReactiveFormsModule,
 

@@ -19,10 +19,9 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     InputComponent
   ],
   imports: [
-    // Angular
+    // Angular Core
     CommonModule,
     ReactiveFormsModule,
-    TranslateModule,
 
     // Angular Material
     MatFormFieldModule,
@@ -30,6 +29,9 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatIconModule,
     MatDatepickerModule,
     MatMomentDateModule,
+
+    // Ngx Translate
+    TranslateModule,
 
     // Angular 2 Input Mask
     NgxMaskModule.forRoot(options),

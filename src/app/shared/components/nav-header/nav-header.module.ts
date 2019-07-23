@@ -13,9 +13,11 @@ import { RouterModule } from '@angular/router';
     NavHeaderComponent
   ],
   imports: [
+    // Angular Core
     CommonModule,
     RouterModule,
 
+    // Angular Material
     MatButtonModule,
     MatIconModule,
   ]

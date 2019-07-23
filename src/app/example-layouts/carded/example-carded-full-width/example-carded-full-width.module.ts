@@ -9,12 +9,17 @@ import { ExampleCardedFullWidthComponent } from './example-carded-full-width.com
 @NgModule({
   declarations: [ExampleCardedFullWidthComponent],
   imports: [
+    // Angular Core
     CommonModule,
-    ExampleCardedFullWidthRoutingModule,
 
+    // App
+    ExampleCardedFullWidthRoutingModule,
     CardedFullWidthModule,
+
+    // Ngx Translate
     TranslateModule,
 
+    // Angular Material
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,

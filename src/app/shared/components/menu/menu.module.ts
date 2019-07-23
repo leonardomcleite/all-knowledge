@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatIconModule } from '@angular/material';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu.component';
 import { MenuService } from './services/menu.service';
-import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -15,12 +15,16 @@ import { MatIconModule } from '@angular/material';
     MenuComponent,
   ],
   imports: [
+    // Angular Core
     CommonModule,
     RouterModule,
-    TranslateModule,
 
+    // Angular Material
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+
+    // Ngx Translate
+    TranslateModule,
   ],
   providers: [
     MenuService
