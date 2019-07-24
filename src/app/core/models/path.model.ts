@@ -34,7 +34,7 @@ export class PathModel {
 
     this.paths.forEach(path => {
       if (path) {
-        path = path.replace(/\{.*\}/g, ''); // Limpa variáveis não preenchidas
+        // path = path.replace(/\{.*\}/g, ''); // Limpa variáveis não preenchidas
         url += '/'.concat(path);
       }
     });

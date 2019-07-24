@@ -18,7 +18,8 @@
     "abaVazia": "Tab empty",
     "content": "Content",
     "buscaTabela": "Find in Table",
-    "testeService": "Service REST test"
+    "testeService": "Service REST test",
+    "cpf": "CPF"
   },
   "titulo": {
     "simpleFullWidth": "Simple - Full width",

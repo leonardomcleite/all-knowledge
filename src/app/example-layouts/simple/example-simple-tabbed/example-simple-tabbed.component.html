@@ -75,16 +75,17 @@
                   classFormField="full-width"
                   icon="person"
                   name="label.nomeCompleto"
-                  frmControlName="name"
+                  frmControlName="nomeCivil"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.TEXT">
                 </ak-input>
                 <ak-input
                   classFormField="full-width margin-left-default"
+                  suffix="#"
                   icon="phone"
-                  mask="(00) 0 0000-0000"
-                  name="label.celular"
-                  frmControlName="phone"
+                  mask="000.000.000-00"
+                  name="label.cpf"
+                  frmControlName="cpf"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.TEXT">
                 </ak-input>
@@ -93,7 +94,7 @@
                 <ak-input
                   classFormField="full-width"
                   name="label.dataAniversario"
-                  frmControlName="birthday"
+                  frmControlName="dataNascimento"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.DATE">
                 </ak-input>

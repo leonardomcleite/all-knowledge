@@ -27,44 +27,34 @@ export class RestClient {
     return new RESTClientBuilder(this.http, method as RequestMethod, this.customHttpEventObserverService, this.router, this.handleErrorService);
   }
 
-  public get<T>(path: string | PathModel, queryOptions ?: any): Observable <T> {
-    const request = this.request(RequestMethod.Get).url(path).addOptions(queryOptions);
+  public get<T>(path: string | PathModel, pathParams: Array<string>, queryOptions ?: any): Observable <T> {
+    const request = this.request(RequestMethod.Get).url(path).buildPathParams(pathParams).addOptions(queryOptions);
     const customCatchError = queryOptions && queryOptions.customCatchError ? true : false;
     return request.send(customCatchError);
   }
 
-  public post<T>(path: string | PathModel, body: any, queryOptions ?: any): Observable <T> {
-    const request = this.request(RequestMethod.Post).url(path).addOptions(queryOptions);
+  public post<T>(path: string | PathModel, body: any, pathParams: Array<string>, queryOptions ?: any): Observable <T> {
+    const request = this.request(RequestMethod.Post).url(path).buildPathParams(pathParams).addOptions(queryOptions);
     const customCatchError = queryOptions && queryOptions.customCatchError ? true : false;
     return request.body(body).send(customCatchError);
   }
 
-  public put<T>(path: string | PathModel, body: any, queryOptions ?: any): Observable <T> {
-    const request = this.request(RequestMethod.Put).url(path).addOptions(queryOptions);
+  public put<T>(path: string | PathModel, body: any, pathParams: Array<string>, queryOptions ?: any): Observable <T> {
+    const request = this.request(RequestMethod.Put).url(path).buildPathParams(pathParams).addOptions(queryOptions);
     const customCatchError = queryOptions && queryOptions.customCatchError ? true : false;
     return request.body(body).send(customCatchError);
   }
 
-  public delete<T>(path: string | PathModel, queryOptions ?: any): Observable <T> {
-    const request = this.request(RequestMethod.Delete).url(path).addOptions(queryOptions);
+  public delete<T>(path: string | PathModel, pathParams: Array<string>, queryOptions ?: any): Observable <T> {
+    const request = this.request(RequestMethod.Delete).url(path).buildPathParams(pathParams).addOptions(queryOptions);
     const customCatchError = queryOptions && queryOptions.customCatchError ? true : false;
     return request.send(customCatchError);
   }
 
-  public patch<T>(path: string | PathModel, body: any, queryOptions ?: any): Observable <T> {
-    const request = this.request(RequestMethod.Patch).url(path).addOptions(queryOptions);
+  public patch<T>(path: string | PathModel, body: any, pathParams: Array<string>, queryOptions ?: any): Observable <T> {
+    const request = this.request(RequestMethod.Patch).url(path).buildPathParams(pathParams).addOptions(queryOptions);
     const customCatchError = queryOptions && queryOptions.customCatchError ? true : false;
     return request.body(body).send(customCatchError);
-  }
-
-  public save<T>(path: string | PathModel, model: any): Observable <T> {
-    if (model === null || model === undefined) {
-      return new Observable();
-    }
-    if (model.id) {
-      return this.put(path, model);
-    }
-    return this.post(path, model);
   }
 
 }

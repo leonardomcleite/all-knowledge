@@ -9,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
 import { TestService } from './services/test.service';
+import { mapByFormControl } from '@all-knowledge/core/helpers/map-by-form-control';
 
 @Component({
   selector: 'ak-example-simple-tabbed',
@@ -17,10 +18,10 @@ import { TestService } from './services/test.service';
 })
 export class ExampleSimpleTabbedComponent implements OnInit {
 
-  name: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
-  birthday: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
+  nomeCivil: FormControlModel | FormControl = new FormControlModel(null, [Validators.required]);
+  dataNascimento: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
   salario: FormControlModel = new FormControlModel(null, [], [], new MaskNumberModel(16, 2));
-  phone: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
+  cpf: FormControlModel | FormControl = new FormControl(null, [Validators.required]);
 
   formGroup: FormGroup;
   typeFieldEnum = TypeFieldEnum;
@@ -48,10 +49,10 @@ export class ExampleSimpleTabbedComponent implements OnInit {
 
   buildFormGroup() {
     this.formGroup = this.formBuilder.group({
-      name: this.name,
-      birthday: this.birthday,
+      nomeCivil: this.nomeCivil,
+      dataNascimento: this.dataNascimento,
       salario: this.salario,
-      phone: this.phone
+      cpf: this.cpf
     });
   }
 
@@ -61,8 +62,9 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   }
 
   getTest() {
-    this.testService.get().subscribe((returnQuery: any) => {
+    this.testService.findById(204554).subscribe((returnQuery: any) => {
       console.log(returnQuery);
+      mapByFormControl(this.formGroup, returnQuery);
     });
   }
 

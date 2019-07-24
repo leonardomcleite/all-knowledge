@@ -5,12 +5,12 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { timeout } from 'rxjs/internal/operators/timeout';
-import { environment } from '../../../../environments/environment';
-import { RequestMethod } from '../../enums/requst-method.enum';
-import { PathModel } from '../../models/path.model';
+import { PathModel } from '@all-knowledge/core/models/path.model';
+import { RequestMethod } from '@all-knowledge/core/enums/requst-method.enum';
 import { CustomHttpEventObserverService } from './custom-http-event-observer.service';
 import { HandleErrorService } from './handle-error.service';
-import { HttpParamsDynamic } from './http-params-dynamic';
+import { HttpParamsDynamic } from '@all-knowledge/core/helpers/http-params-dynamic';
+import { environment } from '@all-knowledge/env/environment';
 
 export interface RestClientSender {
   send<T>(customCatchError: boolean): Observable <T> ;
@@ -19,6 +19,7 @@ export interface RestClientSender {
 export interface BodyRestClientBuilder {
   body(body: any): RestClientSender;
   addOptions(queryOptions: any): BodyRestClientBuilder & RestClientSender;
+  buildPathParams(pathParams: Array<string>): BodyRestClientBuilder & RestClientSender;
 }
 
 export interface URLRestClientBuilder {
@@ -45,6 +46,20 @@ export class RESTClientBuilder implements URLRestClientBuilder, RestClientSender
     } else {
       this._url = path;
     }
+    return this;
+  }
+
+  buildPathParams(pathParams: Array<string>) {
+    let url: string = this._url.toString();
+    const regex = /\{(.*?)\}/;
+
+    pathParams.forEach(value => {
+      const matched = regex.exec(url);
+      if (matched) {
+        url = url.replace(matched[0], value);
+      }
+    });
+    this._url = url;
     return this;
   }
 
