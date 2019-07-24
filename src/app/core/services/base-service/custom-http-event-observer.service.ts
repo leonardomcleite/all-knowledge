@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 /**
  * Observables para customizar ações antes e depois de um request
@@ -9,6 +11,6 @@ import { Subject } from 'rxjs/internal/Subject';
  * @param afterRequest - dispara um evento depois de iniciar um request
  */
 export class CustomHttpEventObserverService {
-    afterRequest: Subject<void> = new Subject<void>();
-    beforeRequest: Subject<void> = new Subject<void>();
+  afterRequest: Subject<void> = new Subject<void>();
+  beforeRequest: Subject<void> = new Subject<void>();
 }

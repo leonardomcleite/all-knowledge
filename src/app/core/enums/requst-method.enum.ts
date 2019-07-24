@@ -1,4 +1,4 @@
-export declare enum RequestMethod {
+export enum RequestMethod {
   Get = 0,
   Post = 1,
   Put = 2,

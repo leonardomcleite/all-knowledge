@@ -3,5 +3,5 @@ export const environment = {
   timeout: 3000,
   defaultLanguage: 'pt-BR',
   ambiente: 'Local',
-  baseUrl: ''
+  baseUrl: 'https://dadosabertos.camara.leg.br/api/v2'
 };

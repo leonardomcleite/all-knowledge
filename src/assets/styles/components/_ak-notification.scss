@@ -6,19 +6,18 @@
     }
   }
   
-  .content {
-    color: black;
-    margin-bottom: 5px;
-  }
-  
   .title {
     font-size: 17px;
     margin-bottom: 5px;
+    max-width: 310px;
+    word-wrap: break-word;
   }
 
   .text {
     font-weight: normal;
     font-size: 16px;
+    max-width: 310px;
+    word-wrap: break-word;
   }
   
   div.snackbar {
@@ -56,6 +55,9 @@
     display: grid;
     font-weight: bold;
     width: 100%;
+    color: black;
+    margin-bottom: 5px;
+    word-wrap: break-word;
   }
   
   button.btnAction.mat-button {

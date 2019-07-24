@@ -8,6 +8,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
+import { TestService } from './services/test.service';
 
 @Component({
   selector: 'ak-example-simple-tabbed',
@@ -30,7 +31,8 @@ export class ExampleSimpleTabbedComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private drawerService: DrawerService,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private testService: TestService,
   ) {}
 
   ngOnInit() {
@@ -56,6 +58,12 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   openDrawer() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
     this.drawerService.open(componentFactory, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
+  }
+
+  getTest() {
+    this.testService.get().subscribe((returnQuery: any) => {
+      console.log(returnQuery);
+    });
   }
 
   openNotification(type: NotificationType) {

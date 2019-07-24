@@ -5,6 +5,6 @@ const baseUrl = new PathModel(environment.baseUrl);
 
 export const REST_PATH = Object.freeze({
   exampleLayouts: {
-    findAll: baseUrl.create('/example'),
+    findAll: baseUrl.create('deputados'),
   }
 });

@@ -17,7 +17,8 @@
     "formulario": "Formul\u00e1rio",
     "abaVazia": "Aba vazia",
     "content": "Conte\u00fado",
-    "buscaTabela": "Busca na Tabela"
+    "buscaTabela": "Busca na Tabela",
+    "testeService": "Teste servi\u00e7o REST"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",

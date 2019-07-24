@@ -8,7 +8,9 @@ import { CustomHttpEventObserverService } from './custom-http-event-observer.ser
 import { RESTClientBuilder } from './rest-client.builder';
 import { HandleErrorService } from './handle-error.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RestClient {
 
   constructor(

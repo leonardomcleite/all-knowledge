@@ -5,6 +5,7 @@ import { DrawerService } from './shared/components/drawer/drawer.service';
 import { DrawerModel } from './shared/components/drawer/models/drawer';
 import { environment } from '@all-knowledge/env/environment';
 import { CountriesModel } from './core/models/countries.model';
+import { CustomHttpEventObserverService } from './core/services/base-service/custom-http-event-observer.service';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,12 @@ export class AppComponent implements OnInit {
   drawersSubject: Subscription;
   countries: Array<CountriesModel>;
   countrySelected: CountriesModel;
+  loading: boolean = false;
 
   constructor(
     private internationalizationService: InternationalizationService,
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private customHttpEventObserverService: CustomHttpEventObserverService,
   ) {
     this.internationalizationService.init();
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -37,6 +40,13 @@ export class AppComponent implements OnInit {
 
     this.internationalizationService.onLangChange.subscribe((language) => {
       this.countrySelected = this.countries.filter((item) => item.codeLanguage === language)[0];
+    });
+
+    this.customHttpEventObserverService.beforeRequest.subscribe(() => {
+      this.loading = true;
+    });
+    this.customHttpEventObserverService.afterRequest.subscribe(() => {
+      this.loading = false;
     });
   }
 

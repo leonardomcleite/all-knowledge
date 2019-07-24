@@ -15,6 +15,8 @@ import { ExampleSimpleTabbedRoutingModule } from './example-simple-tabbed-routin
 import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component';
 import { NotificationModule } from '@all-knowledge/shared/components/notification/notifiction.module';
 import { TableModule } from '@all-knowledge/shared/components/table/table.module';
+import { TestService } from './services/test.service';
+import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,9 @@ import { TableModule } from '@all-knowledge/shared/components/table/table.module
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+  ],
+  providers: [
+    TestService,
   ]
 })
 export class ExampleSimpleTabbedModule { }

@@ -17,7 +17,8 @@
     "formulario": "Form",
     "abaVazia": "Tab empty",
     "content": "Content",
-    "buscaTabela": "Find in Table"
+    "buscaTabela": "Find in Table",
+    "testeService": "Service REST test"
   },
   "titulo": {
     "simpleFullWidth": "Simple - Full width",

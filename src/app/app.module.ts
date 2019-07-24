@@ -19,6 +19,11 @@ import { DrawerService } from './shared/components/drawer/drawer.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CustomHttpEventObserverService } from './core/services/base-service/custom-http-event-observer.service';
+import { RestClient } from './core/services/base-service/rest-client.service';
+import { HandleErrorService } from './core/services/base-service/handle-error.service';
+import { NotificationModule } from './shared/components/notification/notifiction.module';
 
 @NgModule({
   imports: [
@@ -45,6 +50,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MenuModule,
     NavHeaderModule,
     DrawerModule,
+    NotificationModule,
 
     // Angular Material
     MatToolbarModule,
@@ -52,6 +58,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MatSidenavModule,
     MatMenuModule,
+    MatProgressBarModule,
   ],
   declarations: [
     AppComponent,
@@ -59,6 +66,9 @@ import { MatMenuModule } from '@angular/material/menu';
   providers: [
     InternationalizationService,
     DrawerService,
+    RestClient,
+    CustomHttpEventObserverService,
+    HandleErrorService,
   ],
   bootstrap: [AppComponent]
 })

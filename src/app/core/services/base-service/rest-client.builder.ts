@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
@@ -60,9 +60,6 @@ export class RESTClientBuilder implements URLRestClientBuilder, RestClientSender
         }
         this._options[key] = value;
       }
-      if (!this._options.headers && !this._options.responseType) {
-        this._options.headers  = new HttpHeaders().append('Content-Type', 'application/json');
-      }
     }
     return this;
   }
@@ -72,8 +69,8 @@ export class RESTClientBuilder implements URLRestClientBuilder, RestClientSender
     return this;
   }
 
-  send<T>(customCatchError: boolean): Observable <T> {
-    let observable: Observable<any> = null;
+  send<T>(customCatchError: boolean): Observable <any> {
+    let observable: Observable<any>;
     this.customHttpEventObserverService.beforeRequest.next();
     switch (this._method) {
       case RequestMethod.Get:
@@ -96,8 +93,7 @@ export class RESTClientBuilder implements URLRestClientBuilder, RestClientSender
       timeout(environment.timeout),
       takeUntil(this.handleErrorService.unsubscribe),
       catchError((err: any) => {
-        // return this.handleErrorService.getErrorByCode(err, customCatchError);
-        return err;
+        return this.handleErrorService.getErrorByCode(err, customCatchError);
       }),
       finalize(() => this.customHttpEventObserverService.afterRequest.next()));
     return observable;

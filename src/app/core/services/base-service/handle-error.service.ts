@@ -3,8 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Subject } from 'rxjs/internal/Subject';
+import { Observable } from 'rxjs/internal/Observable';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HandleErrorService {
 
   public unsubscribe = new Subject();
@@ -14,7 +17,7 @@ export class HandleErrorService {
     private notificationService: NotificationService
   ) {}
 
-  handleError(err: any, customCatchError: boolean) {
+  getErrorByCode(err: any, customCatchError: boolean): Observable<any> {
     // Se erro for timeout
     if (err.name === 'TimeoutError') {
       this.exibirMensagemDeErro(err, 'erro.timeout');
@@ -60,7 +63,7 @@ export class HandleErrorService {
   }
 
   private exibirMensagemDeErro(error: any, customMessage?: any) {
-    const message = customMessage != null ? customMessage : error.error;
+    const message = customMessage != null ? customMessage : error.message;
     this.notificationService.error(`label.erro`, message);
   }
 
