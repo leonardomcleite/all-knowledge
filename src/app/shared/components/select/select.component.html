@@ -1,1 +1,25 @@
-<p>select works!</p>
+<form  [formGroup]="frmGroup" class="flex">
+  <mat-form-field [appearance]="appearance" [ngClass]="classFormField">
+    <mat-label>{{name | translate}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
+    <mat-select
+      (selectionChange)="onSelectionChange($event)"
+      (blur)="onBlur($event)"
+      [formControlName]="frmControlName"
+      [placeholder]="placeholder | translate">
+      <ng-content select="ak-option"></ng-content>
+      <ng-content select="mat-option"></ng-content>
+      <mat-option *ngFor="let option of options" [value]="option.code">
+        {{option.desciption}}
+      </mat-option>
+    </mat-select>
+
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('required') && frmGroup.get(frmControlName)?.touched)">{{'validacao.campoObrigatorio' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('maxLength') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxLength' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('minLength') && frmGroup.get(frmControlName)?.touched)">{{'validacao.minLength' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('max') && frmGroup.get(frmControlName)?.touched)">{{'validacao.maxValur' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('min') && frmGroup.get(frmControlName)?.touched)">{{'validacao.minValue' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('matDatepickerParse') && frmGroup.get(frmControlName)?.touched)">{{'validacao.dataInvalida' | translate}}</mat-error>
+    <mat-error *ngIf="(frmGroup.get(frmControlName)?.hasError('Mask error') && frmGroup.get(frmControlName)?.touched)">{{'validacao.campoInvalido' | translate}}{{mask}}</mat-error>
+    <!-- <ng-content></ng-content> -->
+  </mat-form-field>
+</form>

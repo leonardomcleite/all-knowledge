@@ -16,7 +16,8 @@
     "artigo": "Article",
     "formulario": "Form",
     "abaVazia": "Tab empty",
-    "content": "Content"
+    "content": "Content",
+    "buscaTabela": "Find in Table"
   },
   "titulo": {
     "simpleFullWidth": "Simple - Full width",

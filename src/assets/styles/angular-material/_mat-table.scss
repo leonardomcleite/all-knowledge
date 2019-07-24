@@ -1,0 +1,5 @@
+@mixin mat-table($theme) {
+  td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    border-color: mat-color($accent, 400);
+  }
+}

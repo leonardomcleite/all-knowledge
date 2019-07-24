@@ -8,6 +8,7 @@
   @include mat-calendar($theme);
   @include mat-button($theme);
   @include mat-menu($theme);
+  @include mat-table($theme);
 
   @include native-elements($theme);
   @include utils($theme);

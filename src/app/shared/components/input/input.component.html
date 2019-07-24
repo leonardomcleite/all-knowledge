@@ -8,6 +8,7 @@
       [placeholder]="placeholder | translate"
       [matDatepicker]="picker"
       (blur)="onBlur($event)"
+      (keyup)="onKeyup($event)"
       matInput>
     <mat-datepicker-toggle matSuffix [for]="picker" [class.hidden]="type !== typeFieldEnum.DATE"></mat-datepicker-toggle>
     <mat-datepicker #picker [class.hidden]="type !== typeFieldEnum.DATE"></mat-datepicker>
@@ -19,6 +20,7 @@
       [formControlName]="frmControlName"
       [placeholder]="placeholder | translate"
       (blur)="onBlur($event)"
+      (keyup)="onKeyup($event)"
       matInput>
     <input
       [ngClass]="classInput"
@@ -27,6 +29,7 @@
       [formControlName]="frmControlName"
       [placeholder]="placeholder | translate"
       (blur)="onBlur($event)"
+      (keyup)="onKeyup($event)"
       matInput>
     <mat-icon matSuffix *ngIf="icon && type !== typeFieldEnum.DATE && suffix == null">{{icon}}</mat-icon>
     <mat-icon matSuffix *ngIf="suffix && type !== typeFieldEnum.DATE"><span class="sufixx">{{suffix}}</span></mat-icon>

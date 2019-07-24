@@ -28,6 +28,7 @@ export const MY_FORMATS = {
 export class InputComponent implements OnInit {
 
   @Output() blur: EventEmitter<any> = new EventEmitter();
+  @Output() keyup: EventEmitter<any> = new EventEmitter();
 
   @Input() name: string;
   @Input() frmGroup: FormGroup;
@@ -92,6 +93,15 @@ export class InputComponent implements OnInit {
   onBlur(event: any) {
     this.markTouched();
     this.blur.emit(event);
+  }
+
+  /**
+   * Emite o evento blur
+   * @param event - Evento do blur
+   */
+  onKeyup(event: any) {
+    this.markTouched();
+    this.keyup.emit(event);
   }
 
   /**

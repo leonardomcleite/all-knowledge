@@ -14,6 +14,7 @@ import { ExampleDrawerComponent } from './example-drawer/example-drawer.componen
 import { ExampleSimpleTabbedRoutingModule } from './example-simple-tabbed-routing.module';
 import { ExampleSimpleTabbedComponent } from './example-simple-tabbed.component';
 import { NotificationModule } from '@all-knowledge/shared/components/notification/notifiction.module';
+import { TableModule } from '@all-knowledge/shared/components/table/table.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NotificationModule } from '@all-knowledge/shared/components/notificatio
     CardModule,
     InputModule,
     NotificationModule,
+    TableModule,
 
     // Ngx Tranlate
     TranslateModule,

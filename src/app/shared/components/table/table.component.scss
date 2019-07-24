@@ -1,0 +1,37 @@
+@import 'theming';
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page-select {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  align-items: baseline;
+  font-size: 12px;
+
+  .label {
+    margin: 0 4px;
+  }
+}
+
+.select {
+  width: 85px;
+}

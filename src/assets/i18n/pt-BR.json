@@ -16,18 +16,19 @@
     "artigo": "Artigo",
     "formulario": "Formul\u00e1rio",
     "abaVazia": "Aba vazia",
-    "content": "Conte\u00fado"
+    "content": "Conte\u00fado",
+    "buscaTabela": "Busca na Tabela"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
     "simpleTabbed": "Simples - Com abas",
     "cardedFullWidth": "Card - Largura total",
     "cardedTabbed": "Card - Com abas",
-    "bemVindo": "Seja bem vindo \u00e0",
+    "bemVindo": "Seja bem-vindo \u00e0",
     "sobre": "Sobre",
     "titulo": "T\u00edtulo",
     "nascerDoSol": "Nascer do sol",
-    "exampleDrawer": "Exmplo de Drawer"
+    "exampleDrawer": "Exemplo de Drawer"
   },
   "subtitulo": {
     "subTitulo": "Subt\u00edtulo",
