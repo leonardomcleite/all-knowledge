@@ -36,6 +36,7 @@ export class InputComponent implements OnInit {
   @Input() type: TypeField = TypeFieldEnum.NUMBER;
   @Input() icon: string;
   @Input() suffix: string;
+  @Input() appearance: string = 'outline';
   @Input() hints: Array<string>;
   @Input() disabled: (_?: any) => boolean | boolean;
   @Input() classInput: (_?: any) => any | string;

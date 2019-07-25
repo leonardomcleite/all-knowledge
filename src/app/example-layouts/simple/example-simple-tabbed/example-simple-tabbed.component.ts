@@ -4,7 +4,7 @@ import { NotificationEnum, NotificationType } from '@all-knowledge/core/models/n
 import { DrawerService } from '@all-knowledge/shared/components/drawer/drawer.service';
 import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
 import { MaskNumberModel } from '@all-knowledge/shared/directives/mask-number/mask.-number.type';
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, NgModuleFactory } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDrawerComponent } from './example-drawer/example-drawer.component';
@@ -31,7 +31,6 @@ export class ExampleSimpleTabbedComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private drawerService: DrawerService,
-    private componentFactoryResolver: ComponentFactoryResolver,
     private notificationService: NotificationService,
     private testService: TestService,
   ) {}
@@ -57,8 +56,10 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   }
 
   openDrawer() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
-    this.drawerService.open(componentFactory, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
+    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
+    // this.drawerService.open(ExampleDrawerComponent, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
+    const module = {path: 'app/example-layouts/simple/example-simple-tabbed/example-simple-tabbed.module', name: 'ExampleSimpleTabbedModule'};
+    this.drawerService.open('ak-example-drawer', null, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
   }
 
   getTest() {

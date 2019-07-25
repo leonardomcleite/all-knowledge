@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactory, ComponentRef } from '@angular/core';
+import { Injectable, ComponentFactory, ComponentRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { map } from 'rxjs/operators';
 import { DrawerModel } from './models/drawer';
@@ -20,7 +20,9 @@ export class DrawerService {
   private drawerMap = new Map<string, DrawerMapModel>();
   private delayAnimation: number = 500;
 
-  constructor() {
+  constructor(
+    private resolver: ComponentFactoryResolver,
+  ) {
     this.initDrawerMap();
   }
 
@@ -30,17 +32,16 @@ export class DrawerService {
 
   /**
    * Cria uma drawer
-   * @param componentFactory - componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent)
+   * @param component - Type component: ExampleDrawerComponent
    * @param inputs - @Input(): {input1: value, input2: value}
    * @param outputs - @Output(): {input1: (_: any) => this.executaAlgumMetodo(_)}
    * @param title - Titulo da drawer
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(componentFactory: ComponentFactory<any>, title?: string, size?: string, inputs?: any, outputs?: any): Observable<any> {
+  public open(component: any, module?: any, title?: string, size?: string, inputs?: any, outputs?: any): Observable<any> {
     const onDestroySubject = new Subject<any>();
-    const drawer: DrawerModel = new DrawerModel(componentFactory, title, size ? size : 'lg', inputs, outputs);
-
+    const drawer: DrawerModel = new DrawerModel(component, this.resolver, module, title, size ? size : 'lg', inputs, outputs);
     const drawers = this.getDrawers();
     drawers.push({ value: drawer, onDestroySubject });
     drawers.forEach(element => {

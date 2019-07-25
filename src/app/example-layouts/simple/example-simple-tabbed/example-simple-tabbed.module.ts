@@ -17,6 +17,9 @@ import { NotificationModule } from '@all-knowledge/shared/components/notificatio
 import { TableModule } from '@all-knowledge/shared/components/table/table.module';
 import { TestService } from './services/test.service';
 import { NotificationService } from '@all-knowledge/shared/components/notification/services/notification.service';
+import { DrawerModule } from '@all-knowledge/shared/components/drawer/drawer.module';
+import { FactoryService } from '@all-knowledge/core/services/factory/factory.service';
+import { DrawerService } from '@all-knowledge/shared/components/drawer/drawer.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { NotificationService } from '@all-knowledge/shared/components/notificati
     InputModule,
     NotificationModule,
     TableModule,
+    DrawerModule,
 
     // Ngx Tranlate
     TranslateModule,

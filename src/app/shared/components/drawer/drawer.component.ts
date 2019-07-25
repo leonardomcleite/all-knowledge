@@ -1,7 +1,8 @@
-import { Component, ComponentRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentRef, EventEmitter, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, Type, NgModuleFactory, ComponentFactory, NgModuleRef, ComponentFactoryResolver } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DrawerService } from './drawer.service';
 import { DrawerModel } from './models/drawer';
+import { FactoryService } from '@all-knowledge/core/services/factory/factory.service';
 
 @Component({
   selector: 'ak-drawer',
@@ -17,12 +18,19 @@ export class DrawerComponent implements OnInit, OnDestroy {
   public componentRef: ComponentRef<any>;
   public subscription: Array<Subscription> = new Array<Subscription>();
 
+  component: Type<any>;
+  module: NgModuleFactory<any>;
+  componentResolved: ComponentFactory<any>;
+
   constructor(
     private drawerService: DrawerService,
+    private factory: FactoryService,
+    private componentFactoryResolver: ComponentFactoryResolver,
   ) {}
 
   ngOnInit() {
-    this.loadComponent();
+    // this.loadComponent();
+    this.createDynamicComponent();
   }
 
   async ngOnDestroy() {
@@ -41,6 +49,35 @@ export class DrawerComponent implements OnInit, OnDestroy {
     this.content.clear();
     this.componentRef = this.content.createComponent(this.drawer.componentFactory);
     this.bindInputsAndOutputs();
+  }
+
+  createDynamicComponent() {
+    this.content.clear();
+    if (this.drawer.module) {
+      // this.factory.getModule(this.drawer.module).then(module => {
+      //   this.module = module;
+      //   this.component = this.factory.getComponent(this.drawer.componentFactory, this.module);
+
+      //   const moduleRef: NgModuleRef<any> = this.module.create(this.content.injector);
+      //   const factory = moduleRef.componentFactoryResolver.resolveComponentFactory(this.component);
+      //   this.componentRef = this.content.createComponent(factory);
+      //   this.bindInputsAndOutputs();
+      //   this.componentRef.changeDetectorRef.detectChanges();
+      // });
+      this.component = this.factory.getComponent(this.drawer.componentFactory, this.drawer.module);
+      const factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
+
+      this.componentRef = this.content.createComponent(factory);
+      this.bindInputsAndOutputs();
+      this.componentRef.changeDetectorRef.detectChanges();
+    } else {
+      this.component = this.factory.getComponent(this.drawer.componentFactory, this.drawer.componentFactoryResolver);
+      const factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
+
+      this.componentRef = this.content.createComponent(factory);
+      this.bindInputsAndOutputs();
+      this.componentRef.changeDetectorRef.detectChanges();
+    }
   }
 
   /**

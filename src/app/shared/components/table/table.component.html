@@ -1,19 +1,18 @@
-<!-- <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field> -->
+<form [formGroup]="formGroup" class="container">
+  
 
-<form [formGroup]="formGroup">
-  <ak-input
-    (keyup)="applyFilter($event.target.value)"
-    classFormField="full-width"
-    icon="search"
-    name="label.buscaTabela"
-    frmControlName="filtro"
-    [frmGroup]="formGroup"
-    [type]="typeFieldEnum.TEXT">
-  </ak-input>
-
-  <div class="mat-elevation-z1">
+  <div class="content-table mat-elevation-z1">
+    <ak-input
+      appearance="standard"
+      (keyup)="applyFilter($event.target.value)"
+      classFormField="full-width"
+      icon="search"
+      name="label.buscaTabela"
+      frmControlName="filtro"
+      [frmGroup]="formGroup"
+      [type]="typeFieldEnum.TEXT">
+    </ak-input>
+    
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- ID Column -->
@@ -45,17 +44,9 @@
       </tr>
     </table>
 
-    <div class="container">
+    <div class="container-footer">
       <div class="page-select">
         <div class="label">Go to page:</div>
-        <!-- <mat-form-field>
-          <mat-select [ngModel]="manualPage" (ngModelChange)="updateManualPage($event)">
-            <mat-option [value]="1">1</mat-option>
-            <mat-option [value]="10">10</mat-option>
-            <mat-option [value]="20">20</mat-option>
-            <mat-option [value]="30">30</mat-option>
-          </mat-select>
-        </mat-form-field> -->
         <ak-select
           appearance=""
           classFormField="page-select"

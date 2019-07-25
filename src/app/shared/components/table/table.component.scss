@@ -1,5 +1,9 @@
 @import 'theming';
 
+.content-table {
+  border-radius: 8px;
+}
+
 table {
   width: 100%;
 }
@@ -13,9 +17,16 @@ td, th {
   width: 25%;
 }
 
-.container {
+.container-footer {
   display: flex;
   justify-content: flex-end;
+}
+
+.container {
+  background-color: white;
+  padding: 16px;
+  margin: 3px;
+  border-radius: 8px;
 }
 
 .page-select {

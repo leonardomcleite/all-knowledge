@@ -1,17 +1,22 @@
-import { ComponentFactory } from '@angular/core';
+import { ComponentFactory, ComponentFactoryResolver, Type } from '@angular/core';
 
 export  class DrawerModel {
   status: number = 0;
   direction: string = 'up';
   showOverlay: boolean = true;
-  componentFactory: ComponentFactory<any>;
+  componentFactory: any;
+  component: Type<any>;
   title: string;
   inputs?: any;
   outputs?: any;
   size?: string;
+  module: any;
+  componentFactoryResolver: ComponentFactoryResolver;
 
-  constructor(componentFactory: ComponentFactory<any>, title: string, size?: string, inputs?: any, outputs?: any) {
-    this.componentFactory = componentFactory;
+  constructor(component: Type<any>, componentFactoryResolver: ComponentFactoryResolver, module?: any, title?: string, size?: string, inputs?: any, outputs?: any) {
+    this.component = component;
+    this.componentFactoryResolver = componentFactoryResolver;
+    this.module = module;
     this.title = title;
     this.inputs = inputs;
     this.outputs = outputs;

@@ -1,5 +1,5 @@
 <form  [formGroup]="frmGroup" class="flex">
-  <mat-form-field appearance="outline" [ngClass]="classFormField">
+  <mat-form-field [appearance]="appearance" [ngClass]="classFormField">
     <mat-label>{{name | translate}}{{frmGroup?.get(frmControlName)?.validator && frmGroup?.get(frmControlName)?.validator('required')?.required ? ' *' : ''}}</mat-label>
     <input
       [ngClass]="classInput"

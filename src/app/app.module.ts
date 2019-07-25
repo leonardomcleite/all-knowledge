@@ -24,6 +24,7 @@ import { CustomHttpEventObserverService } from './core/services/base-service/cus
 import { RestClient } from './core/services/base-service/rest-client.service';
 import { HandleErrorService } from './core/services/base-service/handle-error.service';
 import { NotificationModule } from './shared/components/notification/notifiction.module';
+import { FactoryService } from './core/services/factory/factory.service';
 
 @NgModule({
   imports: [
@@ -65,7 +66,6 @@ import { NotificationModule } from './shared/components/notification/notifiction
   ],
   providers: [
     InternationalizationService,
-    DrawerService,
     RestClient,
     CustomHttpEventObserverService,
     HandleErrorService,
