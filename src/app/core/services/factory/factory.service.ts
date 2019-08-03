@@ -9,11 +9,7 @@ export class FactoryService {
   ) { }
 
   async getModule(module: any) {
-    if (!module) {
-      return undefined;
-    } else {
-      return await import(module.path);
-    }
+    return undefined;
   }
 
   getComponent(component: string, factoryModule?: NgModuleFactory<any>) {
