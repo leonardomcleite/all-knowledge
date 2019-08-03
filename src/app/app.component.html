@@ -14,7 +14,7 @@
     <mat-menu #menu="matMenu">
       <div class="flex row mat-menu-option" *ngFor="let country of countries">
         <img class="flag" [src]="'assets/images/flags/' + country?.thumbnail" [alt]="country?.fullName">
-        <button mat-menu-item (click)="changeLanguage(country)" >{{('countries.' + country?.shortName) | translate}}</button>
+        <button mat-menu-item (click)="changeLanguage(country)" style="height: 40px;">{{('countries.' + country?.shortName) | translate}}</button>
       </div>
     </mat-menu>
   </div>
