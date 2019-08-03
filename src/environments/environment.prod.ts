@@ -4,5 +4,5 @@ export const environment = {
   defaultLanguage: 'pt-BR',
   defaultTableSize: 5,
   ambiente: '$ENVIRONMENT',
-  baseUrl: ''
+  baseUrl: 'https://dadosabertos.camara.leg.br/api/v2'
 };
