@@ -19,7 +19,18 @@
     "content": "Content",
     "buscaTabela": "Find in Table",
     "testeService": "Service REST test",
-    "cpf": "CPF"
+    "cpf": "CPF",
+    "tabela": "Table",
+    "itemsPorPagina": "Items per page:",
+    "paginaAnterior": "Previous page",
+    "proximaPagina": "Next page",
+    "primeiraPagina": "First page",
+    "ultimaPagina": "Last page",
+    "de": "of",
+    "id": "ID",
+    "nome": "Name",
+    "progresso": "Progress",
+    "cor": "Color"
   },
   "titulo": {
     "simpleFullWidth": "Simple - Full width",

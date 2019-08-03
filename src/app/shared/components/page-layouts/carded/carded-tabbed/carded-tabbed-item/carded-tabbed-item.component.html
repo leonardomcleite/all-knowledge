@@ -1,3 +1,4 @@
-<mat-tab [label]="label">
+<mat-tab>
+  <ng-template mat-tab-label>{{label | translate}}</ng-template>
   <ng-content></ng-content>
 </mat-tab>

@@ -1,26 +1,11 @@
-import {Component, OnInit, ViewChild, Input} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import { TypeFieldEnum } from '@all-knowledge/core/enums/type-field.enum';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+import { InternationalizationService } from '@all-knowledge/core/services/internationalization/internationalization.service';
+import { environment } from '@all-knowledge/env/environment';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'ak-table',
@@ -29,34 +14,51 @@ const NAMES: string[] = [
 })
 export class TableComponent implements OnInit {
 
-  filter: FormControl = new FormControl(null);
-  manualPage: FormControl = new FormControl(1);
-
-  @Input() displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  @Input() totalElemnts: number = 20;
-
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  
+  @Input() totalElements: number = 0;
+  @Input() defaultTableSize: number = environment.defaultTableSize;
+  @Input() set dataSource(value) {
+    this.dataSourceChange = value ? value : new MatTableDataSource();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  } 
+  get dataSource() { return this.dataSourceChange; } private dataSourceChange: MatTableDataSource<any>;
 
-  // manualPage = null;
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumnsField: Array<any>;
+  @Input() set displayedColumns(value) {
+    this.displayedColumnsChange = value;
+    if (value) {
+      this.displayedColumnsField = value.map((item) => item.field);
+    }
+  } 
+  get displayedColumns() { return this.displayedColumnsChange; } private displayedColumnsChange: Array<any>;
+  
+  filter: FormControl = new FormControl(null);
   typeFieldEnum = TypeFieldEnum;
   formGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-  ) {
-    // Create 100 users
-    const users = Array.from({length: this.totalElemnts}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+    private InternationalizationService: InternationalizationService
+  ) {}
 
   ngOnInit() {
     this.buildFormGroup();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.updateLabelsPaginator();
+    this.InternationalizationService.onLangChange.subscribe(() => {
+      this.updateLabelsPaginator();
+    });
+  }
+
+  updateLabelsPaginator() {
+    this.paginator._intl.itemsPerPageLabel = this.InternationalizationService.instant('label.itemsPorPagina');
+    this.paginator._intl.previousPageLabel = this.InternationalizationService.instant('label.paginaAnterior');
+    this.paginator._intl.nextPageLabel = this.InternationalizationService.instant('label.proximaPagina');
+    this.paginator._intl.firstPageLabel = this.InternationalizationService.instant('label.primeiraPagina');
+    this.paginator._intl.lastPageLabel = this.InternationalizationService.instant('label.ultimaPagina');
+    this.paginator._intl.changes.next();
   }
 
   buildFormGroup() {
@@ -73,24 +75,4 @@ export class TableComponent implements OnInit {
     }
   }
 
-  updateManualPage() {
-    this.paginator.pageIndex = this.manualPage.value - 1;
-  }
-
-  clearManualPage() {
-    this.manualPage = null;
-  }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }

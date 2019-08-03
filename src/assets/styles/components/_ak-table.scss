@@ -1,0 +1,35 @@
+@mixin ak-table($theme) {
+
+  ak-table .side-padding {
+    padding: 0 24px;
+  }
+
+  ak-table .content-table {
+    border-radius: 8px;
+  }
+
+  ak-table table {
+    width: 100%;
+  }
+
+  ak-table td, ak-table th {
+    width: 25%;
+  }
+
+  ak-table .container-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ak-table .container {
+    background-color: white;
+    margin: 3px;
+    border-radius: 8px;
+  }
+
+  ak-table .mat-form-field-appearance-legacy .mat-form-field-underline {
+    bottom: 1.25em;
+    background-color: rgba(0,0,0,.42);
+  }
+
+}

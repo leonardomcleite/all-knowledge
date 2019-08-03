@@ -2,8 +2,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorIntl } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,18 +16,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageModule } from './core/components/homepage/homepage.module';
+import { getDutchPaginatorIntl } from './core/helpers/mat-paginatator-labels';
+import { CustomHttpEventObserverService } from './core/services/base-service/custom-http-event-observer.service';
+import { HandleErrorService } from './core/services/base-service/handle-error.service';
+import { RestClient } from './core/services/base-service/rest-client.service';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
-import { DrawerModule } from './shared/components/drawer/drawer.module';
-import { DrawerService } from './shared/components/drawer/drawer.service';
 import { MenuModule } from './shared/components/menu/menu.module';
 import { NavHeaderModule } from './shared/components/nav-header/nav-header.module';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CustomHttpEventObserverService } from './core/services/base-service/custom-http-event-observer.service';
-import { RestClient } from './core/services/base-service/rest-client.service';
-import { HandleErrorService } from './core/services/base-service/handle-error.service';
 import { NotificationModule } from './shared/components/notification/notifiction.module';
-import { FactoryService } from './core/services/factory/factory.service';
+import { SingletonModule } from './singleton/singleton.module';
+import { TesteDrawerComponent } from './teste-drawer/teste-drawer.component';
 
 @NgModule({
   imports: [
@@ -50,8 +51,8 @@ import { FactoryService } from './core/services/factory/factory.service';
     HomepageModule,
     MenuModule,
     NavHeaderModule,
-    DrawerModule,
     NotificationModule,
+    SingletonModule,
 
     // Angular Material
     MatToolbarModule,
@@ -63,12 +64,24 @@ import { FactoryService } from './core/services/factory/factory.service';
   ],
   declarations: [
     AppComponent,
+    TesteDrawerComponent
+  ],
+  exports: [
+    TesteDrawerComponent
+  ],
+  entryComponents: [
+    TesteDrawerComponent
   ],
   providers: [
     InternationalizationService,
     RestClient,
     CustomHttpEventObserverService,
     HandleErrorService,
+    {
+      provide: MatPaginatorIntl,
+      useFactory: getDutchPaginatorIntl,
+      deps: [InternationalizationService]
+    }
   ],
   bootstrap: [AppComponent]
 })

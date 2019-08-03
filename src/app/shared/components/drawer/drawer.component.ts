@@ -29,8 +29,7 @@ export class DrawerComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // this.loadComponent();
-    this.createDynamicComponent();
+    this.loadComponent();
   }
 
   async ngOnDestroy() {
@@ -47,37 +46,9 @@ export class DrawerComponent implements OnInit, OnDestroy {
    */
   loadComponent() {
     this.content.clear();
-    this.componentRef = this.content.createComponent(this.drawer.componentFactory);
+    const componentFactory = this.drawer.componentFactoryResolver.resolveComponentFactory(this.drawer.component);
+    this.componentRef = this.content.createComponent(componentFactory);
     this.bindInputsAndOutputs();
-  }
-
-  createDynamicComponent() {
-    this.content.clear();
-    if (this.drawer.module) {
-      // this.factory.getModule(this.drawer.module).then(module => {
-      //   this.module = module;
-      //   this.component = this.factory.getComponent(this.drawer.componentFactory, this.module);
-
-      //   const moduleRef: NgModuleRef<any> = this.module.create(this.content.injector);
-      //   const factory = moduleRef.componentFactoryResolver.resolveComponentFactory(this.component);
-      //   this.componentRef = this.content.createComponent(factory);
-      //   this.bindInputsAndOutputs();
-      //   this.componentRef.changeDetectorRef.detectChanges();
-      // });
-      this.component = this.factory.getComponent(this.drawer.componentFactory, this.drawer.module);
-      const factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
-
-      this.componentRef = this.content.createComponent(factory);
-      this.bindInputsAndOutputs();
-      this.componentRef.changeDetectorRef.detectChanges();
-    } else {
-      this.component = this.factory.getComponent(this.drawer.componentFactory, this.drawer.componentFactoryResolver);
-      const factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
-
-      this.componentRef = this.content.createComponent(factory);
-      this.bindInputsAndOutputs();
-      this.componentRef.changeDetectorRef.detectChanges();
-    }
   }
 
   /**

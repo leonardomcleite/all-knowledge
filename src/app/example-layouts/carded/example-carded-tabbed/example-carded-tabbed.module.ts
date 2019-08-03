@@ -1,3 +1,4 @@
+import { ExampleTableModule } from '@all-knowledge/example-table/example-table.module';
 import { CardModule } from '@all-knowledge/shared/components/card/card.module';
 import { InputModule } from '@all-knowledge/shared/components/input/input.module';
 import { NotificationModule } from '@all-knowledge/shared/components/notification/notifiction.module';
@@ -30,6 +31,7 @@ import { ExampleCardedTabbedComponent } from './example-carded-tabbed.component'
     CardModule,
     InputModule,
     NotificationModule,
+    ExampleTableModule,
 
     // Ngx Tranlate
     TranslateModule,

@@ -14,14 +14,16 @@ export class DrawerMapModel {
   subject: Subject<Drawer[]>;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DrawerService {
 
   private drawerMap = new Map<string, DrawerMapModel>();
   private delayAnimation: number = 500;
 
   constructor(
-    private resolver: ComponentFactoryResolver,
+    public resolver: ComponentFactoryResolver,
   ) {
     this.initDrawerMap();
   }
@@ -39,9 +41,9 @@ export class DrawerService {
    * @param size - Tamanho: sm, md, lg
    * @param icons - Icones
    */
-  public open(component: any, module?: any, title?: string, size?: string, inputs?: any, outputs?: any): Observable<any> {
+  public open(component: Type<any>, componentFactoryResolver?: ComponentFactoryResolver, title?: string, size?: string, inputs?: any, outputs?: any): Observable<any> {
     const onDestroySubject = new Subject<any>();
-    const drawer: DrawerModel = new DrawerModel(component, this.resolver, module, title, size ? size : 'lg', inputs, outputs);
+    const drawer: DrawerModel = new DrawerModel(component, componentFactoryResolver, title, size ? size : 'lg', inputs, outputs);
     const drawers = this.getDrawers();
     drawers.push({ value: drawer, onDestroySubject });
     drawers.forEach(element => {

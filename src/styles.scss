@@ -15,12 +15,14 @@
 @import 'angular-material/mat-button';
 @import 'angular-material/mat-menu';
 @import 'angular-material/mat-table';
+@import 'angular-material/mat-select';
 
 // App
 @import 'components/layouts';
 @import 'components/ak-input';
 @import 'components/ak-card';
 @import 'components/ak-button';
+@import 'components/ak-table';
 
 @include mat-core();
 @include ak-core($theme);

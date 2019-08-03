@@ -19,7 +19,18 @@
     "content": "Conte\u00fado",
     "buscaTabela": "Busca na Tabela",
     "testeService": "Teste servi\u00e7o REST",
-    "cpf": "CPF"
+    "cpf": "CPF",
+    "tabela": "Tabela",
+    "itemsPorPagina": "Itens por p\u00e1gina:",
+    "paginaAnterior": "P\u00e1gina anterior",
+    "proximaPagina": "Pr\u00f3xima p\u00e1gina",
+    "primeiraPagina": "Primeira p\u00e1gina",
+    "ultimaPagina": "\u00daltima p\u00e1gina",
+    "de": "de",
+    "id": "ID",
+    "nome": "Nome",
+    "progresso": "Progresso",
+    "cor": "Cor"
   },
   "titulo": {
     "simpleFullWidth": "Simples - Largura total",
@@ -44,7 +55,7 @@
     "minValue": "Valor m\u00ednimo não atendido",
     "campoInvalido": "Campo inv\u00e1lido: ",
     "dataInvalida": "Data inv\u00e1lida",
-    "numeroInvalida": "Número inv\u00e1lido"
+    "numeroInvalida": "N\u00famero inv\u00e1lido"
   },
   "msg": {
     "sucesso": "Dados salvos com sucesso.",

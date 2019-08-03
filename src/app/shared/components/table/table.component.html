@@ -1,11 +1,9 @@
 <form [formGroup]="formGroup" class="container">
-  
-
   <div class="content-table mat-elevation-z1">
     <ak-input
       appearance="standard"
       (keyup)="applyFilter($event.target.value)"
-      classFormField="full-width"
+      classFormField="full-width side-padding"
       icon="search"
       name="label.buscaTabela"
       frmControlName="filtro"
@@ -13,59 +11,21 @@
       [type]="typeFieldEnum.TEXT">
     </ak-input>
     
-    <table mat-table [dataSource]="dataSource" matSort>
-
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container [matColumnDef]="column.field" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef> {{column.name | translate}} </th>
+        <td mat-cell *matCellDef="let row"> {{row[column.field]}} </td>
       </ng-container>
-
-      <!-- Progress Column -->
-      <ng-container matColumnDef="progress">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-      </ng-container>
-
-      <!-- Color Column -->
-      <ng-container matColumnDef="color">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-      </tr>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsField"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsField;"></tr>
     </table>
 
-    <div class="container-footer">
-      <div class="page-select">
-        <div class="label">Go to page:</div>
-        <ak-select
-          appearance=""
-          classFormField="page-select"
-          frmControlName="manualPage"
-          (selectionChange)="updateManualPage()"
-          [frmGroup]="formGroup"
-          [type]="typeFieldEnum.TEXT">
-          <ak-option [valueOption]="1">1</ak-option>
-          <ak-option [valueOption]="10">10</ak-option>
-          <ak-option [valueOption]="20">20</ak-option>
-          <ak-option [valueOption]="30">30</ak-option>
-        </ak-select>
-      </div>
-      <mat-paginator
-        [length]="totalElemnts"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 25]"
-        (page)="clearManualPage()">
-      </mat-paginator>
-    </div>
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="defaultTableSize"
+      [pageSizeOptions]="[5, 10, 25]"
+      showFirstLastButtons>
+    </mat-paginator>
   </div>
 </form>

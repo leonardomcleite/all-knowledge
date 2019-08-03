@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { InternationalizationService } from './core/services/internationalization/internationalization.service';
 import { DrawerService } from './shared/components/drawer/drawer.service';
@@ -6,6 +6,7 @@ import { DrawerModel } from './shared/components/drawer/models/drawer';
 import { environment } from '@all-knowledge/env/environment';
 import { CountriesModel } from './core/models/countries.model';
 import { CustomHttpEventObserverService } from './core/services/base-service/custom-http-event-observer.service';
+import { TesteDrawerComponent } from './teste-drawer/teste-drawer.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
     private internationalizationService: InternationalizationService,
     private drawerService: DrawerService,
     private customHttpEventObserverService: CustomHttpEventObserverService,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {
     this.internationalizationService.init();
     if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {

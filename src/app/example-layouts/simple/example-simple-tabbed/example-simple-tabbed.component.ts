@@ -26,11 +26,13 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   formGroup: FormGroup;
   typeFieldEnum = TypeFieldEnum;
   params: any;
+  
 
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private drawerService: DrawerService,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private notificationService: NotificationService,
     private testService: TestService,
   ) {}
@@ -56,10 +58,7 @@ export class ExampleSimpleTabbedComponent implements OnInit {
   }
 
   openDrawer() {
-    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ExampleDrawerComponent);
-    // this.drawerService.open(ExampleDrawerComponent, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
-    const module = {path: 'app/example-layouts/simple/example-simple-tabbed/example-simple-tabbed.module', name: 'ExampleSimpleTabbedModule'};
-    this.drawerService.open('ak-example-drawer', null, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
+    this.drawerService.open(ExampleDrawerComponent, this.componentFactoryResolver, 'titulo.exampleDrawer', 'lg', {title: 'Teste3'}, null);
   }
 
   getTest() {

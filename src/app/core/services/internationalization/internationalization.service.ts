@@ -40,4 +40,8 @@ export class InternationalizationService {
     this.translateService.use(language);
   }
 
+  public instant(key: string | Array<string>, interpolateParams?: Object): string | any {
+    return this.translateService.instant(key, interpolateParams);
+  }
+
 }
