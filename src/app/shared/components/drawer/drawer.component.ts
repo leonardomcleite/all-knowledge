@@ -98,4 +98,10 @@ export class DrawerComponent implements OnInit, OnDestroy {
     }
   }
 
+  clickOverlay() {
+    if (!this.drawer.disableCloseInOverlay) {
+      this.close();
+    }
+  }
+
 }

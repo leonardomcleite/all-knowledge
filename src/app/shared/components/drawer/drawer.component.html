@@ -1,4 +1,4 @@
-<div *ngIf="drawer?.showOverlay" class="overlay"></div>
+<div *ngIf="drawer?.showOverlay" class="overlay" [ngClass]="disableCloseInOverlay ? '' : 'show-cursor'" (click)="clickOverlay()"></div>
 <div class="drawer --drawer-width-{{drawer.size}}" [ngClass]="getStyles()">
   <div class="container">
     <div class="header mat-elevation-z1">
