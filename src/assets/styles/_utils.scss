@@ -1,4 +1,15 @@
 @mixin utils($theme) {
+  @media only screen and (max-width: 525px) {
+    ak-card div.flex {
+      &.row {
+        flex-direction: column;
+      }
+    }
+
+    mat-form-field.margin-left-default, div.margin-left-default {
+      margin-left: 0px;
+    }
+  }
   .flex {
     display: flex;
     &.row {

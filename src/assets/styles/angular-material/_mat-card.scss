@@ -10,4 +10,14 @@
   mat-card-actions.mat-card-actions button.mat-raised-button.right {
     margin: 0 8px 0 0;
   }
+
+  @media only screen and (max-width: 525px) {
+    mat-card-actions.mat-card-actions button.mat-raised-button {
+      margin: 8px 0 0 0;
+    }
+
+    mat-card-actions.mat-card-actions button.mat-raised-button.right {
+      margin: 0;
+    }
+  }
 }
