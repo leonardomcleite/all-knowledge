@@ -28,6 +28,8 @@ export class SelectComponent implements OnInit, AfterViewInit {
   @Input() icon: string;
   @Input() suffix: string;
   @Input() hints: Array<string>;
+  @Input() appearance: string;
+  @Input() options: Array<any>;
   @Input() disabled: (_?: any) => boolean | boolean;
   @Input() classInput: (_?: any) => any | string;
   @Input() classFormField: (_?: any) => any | string;

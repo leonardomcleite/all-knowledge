@@ -28,7 +28,7 @@ export class ExampleTableComponent implements OnInit {
 
   displayedColumnsField: Array<any>;
   displayedColumns: Array<any>;
-  totalElemnts: number = 0;
+  totalElements: number = 0;
   defaultTableSize: number = environment.defaultTableSize;
   dataSource: MatTableDataSource<any>;
 
@@ -37,14 +37,14 @@ export class ExampleTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.totalElemnts = 20;
+    this.totalElements = 20;
     this.displayedColumns = [
       {name: 'label.id', field: 'id'},
       {name: 'label.nome', field: 'name'},
       {name: 'label.progresso', field: 'progress'},
       {name: 'label.cor', field: 'color'}
     ];
-    const users = Array.from({length: this.totalElemnts}, (_, k) => createNewUser(k + 1));
+    const users = Array.from({length: this.totalElements}, (_, k) => createNewUser(k + 1));
     this.dataSource = new MatTableDataSource(users);
   }
 
