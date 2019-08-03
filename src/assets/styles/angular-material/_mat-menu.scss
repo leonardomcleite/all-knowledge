@@ -13,4 +13,9 @@
       border-bottom: none;
     }
   }
+
+  div.mat-menu-option, button.mat-menu-item {
+    height: 40px;
+    line-height: 40px;
+  }
 }
