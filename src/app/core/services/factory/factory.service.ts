@@ -1,25 +1,17 @@
-import { Injectable, NgModuleFactoryLoader, NgModuleFactory, ComponentFactoryResolver, Type, Injector } from '@angular/core';
-
-import * as AngularCommon from '@angular/common';
-import * as AngularCore from '@angular/core';
-
-declare var SystemJS;
+import { ComponentFactoryResolver, Injectable, Injector, NgModuleFactory, Type } from '@angular/core';
 
 @Injectable()
 export class FactoryService {
 
   constructor(
-    private loader: NgModuleFactoryLoader,
     private resolver: ComponentFactoryResolver,
     private _injector: Injector
   ) { }
 
-  async getModule(module: any): Promise<NgModuleFactory<any>> {
+  async getModule(module: any) {
     if (!module) {
       return undefined;
     } else {
-
-      // now, import the new module
       return await import(module.path);
     }
   }
