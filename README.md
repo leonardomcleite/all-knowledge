@@ -21,7 +21,6 @@
     <span style="color: blue">35.199.115.251</span>
 </p>
 
-
 ### Instalando Google Cloud SDK
 ```sh
 	sudo apt-get update -y
