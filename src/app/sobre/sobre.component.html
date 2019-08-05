@@ -3,6 +3,12 @@
     <span>{{'titulo.sobre' | translate}}</span>
   </ak-simple-full-width-header>
   <ak-simple-full-width-content>
-    <div></div>
+    <h1>{{'titulo.allKnowlewdge' | translate}}</h1>
+    <h4 class="secondary-text">{{'subtitulo.oQueEallKnowlewdge' | translate}}</h4>
+    <p> {{'textos.descricaoApp' | translate}} </p>
+    <p> {{'textos.dependenciasUtilizadas' | translate}} </p>
+    <ul>
+      <li *ngFor="let item of tools">{{item}}</li>
+    </ul>
   </ak-simple-full-width-content>
 </ak-simple-full-width>

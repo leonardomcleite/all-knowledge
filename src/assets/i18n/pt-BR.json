@@ -33,6 +33,7 @@
     "cor": "Cor"
   },
   "titulo": {
+    "allKnowlewdge": "All Knowledge - (Todo Conhecimento)",
     "simpleFullWidth": "Simples - Largura total",
     "simpleTabbed": "Simples - Com abas",
     "cardedFullWidth": "Card - Largura total",
@@ -45,7 +46,8 @@
   },
   "subtitulo": {
     "subTitulo": "Subt\u00edtulo",
-    "demoContent": "Conte\u00fado de demonstra\u00e7\u00e3o"
+    "demoContent": "Conte\u00fado de demonstra\u00e7\u00e3o",
+    "oQueEallKnowlewdge": "O que é a All Knowledge"
   },
   "validacao": {
     "campoObrigatorio": "Campo obrigat\u00f3rio",
@@ -86,5 +88,9 @@
   "countries": {
     "BR": "Brasil",
     "USA": "Estados Unidos"
+  },
+  "textos": {
+    "descricaoApp": "É uma aplicação que reune todo o conhecimento do autor, melhores práticas, e etc... Para construção de uma aplicação base, que traz produtividade no desenvolvimento dos projetos.",
+    "dependenciasUtilizadas": "Dependências utilizadas: "
   }
 }

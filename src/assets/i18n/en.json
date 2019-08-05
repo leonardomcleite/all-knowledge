@@ -33,6 +33,7 @@
     "cor": "Color"
   },
   "titulo": {
+    "allKnowlewdge": "All Knowledge",
     "simpleFullWidth": "Simple - Full width",
     "simpleTabbed": "Simple - Tabbed",
     "cardedFullWidth": "Carded - Full width",
@@ -45,7 +46,8 @@
   },
   "subtitulo": {
     "subTitulo": "Subtitle",
-    "demoContent": "Demo Content"
+    "demoContent": "Demo Content",
+    "oQueEallKnowlewdge": "What's the All Knowledge"
   },
   "validacao": {
     "campoObrigatorio": "Required field",
@@ -86,5 +88,9 @@
   "countries": {
     "BR": "Brazil",
     "USA": "United States"
+  },
+  "textos": {
+    "descricaoApp": "It's an application that gathers all the author's knowledge, best practices, and etc ... For building a base application, which brings productivity in the development of projects.",
+    "dependenciasUtilizadas": "Dependencies used: "
   }
 }
