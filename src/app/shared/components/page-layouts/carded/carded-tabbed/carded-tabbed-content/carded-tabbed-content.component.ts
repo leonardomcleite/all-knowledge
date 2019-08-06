@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardedTabbedItemComponent } from '../carded-tabbed-item/carded-tabbed-item.component';
 
 @Component({
-  selector: 'ak-carded-tabbed-content',
+  selector: 'ake-carded-tabbed-content',
   templateUrl: './carded-tabbed-content.component.html',
   styleUrls: ['./carded-tabbed-content.component.scss'],
 })

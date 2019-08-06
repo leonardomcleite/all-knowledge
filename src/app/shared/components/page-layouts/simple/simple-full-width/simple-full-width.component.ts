@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-simple-full-width',
+  selector: 'ake-simple-full-width',
   templateUrl: './simple-full-width.component.html',
   styleUrls: ['./simple-full-width.component.scss'],
 })

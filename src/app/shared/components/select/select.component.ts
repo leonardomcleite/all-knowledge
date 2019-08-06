@@ -5,7 +5,7 @@ import { OptionComponent } from './option/option.component';
 import { MatOption, MatSelect } from '@angular/material';
 
 @Component({
-  selector: 'ak-select',
+  selector: 'ake-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })

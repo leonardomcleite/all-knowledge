@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-card-avatar',
+  selector: 'ake-card-avatar',
   templateUrl: './card-avatar.component.html',
   styleUrls: ['./card-avatar.component.scss']
 })

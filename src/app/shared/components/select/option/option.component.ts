@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChildren, QueryList, ContentChildren } fr
 import { MatOption } from '@angular/material';
 
 @Component({
-  selector: 'ak-option',
+  selector: 'ake-option',
   templateUrl: './option.component.html',
   styleUrls: ['./option.component.scss']
 })

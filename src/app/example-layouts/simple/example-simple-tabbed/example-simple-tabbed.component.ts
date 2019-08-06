@@ -12,7 +12,7 @@ import { TestService } from './services/test.service';
 import { mapByFormControl } from '@all-knowledge/core/helpers/map-by-form-control';
 
 @Component({
-  selector: 'ak-example-simple-tabbed',
+  selector: 'ake-example-simple-tabbed',
   templateUrl: './example-simple-tabbed.component.html',
   styleUrls: ['./example-simple-tabbed.component.scss']
 })

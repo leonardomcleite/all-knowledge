@@ -1,9 +1,9 @@
-<ak-simple-tabbed>
-  <ak-simple-tabbed-header>
+<ake-simple-tabbed>
+  <ake-simple-tabbed-header>
     <span>{{'titulo.simpleTabbed' | translate}}</span>
-  </ak-simple-tabbed-header>
-  <ak-simple-tabbed-content [(selectedIndex)]="params.tab" [setTabInRoute]="true">
-    <ak-simple-tabbed-item label="{{'label.artigo' | translate}}">
+  </ake-simple-tabbed-header>
+  <ake-simple-tabbed-content [(selectedIndex)]="params.tab" [setTabInRoute]="true">
+    <ake-simple-tabbed-item label="{{'label.artigo' | translate}}">
       <div>
         <h1>{{'titulo.nascerDoSol' | translate}}</h1>
         <h4 class="secondary-text">{{'subtitulo.demoContent' | translate}}</h4>
@@ -57,29 +57,29 @@
           enim ex, dapibus et tortor id, posuere pretium est. Maecenas fringilla ipsum vitae neque elementum, at eleifend
           ante sollicitudin. Donec viverra augue dolor, a venenatis tellus consectetur sit amet. </p>
       </div>
-    </ak-simple-tabbed-item>
-    <ak-simple-tabbed-item label="{{'label.formulario' | translate}}">
-      <ak-card>
-        <ak-card-header>
-          <ak-card-avatar>
+    </ake-simple-tabbed-item>
+    <ake-simple-tabbed-item label="{{'label.formulario' | translate}}">
+      <ake-card>
+        <ake-card-header>
+          <ake-card-avatar>
             <mat-icon>assignment_ind</mat-icon>
-          </ak-card-avatar>
-          <ak-card-title>{{'titulo.titulo' | translate}}</ak-card-title>
-          <ak-card-subtitle>{{'subtitulo.subTitulo' | translate}}</ak-card-subtitle>
-        </ak-card-header>
-        <ak-card-content>
+          </ake-card-avatar>
+          <ake-card-title>{{'titulo.titulo' | translate}}</ake-card-title>
+          <ake-card-subtitle>{{'subtitulo.subTitulo' | translate}}</ake-card-subtitle>
+        </ake-card-header>
+        <ake-card-content>
           <form [formGroup]="formGroup">
             <div class="flex col">
               <div class="flex row">
-                <ak-input
+                <ake-input
                   classFormField="full-width"
                   icon="person"
                   name="label.nomeCompleto"
                   frmControlName="nomeCivil"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.TEXT">
-                </ak-input>
-                <ak-input
+                </ake-input>
+                <ake-input
                   classFormField="full-width margin-left-default"
                   suffix="#"
                   icon="phone"
@@ -88,17 +88,17 @@
                   frmControlName="cpf"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.TEXT">
-                </ak-input>
+                </ake-input>
               </div>
               <div class="flex row">
-                <ak-input
+                <ake-input
                   classFormField="full-width"
                   name="label.dataAniversario"
                   frmControlName="dataNascimento"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.DATE">
-                </ak-input>
-                <ak-input
+                </ake-input>
+                <ake-input
                   classFormField="full-width margin-left-default"
                   suffix="R$"
                   name="label.salario"
@@ -106,12 +106,12 @@
                   [mask]="salario.mask"
                   [frmGroup]="formGroup"
                   [type]="typeFieldEnum.NUMBER">
-                </ak-input>
+                </ake-input>
               </div>
             </div>
           </form>
-        </ak-card-content>
-        <ak-card-actions>
+        </ake-card-content>
+        <ake-card-actions>
           <ng-container left>
             <button mat-raised-button (click)="openDrawer()">{{'label.abrirDrawer' | translate}}</button>
             <button mat-raised-button color="primary" (click)="getTest()">{{'label.testeService' | translate}}</button>
@@ -122,11 +122,11 @@
             <button mat-raised-button class="info" (click)="openNotification('info')">{{'label.notificationInfo' | translate}}</button>
             <button mat-raised-button class="warn" (click)="openNotification('warn')">{{'label.notificationWarn' | translate}}</button>
           </ng-container>
-        </ak-card-actions>
-      </ak-card>
-    </ak-simple-tabbed-item>
-    <ak-simple-tabbed-item label="{{'label.tabela' | translate}}">
-      <ak-example-table></ak-example-table>
-    </ak-simple-tabbed-item>
-  </ak-simple-tabbed-content>
-</ak-simple-tabbed>
+        </ake-card-actions>
+      </ake-card>
+    </ake-simple-tabbed-item>
+    <ake-simple-tabbed-item label="{{'label.tabela' | translate}}">
+      <ake-example-table></ake-example-table>
+    </ake-simple-tabbed-item>
+  </ake-simple-tabbed-content>
+</ake-simple-tabbed>

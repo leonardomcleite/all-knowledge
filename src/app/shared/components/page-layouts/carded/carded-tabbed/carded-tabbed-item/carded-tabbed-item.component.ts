@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList, ContentChildren, Input } fr
 import { MatTab } from '@angular/material';
 
 @Component({
-  selector: 'ak-carded-tabbed-item',
+  selector: 'ake-carded-tabbed-item',
   templateUrl: './carded-tabbed-item.component.html',
   styleUrls: ['./carded-tabbed-item.component.scss']
 })

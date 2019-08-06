@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'ak-card-header',
+  selector: 'ake-card-header',
   templateUrl: './card-header.component.html',
   styleUrls: ['./card-header.component.scss']
 })

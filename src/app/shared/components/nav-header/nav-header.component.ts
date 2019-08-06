@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'ak-nav-header',
+  selector: 'ake-nav-header',
   templateUrl: './nav-header.component.html',
   styleUrls: ['./nav-header.component.scss']
 })

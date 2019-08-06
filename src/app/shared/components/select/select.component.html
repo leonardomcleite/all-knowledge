@@ -6,7 +6,7 @@
       (blur)="onBlur($event)"
       [formControlName]="frmControlName"
       [placeholder]="placeholder | translate">
-      <ng-content select="ak-option"></ng-content>
+      <ng-content select="ake-option"></ng-content>
       <ng-content select="mat-option"></ng-content>
       <mat-option *ngFor="let option of options" [value]="option.code">
         {{option.desciption}}

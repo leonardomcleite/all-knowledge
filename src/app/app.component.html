@@ -1,4 +1,4 @@
-<mat-toolbar [class.ak-is-mobile]="!sideOpened" class="flex row ak-header mat-elevation-z2">
+<mat-toolbar [class.ake-is-mobile]="!sideOpened" class="flex row ake-header mat-elevation-z2">
   <div class="flex row left">
     <button mat-icon-button (click)="sidenav.toggle()" [class.hidden]="sideOpened">
       <mat-icon>menu</mat-icon>
@@ -21,26 +21,26 @@
 </mat-toolbar>
 <mat-progress-bar mode="query" color="accent" *ngIf="loading"></mat-progress-bar>
 
-<mat-sidenav-container class="ak-container">
+<mat-sidenav-container class="ake-container">
   <mat-sidenav  #sidenav
     [(opened)]="sideOpened"
     (openedStart)="sideOpened = true"
     (closedStart)="sideOpened = false"
-    class="ak-sidenav"    
+    class="ake-sidenav"    
     [mode]="isMobile ? 'over' : 'side'">
-    <ak-nav-header [sidenav]="sidenav" (clickIcon)="closeSidenav(sidenav)"></ak-nav-header>
-    <ak-menu (clickMenu)="closeSidenav(sidenav)"></ak-menu>
+    <ake-nav-header [sidenav]="sidenav" (clickIcon)="closeSidenav(sidenav)"></ake-nav-header>
+    <ake-menu (clickMenu)="closeSidenav(sidenav)"></ake-menu>
   </mat-sidenav>
 
-  <mat-sidenav-content class="ak-content" [class.sidenav-open]="sideOpened">
+  <mat-sidenav-content class="ake-content" [class.sidenav-open]="sideOpened">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-toolbar class="ak-footer mat-elevation-z2" [class.ak-is-mobile]="!sideOpened" color="accent">
+<mat-toolbar class="ake-footer mat-elevation-z2" [class.ake-is-mobile]="!sideOpened" color="accent">
   <span class="autor-title">{{'label.autor' | translate}}: </span>
   <span class="autor">{{'autor.nome' | translate}}</span>
 </mat-toolbar>
 
 <!-- Drawer -->
-<ak-drawer [drawer]="drawer" *ngFor="let drawer of drawers"></ak-drawer>
+<ake-drawer [drawer]="drawer" *ngFor="let drawer of drawers"></ake-drawer>

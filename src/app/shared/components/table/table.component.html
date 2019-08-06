@@ -1,6 +1,6 @@
 <form [formGroup]="formGroup" class="container">
   <div class="content-table mat-elevation-z1">
-    <ak-input
+    <ake-input
       appearance="standard"
       (keyup)="applyFilter($event.target.value)"
       classFormField="full-width side-padding"
@@ -9,7 +9,7 @@
       frmControlName="filtro"
       [frmGroup]="formGroup"
       [type]="typeFieldEnum.TEXT">
-    </ak-input>
+    </ake-input>
     
     <table mat-table [dataSource]="dataSource">
       <ng-container [matColumnDef]="column.field" *ngFor="let column of displayedColumns">

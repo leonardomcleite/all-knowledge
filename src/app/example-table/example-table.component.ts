@@ -20,7 +20,7 @@ const NAMES: string[] = [
 ];
 
 @Component({
-  selector: 'ak-example-table',
+  selector: 'ake-example-table',
   templateUrl: './example-table.component.html',
   styleUrls: ['./example-table.component.scss']
 })

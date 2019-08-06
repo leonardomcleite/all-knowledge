@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'ak-card-actions',
+  selector: 'ake-card-actions',
   templateUrl: './card-actions.component.html',
   styleUrls: ['./card-actions.component.scss']
 })

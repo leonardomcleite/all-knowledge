@@ -1,4 +1,4 @@
-@mixin ak-core($theme) {
+@mixin ake-core($theme) {
   @include angular-material-theme($theme);
   @include mat-tab($theme);
   @include mat-form-field($theme);
@@ -14,8 +14,8 @@
   @include native-elements($theme);
   @include utils($theme);
 
-  @include ak-input($theme);
-  @include ak-card($theme);
-  @include ak-button($theme);
-  @include ak-table($theme);
+  @include ake-input($theme);
+  @include ake-card($theme);
+  @include ake-button($theme);
+  @include ake-table($theme);
 }

@@ -8,7 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'ak-table',
+  selector: 'ake-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })

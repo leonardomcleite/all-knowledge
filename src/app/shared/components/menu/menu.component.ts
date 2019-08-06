@@ -3,7 +3,7 @@ import { MenuService } from './services/menu.service';
 import { MenuModel } from '@all-knowledge/core/models/menu-access.model';
 
 @Component({
-  selector: 'ak-menu',
+  selector: 'ake-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })

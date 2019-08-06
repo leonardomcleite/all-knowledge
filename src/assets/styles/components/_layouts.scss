@@ -2,7 +2,7 @@
 @import 'theming.scss';
 
 @function heightHeader() {
-  @return 100px - (2 * $ak-padding);
+  @return 100px - (2 * $ake-padding);
 }
 
 @media only screen and (max-width: 750px) {
@@ -32,12 +32,12 @@
 
 .simple-full-width-content, .carded-full-width-content {
   max-height: calc(100vh - 214px);
-  padding: $ak-padding 0;
+  padding: $ake-padding 0;
   overflow-y: scroll;
 }
 
 .simple-full-width-content {
-  padding: $ak-padding;
+  padding: $ake-padding;
 }
 
 .carded-full-width-content, .full-width-content {
@@ -56,7 +56,7 @@
 
 .carded-tabbed-content {
   background: #fff;
-  padding: $ak-padding;
+  padding: $ake-padding;
   border-radius: 8px;
 }
 
@@ -64,15 +64,15 @@
   max-height: calc(100vh - 225px);
   background-color: #fff;
   border-radius: 8px;
-  padding: $ak-padding;
+  padding: $ake-padding;
 }
 
 // Header
 
-ak-simple-full-width-header div.simple-full-width-header span,
-ak-carded-full-width-header div.carded-full-width-header span,
-ak-simple-tabbed-header div.simple-tabbed-header span,
-ak-carded-tabbed-header div.carded-tabbed-header span {
+ake-simple-full-width-header div.simple-full-width-header span,
+ake-carded-full-width-header div.carded-full-width-header span,
+ake-simple-tabbed-header div.simple-tabbed-header span,
+ake-carded-tabbed-header div.carded-tabbed-header span {
   font-size: 20px;
 }
 
@@ -87,7 +87,7 @@ ak-carded-tabbed-header div.carded-tabbed-header span {
 .carded-full-width-header {
   background-color: mat-color($primary, 500);
   color: mat-color($primary, 50);
-  padding: $ak-padding;
+  padding: $ake-padding;
 }
 
 .carded-tabbed-header, .carded-full-width-header {
@@ -108,7 +108,7 @@ ak-carded-tabbed-header div.carded-tabbed-header span {
   flex: 1 1 auto;
   position: relative;
   z-index: 2;
-  padding: 0 $ak-padding;
+  padding: 0 $ake-padding;
   min-width: 0;
   max-width: 100%;
   height: 100%;

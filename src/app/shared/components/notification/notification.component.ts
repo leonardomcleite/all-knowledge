@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatSnackBarRef } from '@angular/material';
 
 @Component({
-  selector: 'ak-notification',
+  selector: 'ake-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss'],
 })

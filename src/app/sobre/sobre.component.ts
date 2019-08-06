@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-sobre',
+  selector: 'ake-sobre',
   templateUrl: './sobre.component.html',
   styleUrls: ['./sobre.component.scss']
 })

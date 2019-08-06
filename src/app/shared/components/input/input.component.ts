@@ -17,7 +17,7 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'ak-input',
+  selector: 'ake-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [

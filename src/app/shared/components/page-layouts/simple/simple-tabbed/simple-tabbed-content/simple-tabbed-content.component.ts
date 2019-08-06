@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleTabbedItemComponent } from '../simple-tabbed-item/simple-tabbed-item.component';
 
 @Component({
-  selector: 'ak-simple-tabbed-content',
+  selector: 'ake-simple-tabbed-content',
   templateUrl: './simple-tabbed-content.component.html',
   styleUrls: ['./simple-tabbed-content.component.scss'],
 })

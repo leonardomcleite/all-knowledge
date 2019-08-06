@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-teste-drawer',
+  selector: 'ake-teste-drawer',
   templateUrl: './teste-drawer.component.html',
   styleUrls: ['./teste-drawer.component.scss']
 })

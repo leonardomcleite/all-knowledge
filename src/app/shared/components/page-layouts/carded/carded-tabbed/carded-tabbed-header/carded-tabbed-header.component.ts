@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-carded-tabbed-header',
+  selector: 'ake-carded-tabbed-header',
   templateUrl: './carded-tabbed-header.component.html',
   styleUrls: ['./carded-tabbed-header.component.scss']
 })

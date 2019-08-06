@@ -2,7 +2,7 @@ import { Component, ContentChildren, Input, OnInit, QueryList, ViewChildren } fr
 import { MatTab } from '@angular/material';
 
 @Component({
-  selector: 'ak-simple-tabbed-item',
+  selector: 'ake-simple-tabbed-item',
   templateUrl: './simple-tabbed-item.component.html',
   styleUrls: ['./simple-tabbed-item.component.scss'],
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-carded-full-width',
+  selector: 'ake-carded-full-width',
   templateUrl: './carded-full-width.component.html',
   styleUrls: ['./carded-full-width.component.scss']
 })

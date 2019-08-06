@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ak-card-subtitle',
+  selector: 'ake-card-subtitle',
   templateUrl: './card-subtitle.component.html',
   styleUrls: ['./card-subtitle.component.scss']
 })

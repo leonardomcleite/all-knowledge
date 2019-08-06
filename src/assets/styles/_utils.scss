@@ -1,6 +1,6 @@
 @mixin utils($theme) {
   @media only screen and (max-width: 525px) {
-    ak-card div.flex {
+    ake-card div.flex {
       &.row {
         flex-direction: column;
       }

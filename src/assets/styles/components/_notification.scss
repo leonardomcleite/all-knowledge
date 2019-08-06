@@ -1,4 +1,4 @@
-@mixin ak-notification($theme) {
+@mixin ake-notification($theme) {
   snack-bar-container {
     background: white;
     &:hover {
@@ -10,14 +10,14 @@
     font-size: 17px;
     margin-bottom: 5px;
     max-width: 310px;
-    word-wrap: break-word;
+    word-wrap: breake-word;
   }
 
   .text {
     font-weight: normal;
     font-size: 16px;
     max-width: 310px;
-    word-wrap: break-word;
+    word-wrap: breake-word;
   }
   
   div.snackbar {
@@ -57,7 +57,7 @@
     width: 100%;
     color: black;
     margin-bottom: 5px;
-    word-wrap: break-word;
+    word-wrap: breake-word;
   }
   
   button.btnAction.mat-button {

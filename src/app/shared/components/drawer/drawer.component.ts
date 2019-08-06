@@ -5,7 +5,7 @@ import { DrawerModel } from './models/drawer';
 import { FactoryService } from '@all-knowledge/core/services/factory/factory.service';
 
 @Component({
-  selector: 'ak-drawer',
+  selector: 'ake-drawer',
   templateUrl: './drawer.component.html',
   styleUrls: ['drawer.component.scss']
 })

@@ -1,33 +1,33 @@
-@mixin ak-table($theme) {
+@mixin ake-table($theme) {
 
-  ak-table .side-padding {
+  ake-table .side-padding {
     padding: 0 24px;
   }
 
-  ak-table .content-table {
+  ake-table .content-table {
     border-radius: 8px;
   }
 
-  ak-table table {
+  ake-table table {
     width: 100%;
   }
 
-  ak-table td, ak-table th {
+  ake-table td, ake-table th {
     width: 25%;
   }
 
-  ak-table .container-footer {
+  ake-table .container-footer {
     display: flex;
     justify-content: flex-end;
   }
 
-  ak-table .container {
+  ake-table .container {
     background-color: white;
     margin: 3px;
     border-radius: 8px;
   }
 
-  ak-table .mat-form-field-appearance-legacy .mat-form-field-underline {
+  ake-table .mat-form-field-appearance-legacy .mat-form-field-underline {
     bottom: 1.25em;
     background-color: rgba(0,0,0,.42);
   }

@@ -8,7 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'ak-example-carded-tabbed',
+  selector: 'ake-example-carded-tabbed',
   templateUrl: './example-carded-tabbed.component.html',
   styleUrls: ['./example-carded-tabbed.component.scss']
 })

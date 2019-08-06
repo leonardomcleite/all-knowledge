@@ -1,14 +1,14 @@
 @import 'theming.scss';
 
 @media only screen and (max-width: 600px) {
-  ak-header,
-  .ak-content,
-  .ak-content.sidenav-open {
+  ake-header,
+  .ake-content,
+  .ake-content.sidenav-open {
     width: 100%;
   }
 }
 
-.ak-container {
+.ake-container {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -18,7 +18,7 @@
   right: 0;
 }
 
-.ak-content {
+.ake-content {
   top: 45px;
   margin-bottom: 90px;
   width: 100%;
@@ -28,7 +28,7 @@
   }
 }
 
-.ak-sidenav {
+.ake-sidenav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,17 +37,17 @@
   color: mat-color($accent, 50);
 }
 
-.ak-header {
+.ake-header {
   top: 0;
   width: calc(100% - 250px);
 }
 
-.ak-footer {
+.ake-footer {
   bottom: 0;
 }
 
-.ak-header,
-.ak-footer {
+.ake-header,
+.ake-footer {
   position: fixed;
   left: 250px;
   right: 0;
@@ -55,13 +55,13 @@
   transition: left cubic-bezier(0, 0, 0.2, 1) 0.35s;
 }
 
-.ak-is-mobile {
-  &.ak-header,
-  &.ak-footer {
+.ake-is-mobile {
+  &.ake-header,
+  &.ake-footer {
     left: 0;
   }
 
-  &.ak-header {
+  &.ake-header {
     width: 100%;
   }
 }
