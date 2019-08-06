@@ -19,10 +19,10 @@
 
 // App
 @import 'components/layouts';
-@import 'components/ak-input';
-@import 'components/ak-card';
-@import 'components/ak-button';
-@import 'components/ak-table';
+@import 'components/input';
+@import 'components/card';
+@import 'components/button';
+@import 'components/table';
 
 @include mat-core();
 @include ak-core($theme);
