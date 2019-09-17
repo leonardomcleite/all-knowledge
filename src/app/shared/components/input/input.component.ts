@@ -59,7 +59,7 @@ export class InputComponent implements OnInit {
    * Checa se o formGroup foi criado, caso contrário o método cria.
    */
   buildFormGroup() {
-    if (this.frmGroup.get(this.frmControlName) == null) {
+    if (this.frmGroup && this.frmControlName && this.frmGroup.get(this.frmControlName) == null) {
       this.frmGroup = this.formBuilder.group({
         [this.frmControlName]: new FormControl(null),
       });

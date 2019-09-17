@@ -18,7 +18,7 @@
 </p>
 <p style="margin: 0">
     <b style="color: red">[IP externo servidor cloud]: </b>
-    <span style="color: blue">35.199.115.251</span>
+    <span style="color: blue">http://35.247.225.136/</span>
 </p>
 
 
